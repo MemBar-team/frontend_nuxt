@@ -1,10 +1,24 @@
 <template>
-  <div>
+  <div class="wrapper">
+    <header class="header">
+      <p class="header_logo">MemBar</p>
+    </header>
+    <NavMenu />
     <nuxt />
   </div>
 </template>
 
-<style>
+<script>
+import NavMenu from '~/components/navigation/NavMenu.vue'
+
+export default {
+  components: {
+    NavMenu
+  }
+}
+</script>
+
+<style lang="scss">
 html {
   font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI',
     Roboto, 'Helvetica Neue', Arial, sans-serif;
@@ -51,5 +65,55 @@ html {
 .button--grey:hover {
   color: #fff;
   background-color: #35495e;
+}
+
+.wrapper {
+  max-width: 1280px;
+  margin: auto;
+}
+
+.header {
+  background: linear-gradient(to right, #e14343, #f69d51);
+  padding: 8px 24px;
+  display: flex;
+
+  &_logo {
+    color: #ffffff;
+    padding: 4px 0;
+    font-size: 26px;
+    margin: 0 24px 0 0px;
+  }
+}
+
+.block {
+  padding: 0 20px;
+}
+
+.container {
+  margin: 0 auto;
+  min-height: 100vh;
+}
+
+.title {
+  font-family: 'Quicksand', 'Source Sans Pro', -apple-system, BlinkMacSystemFont,
+    'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  display: block;
+  font-weight: 300;
+  font-size: 40px;
+  color: #35495e;
+  letter-spacing: 1px;
+  text-align: center;
+}
+
+.subtitle {
+  font-weight: 300;
+  font-size: 42px;
+  color: #526488;
+  word-spacing: 5px;
+  padding-bottom: 15px;
+}
+
+.links {
+  padding-top: 15px;
 }
 </style>
