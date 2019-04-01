@@ -116,4 +116,13 @@ html {
 .links {
   padding-top: 15px;
 }
+
+.el {
+  &-button {
+    &--primary {
+      // background: linear-gradient(to right, #e14343, #f69d51);
+      background-color: #e14343;
+    }
+  }
+}
 </style>

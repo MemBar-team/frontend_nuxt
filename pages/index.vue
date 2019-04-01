@@ -6,8 +6,8 @@
         趣味と仲間を繋げるサイト
       </h1>
       <el-rate
-        class="TopPage_star"
         v-model="value"
+        class="TopPage_star"
         :colors="['#2F3D4D', '#64B486', '#4B7C6E']"
       >
       </el-rate>
