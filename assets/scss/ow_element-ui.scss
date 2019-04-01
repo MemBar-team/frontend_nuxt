@@ -1,0 +1,17 @@
+@import './common/_variable';
+
+/* Overwriting Element-ui SCSS */
+.el {
+  &-button {
+    &--primary {
+      // background: linear-gradient(to right, #e14343, #f69d51);
+      background-color: $color_red;
+      border-color: $color_red;
+
+      &:hover {
+        background-color: $color_orange;
+        border-color: $color_orange;
+      }
+    }
+  }
+}

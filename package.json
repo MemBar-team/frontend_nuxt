@@ -1,8 +1,8 @@
 {
-  "name": "membar",
+  "name": "MemBar.net",
   "version": "1.0.0",
-  "description": "My first-class Nuxt.js project",
-  "author": "kitamura-lvgs",
+  "description": "あなたの趣味と仲間を繋げるサイト",
+  "author": "Higemura",
   "private": true,
   "scripts": {
     "dev": "nuxt",
@@ -15,6 +15,7 @@
   "dependencies": {
     "@nuxtjs/axios": "^5.3.6",
     "@nuxtjs/pwa": "^2.6.0",
+    "@nuxtjs/style-resources": "^0.1.2",
     "@nuxtjs/vuetify": "^0.5.5",
     "cross-env": "^5.2.0",
     "element-ui": "^2.4.11",

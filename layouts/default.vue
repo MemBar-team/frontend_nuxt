@@ -92,37 +92,10 @@ html {
 .container {
   margin: 0 auto;
   min-height: 100vh;
-}
-
-.title {
-  font-family: 'Quicksand', 'Source Sans Pro', -apple-system, BlinkMacSystemFont,
-    'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  display: block;
-  font-weight: 300;
-  font-size: 40px;
-  color: #35495e;
-  letter-spacing: 1px;
-  text-align: center;
-}
-
-.subtitle {
-  font-weight: 300;
-  font-size: 42px;
-  color: #526488;
-  word-spacing: 5px;
-  padding-bottom: 15px;
+  background: $color_red;
 }
 
 .links {
   padding-top: 15px;
-}
-
-.el {
-  &-button {
-    &--primary {
-      // background: linear-gradient(to right, #e14343, #f69d51);
-      background-color: #e14343;
-    }
-  }
 }
 </style>
