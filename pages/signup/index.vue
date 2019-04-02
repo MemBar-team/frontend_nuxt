@@ -5,14 +5,14 @@
     </h1>
     <el-rate v-model="value" :colors="['#2F3D4D', '#64B486', '#4B7C6E']">
     </el-rate>
+    <nuxt />
   </section>
 </template>
 
 <script>
-// import Logo from '~/components/Logo.vue'
-
 export default {
   components: {},
+  layout: 'contents',
   data() {
     return {
       value: null

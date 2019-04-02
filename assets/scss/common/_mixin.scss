@@ -1,0 +1,12 @@
+@import './variable';
+
+@mixin hoge($color: #fff, $fSize: 16px) {
+  color: $color;
+  font-size: $fSize;
+}
+
+@mixin mq($breakpoint: md) {
+  @media #{map-get($breakpoints, $breakpoint)} {
+    @content;
+  }
+}

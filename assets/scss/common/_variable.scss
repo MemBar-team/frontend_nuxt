@@ -2,5 +2,14 @@
 $color_white: #fff;
 $color_red: #e14343;
 $color_orange: #f69d51;
-$color_black: #000;
+$color_black: #35495e;
 
+$main_text: $color_black;
+$box_shadow: rgba($color_black, 0.2);
+
+$breakpoints: (
+  'sm': 'screen and (max-width: 400px)',
+  'md': 'screen and (max-width: 768px)',
+  'lg': 'screen and (max-width: 1080px)',
+  'xl': 'screen and (max-width: 1280px)',
+) !default;

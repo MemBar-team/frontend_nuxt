@@ -19,7 +19,7 @@ export default {
   /*
    ** Customize the progress-bar color
    */
-  loading: { color: $color_red },
+  loading: { color: '#fff' },
 
   /*
    ** Global CSS
@@ -48,6 +48,7 @@ export default {
   styleResources: {
     sass: [
       '@/assets/scss/common/_variable.scss',
+      '@/assets/scss/common/_mixin.scss',
     ],
   },
 

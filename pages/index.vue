@@ -1,7 +1,7 @@
 <template>
   <div class="TopPage">
+    <!-- <transition name="fade"> -->
     <section class="container">
-      <!-- <logo /> -->
       <h1 class="title">
         趣味と仲間を繋げるサイト
       </h1>
@@ -13,26 +13,19 @@
       </el-rate>
       <div class="TopPage_access">
         <nuxt-link to="/signup">
-          <el-button type="primary">
-            サインアップ
-          </el-button>
+          <el-button type="primary">サインアップ</el-button>
         </nuxt-link>
-
         <nuxt-link to="/login">
           <el-button type="primary">ログイン</el-button>
         </nuxt-link>
       </div>
     </section>
+    <!-- </transition> -->
   </div>
 </template>
 
 <script>
-// import Logo from '~/components/Logo.vue'
-
 export default {
-  // components: {
-  //   Logo
-  // },
   data() {
     return {
       value: null

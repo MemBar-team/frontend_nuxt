@@ -2,11 +2,25 @@
 
 /* Overwriting Element-ui SCSS */
 .el {
+  &-menu {
+    &.el-menu {
+      &--horizontal {
+        border: none;
+        > .el-menu-item {
+          &.is-active {
+            border-bottom: solid 2px $color_red;
+          }
+        }
+      }
+    }
+  }
+
   &-button {
     &--primary {
       // background: linear-gradient(to right, #e14343, #f69d51);
       background-color: $color_red;
       border-color: $color_red;
+      font-size: 1rem;
 
       &:hover {
         background-color: $color_orange;
