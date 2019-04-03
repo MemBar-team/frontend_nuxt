@@ -11,6 +11,9 @@
         :colors="['#2F3D4D', '#64B486', '#4B7C6E']"
       >
       </el-rate>
+      <nuxt-link to="/home">
+        <el-button type="primary">スタート</el-button>
+      </nuxt-link>
       <div class="TopPage_access">
         <nuxt-link to="/signup">
           <el-button type="primary">サインアップ</el-button>

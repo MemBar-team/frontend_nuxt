@@ -16,11 +16,12 @@
   }
 
   &-button {
+    padding: 0.8em 1em;
     &--primary {
       // background: linear-gradient(to right, #e14343, #f69d51);
       background-color: $color_red;
       border-color: $color_red;
-      font-size: 1rem;
+      font-size: 1.2rem;
 
       &:hover {
         background-color: $color_orange;

@@ -1,10 +1,11 @@
 <template>
-  <div class="Wrapper">
-    <!-- <transition name="fade"> -->
-    <Header />
-    <NavMenu />
-    <!-- </transition> -->
-  </div>
+  <transition name="fade">
+    <div class="Wrapper">
+      <Header />
+      <NavMenu />
+      <nuxt />
+    </div>
+  </transition>
 </template>
 
 <script>

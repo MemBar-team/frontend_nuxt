@@ -1,10 +1,12 @@
 <template>
-  <div class="Wrapper">
-    <!-- <transition name="fade"> -->
-    <Header />
-    <nuxt />
-    <!-- </transition> -->
-  </div>
+  <transition name="fade">
+    <div class="Wrapper">
+      <!-- <transition-group name="fade"> -->
+      <Header />
+      <nuxt />
+      <!-- </transition-group> -->
+    </div>
+  </transition>
 </template>
 
 <script>
@@ -44,13 +46,13 @@ export default {
   transform: translate(100%, 0);
 }
 
-// .fade-enter-active,
-// .fade-leave-active {
-//   transition: all 0.1s;
-// }
-// .fade-enter,
-// .fade-leave-active {
-//   opacity: 0;
-//   transform: scale(0);
-// }
+.fade-enter-active,
+.fade-leave-active {
+  transition: all 0.1s;
+}
+.fade-enter,
+.fade-leave-active {
+  opacity: 0;
+  transform: scale(0);
+}
 </style>

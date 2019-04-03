@@ -6,6 +6,8 @@ html {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   box-sizing: border-box;
+  line-height: 1;
+  font-size: 62.5%;
 }
 
 html, body, div, span, object, iframe,
@@ -34,11 +36,6 @@ time, mark, audio, video {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-}
-
-body {
-  line-height: 1;
-  font-size: 62.5%;
 }
 
 article,aside,details,figcaption,figure,
