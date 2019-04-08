@@ -2,7 +2,7 @@
   <section class="container">
     <!-- <transition name="fade"> -->
     <h1 class="title">
-      ホーム
+      メッセージ
     </h1>
     <div class="Contents">
       <div class="Contents_item">

@@ -1,6 +1,8 @@
 <template>
-  <header class="header">
-    <p class="header_logo">MemBar</p>
+  <header id="LayoutsHeader" class="Header">
+    <nuxt-link to="/">
+      <p class="Header_logo">MemBar</p>
+    </nuxt-link>
   </header>
 </template>
 
@@ -21,7 +23,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.header {
+.Header {
   // background: linear-gradient(to right, $color_red, $color_orange);
   background-color: $color_white;
   padding: 8px 24px;

@@ -2,28 +2,33 @@
   <transition name="fade">
     <div class="Wrapper">
       <!-- <transition-group name="fade"> -->
-      <Header />
+      <LayoutsHeader />
       <nuxt />
       <!-- </transition-group> -->
+      <LayoutsFooter />
     </div>
   </transition>
 </template>
 
 <script>
-import Header from '~/components/header/Header.vue'
+import LayoutsHeader from '~/layouts/_header/LayoutsHeader'
+import LayoutsFooter from '~/layouts/_footer/LayoutsFooter'
 
 export default {
   components: {
-    Header
+    LayoutsHeader,
+    LayoutsFooter
   }
 }
 </script>
 
 <style lang="scss">
-// .Wrapper {
-//   max-width: 1280px;
-//   margin: auto;
-// }
+.Wrapper {
+  width: 100%;
+  height: 100%;
+  // overflow: hidden;
+  margin: auto;
+}
 
 .block {
   padding: 0 20px;
@@ -31,7 +36,6 @@ export default {
 
 .container {
   margin: 0 auto;
-  min-height: 100vh;
   background: $color_white;
 }
 
@@ -44,6 +48,7 @@ export default {
   opacity: 0;
   // transform: scale(0);
   transform: translate(100%, 0);
+  // transform: scale(100%);
 }
 
 .fade-enter-active,

@@ -1,12 +1,23 @@
 
+@charset "utf-8";
+
+// Color
 $color_white: #fff;
 $color_red: #e14343;
 $color_orange: #f69d51;
 $color_black: #35495e;
 
-$main_text: $color_black;
-$box_shadow: rgba($color_black, 0.2);
+// Text
+$font_bold: 600;
+$font_medium: 500;
+$font_normal: 400;
+$font_light: 300;
 
+// Function
+$main_text: $color_black;
+$gradientToRight: linear-gradient(to right, $color_red, $color_orange);
+
+// Media Query
 $breakpoints: (
   'sm': 'screen and (max-width: 400px)',
   'md': 'screen and (max-width: 768px)',

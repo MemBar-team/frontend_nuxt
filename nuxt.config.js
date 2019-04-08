@@ -7,13 +7,19 @@ export default {
    ** Headers of the page
    */
   head: {
+    htmlAttrs: {
+      lang: 'ja'
+    },
     title: pkg.name,
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { hid: 'description', name: 'description', content: pkg.description }
     ],
-    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
+    link: [
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      { rel: 'stylesheet',  href: '//fonts.googleapis.com/icon?family=Material+Icons' }
+    ]
   },
 
   /*
@@ -26,6 +32,7 @@ export default {
    */
   css: [
     '@/assets/scss/common/_reset.scss',
+    '@/assets/scss/common/_material-icon.scss',
     'element-ui/lib/theme-chalk/index.css',
     '@/assets/scss/ow_element-ui.scss',
   ],
