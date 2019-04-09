@@ -20,3 +20,13 @@ $ npm run generate
 ```
 
 For detailed explanation on how things work, checkout [Nuxt.js docs](https://nuxtjs.org).
+
+
+
+# Node.jsバージョン管理
+
+v10.15.3
+
+NodeのバージョンはNodenvで管理する
+インストール方法
+https://qiita.com/YuukiMiyoshi/items/080b6cde332d8d4e06f3

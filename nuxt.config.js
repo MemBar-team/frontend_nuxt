@@ -7,13 +7,19 @@ export default {
    ** Headers of the page
    */
   head: {
+    htmlAttrs: {
+      lang: 'ja'
+    },
     title: pkg.name,
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { hid: 'description', name: 'description', content: pkg.description }
     ],
-    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
+    link: [
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      { rel: 'stylesheet',  href: '//fonts.googleapis.com/icon?family=Material+Icons' }
+    ]
   },
 
   /*
@@ -24,7 +30,12 @@ export default {
   /*
    ** Global CSS
    */
-  css: ['element-ui/lib/theme-chalk/index.css'],
+  css: [
+    '@/assets/scss/common/_reset.scss',
+    '@/assets/scss/common/_material-icon.scss',
+    'element-ui/lib/theme-chalk/index.css',
+    '@/assets/scss/ow_element-ui.scss',
+  ],
 
   /*
    ** Plugins to load before mounting the App
@@ -37,8 +48,17 @@ export default {
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
-    '@nuxtjs/pwa'
+    '@nuxtjs/pwa',
+    '@nuxtjs/style-resources',
   ],
+
+  styleResources: {
+    sass: [
+      '@/assets/scss/common/_variable.scss',
+      '@/assets/scss/common/_mixin.scss',
+    ],
+  },
+
   /*
    ** Axios module configuration
    */
