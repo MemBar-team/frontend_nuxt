@@ -1,0 +1,16 @@
+@charset "utf-8";
+@import './variable';
+
+@mixin boxShadow_down($opacity) {
+  box-shadow: 0 1px 4px 0 rgba($color_black, $opacity);
+}
+
+@mixin boxShadow_spread($opacity) {
+  box-shadow: 0 0 4px 0 rgba($color_black, $opacity)
+}
+
+@mixin mq($breakpoint: md) {
+  @media #{map-get($breakpoints, $breakpoint)} {
+    @content;
+  }
+}

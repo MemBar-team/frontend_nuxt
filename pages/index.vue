@@ -1,67 +1,52 @@
 <template>
-  <section class="container">
-    <div>
-      <logo />
+  <div class="TopPage">
+    <!-- <transition name="fade"> -->
+    <section class="container">
       <h1 class="title">
-        membar
+        趣味と仲間を繋げるサイト
       </h1>
-      <h2 class="subtitle">
-        My first-class Nuxt.js project
-      </h2>
-      <div class="links">
-        <a href="https://nuxtjs.org/" target="_blank" class="button--green"
-          >Documentation</a
-        >
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          class="button--grey"
-          >GitHub</a
-        >
+      <el-rate
+        v-model="value"
+        class="TopPage_star"
+        :colors="['#2F3D4D', '#64B486', '#4B7C6E']"
+      >
+      </el-rate>
+      <nuxt-link to="/home">
+        <el-button type="primary">スタート</el-button>
+      </nuxt-link>
+      <div class="TopPage_access">
+        <nuxt-link to="/signup">
+          <el-button type="primary">サインアップ</el-button>
+        </nuxt-link>
+        <nuxt-link to="/login">
+          <el-button type="primary">ログイン</el-button>
+        </nuxt-link>
       </div>
-    </div>
-  </section>
+    </section>
+    <!-- </transition> -->
+  </div>
 </template>
 
 <script>
-import Logo from '~/components/Logo.vue'
-
 export default {
-  components: {
-    Logo
+  data() {
+    return {
+      value: null
+    }
   }
 }
 </script>
 
-<style>
-.container {
-  margin: 0 auto;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
-
-.title {
-  font-family: 'Quicksand', 'Source Sans Pro', -apple-system, BlinkMacSystemFont,
-    'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  display: block;
-  font-weight: 300;
-  font-size: 100px;
-  color: #35495e;
-  letter-spacing: 1px;
-}
-
-.subtitle {
-  font-weight: 300;
-  font-size: 42px;
-  color: #526488;
-  word-spacing: 5px;
-  padding-bottom: 15px;
-}
-
-.links {
-  padding-top: 15px;
+<style lang="scss" scoped>
+.TopPage {
+  &_star {
+    text-align: center;
+  }
+  &_access {
+    width: 300px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+  }
 }
 </style>

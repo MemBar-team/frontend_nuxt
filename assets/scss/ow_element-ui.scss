@@ -1,0 +1,48 @@
+@charset "utf-8";
+@import './common/_variable';
+@import './common/_mixin';
+
+/* Overwriting Element-ui SCSS */
+.el {
+  &-menu {
+    display: flex;
+    align-content: center;
+    align-items: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
+
+    &-item {
+      flex-grow: 1;
+    }
+
+    &.el-menu {
+      &--horizontal {
+        border: none;
+
+        > .el-menu-item {
+          float: none;
+
+          &.is-active {
+            border-bottom: solid 2px $color_red;
+            color: $main_text;
+          }
+        }
+      }
+    }
+  }
+
+  &-button {
+    padding: 0.8em 1em;
+    &--primary {
+      // background: linear-gradient(to right, #e14343, #f69d51);
+      background-color: $color_red;
+      border-color: $color_red;
+      font-size: 1.2rem;
+
+      &:hover {
+        background-color: $color_orange;
+        border-color: $color_orange;
+      }
+    }
+  }
+}
