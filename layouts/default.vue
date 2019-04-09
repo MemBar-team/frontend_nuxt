@@ -1,13 +1,13 @@
 <template>
-  <transition name="fade">
-    <div class="Wrapper">
-      <!-- <transition-group name="fade"> -->
-      <LayoutsHeader />
-      <nuxt />
-      <!-- </transition-group> -->
-      <LayoutsFooter />
-    </div>
-  </transition>
+  <!-- <transition name="fade"> -->
+  <div class="Wrapper">
+    <!-- <transition-group name="fade"> -->
+    <LayoutsHeader />
+    <nuxt />
+    <!-- </transition-group> -->
+    <LayoutsFooter />
+  </div>
+  <!-- </transition> -->
 </template>
 
 <script>
@@ -23,11 +23,17 @@ export default {
 </script>
 
 <style lang="scss">
+#__nuxt,
+#__layout {
+  position: relative;
+}
+
 .Wrapper {
   width: 100%;
   height: 100%;
-  // overflow: hidden;
   margin: auto;
+  position: relative;
+  overflow: hidden;
 }
 
 .block {
@@ -47,17 +53,17 @@ export default {
 .page-leave-active {
   opacity: 0;
   // transform: scale(0);
-  transform: translate(100%, 0);
-  // transform: scale(100%);
+  // transform: translate(100%, 0);
+  transform: scale(100%);
 }
 
-.fade-enter-active,
-.fade-leave-active {
-  transition: all 0.1s;
-}
-.fade-enter,
-.fade-leave-active {
-  opacity: 0;
-  transform: scale(0);
-}
+// .fade-enter-active,
+// .fade-leave-active {
+//   transition: all 0.1s;
+// }
+// .fade-enter,
+// .fade-leave-active {
+//   opacity: 0;
+//   transform: scale(0);
+// }
 </style>

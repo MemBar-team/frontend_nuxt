@@ -1,8 +1,10 @@
 <template>
   <header id="LayoutsHeader" class="Header">
-    <nuxt-link to="/">
-      <p class="Header_logo">MemBar</p>
-    </nuxt-link>
+    <div class="Header_inner">
+      <nuxt-link class="Header_logo" to="/">
+        MemBar
+      </nuxt-link>
+    </div>
   </header>
 </template>
 
@@ -25,21 +27,33 @@ export default {
 <style lang="scss" scoped>
 .Header {
   // background: linear-gradient(to right, $color_red, $color_orange);
-  background-color: $color_white;
-  padding: 8px 24px;
-  display: flex;
+  background-color: $bg_header;
+
+  &_inner {
+    display: flex;
+    padding: 8px 24px;
+    max-width: $width_xl;
+    margin: 0 auto;
+  }
 
   &_logo {
     // color: $color_white;
     color: $main_text;
     padding: 4px 0;
-    font-size: 26px;
+    font-size: $font_26;
     margin: 0 24px 0 0px;
   }
 
   @include mq(sm) {
+    @include boxShadow_down(0.1);
+
+    &_inner {
+      text-align: center;
+    }
+
     &_logo {
       margin: auto;
+      font-size: $font_22;
     }
   }
 }

@@ -8,19 +8,39 @@ $color_orange: #f69d51;
 $color_black: #35495e;
 
 // Text
+$font_10: 1rem;
+$font_12: 1.2rem;
+$font_14: 1.4rem;
+$font_16: 1.6rem;
+$font_18: 1.8rem;
+$font_20: 2.0rem;
+$font_22: 2.2rem;
+$font_24: 2.4rem;
+$font_26: 2.6rem;
+
 $font_bold: 600;
 $font_medium: 500;
 $font_normal: 400;
 $font_light: 300;
 
+
+
 // Function
 $main_text: $color_black;
+$bg_header: $color_white;
+$bg_navMenu: $color_white;
 $gradientToRight: linear-gradient(to right, $color_red, $color_orange);
+
+// Width
+$width_sm: 400px;
+$width_md: 768px;
+$width_lg: 1080px;
+$width_xl: 1280px;
 
 // Media Query
 $breakpoints: (
-  'sm': 'screen and (max-width: 400px)',
-  'md': 'screen and (max-width: 768px)',
-  'lg': 'screen and (max-width: 1080px)',
-  'xl': 'screen and (max-width: 1280px)',
+  'sm': 'screen and (max-width: ' + $width_sm + ')',
+  'md': 'screen and (max-width: ' + $width_md + ')',
+  'lg': 'screen and (max-width: ' + $width_lg + ')',
+  'xl': 'screen and (max-width: ' + $width_xl + ')',
 ) !default;
