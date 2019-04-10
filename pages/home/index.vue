@@ -1,6 +1,7 @@
 <template>
   <section class="Section">
     <div class="Section_inner">
+      {{ this.$store.state }}
       <div class="Contents">
         <div class="Contents_item">
           <div class="Contents_item-thumb"></div>

@@ -45,18 +45,6 @@ export default {
   background: $color_white;
 }
 
-.page-enter-active,
-.page-leave-active {
-  transition: all 0.3s;
-}
-.page-enter,
-.page-leave-active {
-  opacity: 0;
-  // transform: scale(0);
-  // transform: translate(100%, 0);
-  transform: scale(100%);
-}
-
 // .fade-enter-active,
 // .fade-leave-active {
 //   transition: all 0.1s;

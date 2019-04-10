@@ -19,6 +19,7 @@
         layout="prev, pager, next, ->"
         :total="100"
         :current-page.sync="currentPage"
+        router
       >
       </el-pagination>
       <LayoutsFooter />
@@ -27,6 +28,7 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
 import LayoutsHeader from '~/layouts/_header/LayoutsHeader'
 import LayoutsFooter from '~/layouts/_footer/LayoutsFooter'
 import NavMenu from '~/components/navigation/NavMenu'
@@ -57,6 +59,35 @@ export default {
   },
   mounted() {
     this.internalPage = this.$refs.pagination
+    // axios
+    //   .all([
+    //     axios.get('@/assets/json.topPage.json'),
+    //   ])
+    //   .then(axios.spread((res) => {
+    //     console.log(res.data)
+    //     // this.statsData = Object.assign(player.data, operators.data)
+    //     // console.log(this.statsData)
+    //   }))
+    //   // エラーが帰ってきた時の処理 erroredをtrueにする
+    //   .catch(error => {
+    //     console.log(error)
+    //     this.errored = true
+    //   })
+    //   // 処理を終えた最後に loadingをfalseにする
+    //   .finally(() => {
+    //     this.loading = false
+    //   })
+    // async fetchSomething: () => () {
+    // const ip = await this.$axios.$get('http://icanhazip.com')
+    // this.ip = ip
+    // console.log(this.ip)
+    // }
+    this.getList()
+  },
+  methods: {
+    ...mapActions({
+      getList: 'getList'
+    })
   }
 }
 </script>

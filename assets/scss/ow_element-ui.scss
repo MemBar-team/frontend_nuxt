@@ -43,11 +43,34 @@
         background-color: $color_orange;
         border-color: $color_orange;
       }
+
+      &.is-plain {
+        border-color: $color_red;
+        background-color: $color_white;
+        color: $color_red;
+
+        &:hover {
+          background-color: $color_orange;
+          border-color: $color_orange;
+        }
+      }
     }
   }
 
   &-pagination {
     text-align: center;
     padding: 16px;
+  }
+}
+
+.page {
+  &-enter-active,
+  &-leave-active {
+    transition: all 0.3s;
+  }
+  &-enter,
+  &-leave-active {
+    opacity: 0;
+    // transform: scale(0);
   }
 }
