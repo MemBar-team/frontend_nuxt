@@ -4,31 +4,21 @@
       <LayoutsHeader />
       <NavMenu />
       <nuxt />
-      <el-pagination
+      <!-- <el-pagination
         ref="pagination"
         background
         layout="prev, pager, next"
         :total="50"
         :current-page.sync="currentPage"
       >
-      </el-pagination>
-      <el-pagination
-        ref="pagination"
-        background
-        small
-        layout="prev, pager, next, ->"
-        :total="100"
-        :current-page.sync="currentPage"
-        router
-      >
-      </el-pagination>
+      </el-pagination> -->
       <LayoutsFooter />
     </div>
   </transition>
 </template>
 
 <script>
-import { mapActions } from 'vuex'
+// import { mapActions } from 'vuex'
 import LayoutsHeader from '~/layouts/_header/LayoutsHeader'
 import LayoutsFooter from '~/layouts/_footer/LayoutsFooter'
 import NavMenu from '~/components/navigation/NavMenu'
@@ -46,48 +36,30 @@ export default {
       //   top: null,
       //   bottom: null
       // }
-      currentPage: 1,
-      internalPage: null
+      // currentPage: 1,
+      // internalPage: null
     }
   },
   watch: {
-    currentPage() {
-      // this.currentPage = 1
-      // this.internalPage.bottom.internalCurrentPage = this.currentPage
-      this.internalPage.internalCurrentPage = this.currentPage
-    }
+    // currentPage() {
+    //   // this.currentPage = 1
+    //   // this.internalPage.bottom.internalCurrentPage = this.currentPage
+    //   this.internalPage.internalCurrentPage = this.currentPage
+    // }
   },
   mounted() {
-    this.internalPage = this.$refs.pagination
-    // axios
-    //   .all([
-    //     axios.get('@/assets/json.topPage.json'),
-    //   ])
-    //   .then(axios.spread((res) => {
-    //     console.log(res.data)
-    //     // this.statsData = Object.assign(player.data, operators.data)
-    //     // console.log(this.statsData)
-    //   }))
-    //   // エラーが帰ってきた時の処理 erroredをtrueにする
-    //   .catch(error => {
-    //     console.log(error)
-    //     this.errored = true
-    //   })
-    //   // 処理を終えた最後に loadingをfalseにする
-    //   .finally(() => {
-    //     this.loading = false
-    //   })
-    // async fetchSomething: () => () {
-    // const ip = await this.$axios.$get('http://icanhazip.com')
-    // this.ip = ip
-    // console.log(this.ip)
-    // }
-    this.getList()
+    // this.internalPage = this.$refs.pagination
+    // // async fetchSomething: () => () {
+    // // const ip = await this.$axios.$get('http://icanhazip.com')
+    // // this.ip = ip
+    // // console.log(this.ip)
+    // // }
+    // this.getList()
   },
   methods: {
-    ...mapActions({
-      getList: 'getList'
-    })
+    // ...mapActions({
+    //   getList: 'getList'
+    // })
   }
 }
 </script>

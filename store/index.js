@@ -51,10 +51,10 @@ export const actions = {
     state.commit('setHogeFromStore', value)
   },
 
-  async getList({ commit }) {
+  async getPosts({ commit }) {
     const res = await this.$axios.$get('/api/posts.json')
     /* eslint-disable no-console */
-    console.log(commit)
+    console.log('アクション')
     console.log(res)
     commit('setPostsStore', res)
   }
