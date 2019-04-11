@@ -6,9 +6,9 @@
         {{ posts }}
         <div class="Contents">
           <div
+            v-for="(post, title) in posts"
+            :key="title"
             class="Contents_item"
-            v-for="(post, index) in posts"
-            :key="index"
           >
             <div class="Contents_item-thumb"></div>
             <h2>{{ post.title }}</h2>
@@ -95,7 +95,6 @@
     <el-pagination
       ref="pagination"
       background
-      small
       layout="prev, pager, next, ->"
       :total="100"
       :current-page.sync="currentPage"
@@ -111,12 +110,24 @@ export default {
   components: {},
   layout: 'contents',
   data() {
+    /* eslint-disable no-console */
+    console.log('データ')
     return {
       value: null,
       currentPage: 1,
       internalPage: null,
       posts: this.$store.state.posts.data
     }
+  },
+  // computed: {
+  //   ...mapState({
+  //     posts: this.$store.state.posts.data
+  //   })
+  // },
+  computed() {
+    console.log('コンピューテッド')
+    // this.getList()
+    console.log(this.posts)
   },
   watch: {
     currentPage() {
@@ -139,11 +150,6 @@ export default {
     this.posts = this.$store.state.posts.data
     console.log(this.posts)
   },
-  // computed() {
-  //   console.log('コンピューテッド')
-  //   this.getList()
-  //   console.log(this.posts)
-  // },
   methods: {
     ...mapActions({
       getPosts: 'getPosts'
