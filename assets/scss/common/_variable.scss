@@ -2,8 +2,16 @@
 @charset "utf-8";
 
 // Color
-$color_red: #e14343;
+// $color_red: #e14343;
+$color_red: #d0253c;
+$color_red_black40: #7d1624;
+// $color_pink: #e13870;
+$color_pink: #ef3a65;
 $color_orange: #f69d51;
+// $color_yellow: #e6d950;
+$color_yellow: #f2e952;
+// $color_blue: #1a8ead;
+$color_blue: #1a92bd;
 $color_black: #35495e;
 $color_black80: #5d6d7e;
 $color_black60: #86929e;
@@ -23,6 +31,8 @@ $font20: 2.0rem;
 $font22: 2.2rem;
 $font24: 2.4rem;
 $font26: 2.6rem;
+$font28: 2.8rem;
+$font30: 3rem;
 
 $font_bold: 600;
 $font_medium: 500;
@@ -41,6 +51,7 @@ $bg_posts_header: $color_black40;
 $bg_posts_icon: $color_black10;
 $bg_posts_thumb: $color_black20;
 $gradientToRight: linear-gradient(to right, $color_red, $color_orange);
+$gradientToLowerRight: linear-gradient(135deg, $color_red, $color_orange);
 
 // === Width ===
 $width_sm: 400px;

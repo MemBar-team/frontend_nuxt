@@ -59,6 +59,7 @@
 
   &-pagination {
     text-align: center;
+
     &.is-background {
       .el-pager {
         li:not(.disabled) {
@@ -67,6 +68,12 @@
           }
         }
       }
+    }
+  }
+
+  &-pager {
+    li.active {
+      color: $bg_button_active;
     }
   }
 }

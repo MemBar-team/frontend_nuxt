@@ -27,7 +27,7 @@ export default {
 <style lang="scss" scoped>
 .Header {
   // background: linear-gradient(to right, $color_red, $color_orange);
-  background-color: $bg_header;
+  // background-color: $bg_header;
 
   &_inner {
     display: flex;

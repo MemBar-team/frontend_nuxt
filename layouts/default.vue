@@ -2,7 +2,7 @@
   <!-- <transition name="fade"> -->
   <div class="Wrapper">
     <!-- <transition-group name="fade"> -->
-    <LayoutsHeader />
+    <!-- <LayoutsHeader /> -->
     <nuxt />
     <!-- </transition-group> -->
     <LayoutsFooter />
@@ -11,12 +11,12 @@
 </template>
 
 <script>
-import LayoutsHeader from '~/layouts/_header/LayoutsHeader'
+// import LayoutsHeader from '~/layouts/_header/LayoutsHeader'
 import LayoutsFooter from '~/layouts/_footer/LayoutsFooter'
 
 export default {
   components: {
-    LayoutsHeader,
+    // LayoutsHeader,
     LayoutsFooter
   }
 }

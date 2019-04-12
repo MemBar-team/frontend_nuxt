@@ -30,7 +30,6 @@
     <el-pagination
       ref="pagination"
       class="pagination"
-      background
       router
       layout="prev, pager, next, ->"
       :small="this.$store.state.deviceType === 'sp'"
