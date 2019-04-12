@@ -2,103 +2,40 @@
   <main>
     <section class="Section">
       <div class="Section_inner">
-        <!-- {{ this.$store.state.posts.data }} -->
-        {{ posts }}
-        <div class="Contents">
+        <div class="Posts">
           <div
-            v-for="(post, title) in posts"
+            v-for="(renderPost, title) in renderPosts"
             :key="title"
-            class="Contents_item"
+            class="Posts_item"
           >
-            <div class="Contents_item-thumb"></div>
-            <h2>{{ post.title }}</h2>
+            <div class="Posts_item-inner">
+              <div class="Posts_item-header">
+                <div class="Posts_item-icon">
+                  <img :src="renderPost.icon" :alt="renderPost.name" />
+                </div>
+                <p class="Posts_item-name">{{ renderPost.name }}</p>
+              </div>
+              <div class="Posts_item-thumb">
+                <img :src="renderPost.thumb" :alt="renderPost.title" />
+              </div>
+              <div class="Posts_item-contents">
+                <h2 class="Posts_item-title">{{ renderPost.title }}</h2>
+                <p class="Posts_item-read">{{ renderPost.read }}</p>
+              </div>
+            </div>
           </div>
-          <!-- <div class="Contents_item">
-            <div class="Contents_item-thumb"></div>
-            <h2>iiiiiiiiiiiii</h2>
-          </div>
-          <div class="Contents_item">
-            <div class="Contents_item-thumb"></div>
-            <h2>うううううううううううううううううう</h2>
-          </div>
-          <div class="Contents_item">
-            <div class="Contents_item-thumb"></div>
-            <h2>eeeeeeeeeeeeeeeeeeeeeeee</h2>
-          </div>
-          <div class="Contents_item">
-            <div class="Contents_item-thumb"></div>
-            <h2>ああああああ</h2>
-          </div>
-          <div class="Contents_item">
-            <div class="Contents_item-thumb"></div>
-            <h2>ああああああああ</h2>
-          </div>
-          <div class="Contents_item">
-            <div class="Contents_item-thumb"></div>
-            <h2>iiiiiiiiiiiii</h2>
-          </div>
-          <div class="Contents_item">
-            <div class="Contents_item-thumb"></div>
-            <h2>うううううううううううううううううう</h2>
-          </div>
-          <div class="Contents_item">
-            <div class="Contents_item-thumb"></div>
-            <h2>eeeeeeeeeeeeeeeeeeeeeeee</h2>
-          </div>
-          <div class="Contents_item">
-            <div class="Contents_item-thumb"></div>
-            <h2>ああああああ</h2>
-          </div>
-          <div class="Contents_item">
-            <div class="Contents_item-thumb"></div>
-            <h2>ああああああああ</h2>
-          </div>
-          <div class="Contents_item">
-            <div class="Contents_item-thumb"></div>
-            <h2>iiiiiiiiiiiii</h2>
-          </div>
-          <div class="Contents_item">
-            <div class="Contents_item-thumb"></div>
-            <h2>うううううううううううううううううう</h2>
-          </div>
-          <div class="Contents_item">
-            <div class="Contents_item-thumb"></div>
-            <h2>eeeeeeeeeeeeeeeeeeeeeeee</h2>
-          </div>
-          <div class="Contents_item">
-            <div class="Contents_item-thumb"></div>
-            <h2>ああああああ</h2>
-          </div>
-          <div class="Contents_item">
-            <div class="Contents_item-thumb"></div>
-            <h2>ああああああああ</h2>
-          </div>
-          <div class="Contents_item">
-            <div class="Contents_item-thumb"></div>
-            <h2>iiiiiiiiiiiii</h2>
-          </div>
-          <div class="Contents_item">
-            <div class="Contents_item-thumb"></div>
-            <h2>うううううううううううううううううう</h2>
-          </div>
-          <div class="Contents_item">
-            <div class="Contents_item-thumb"></div>
-            <h2>eeeeeeeeeeeeeeeeeeeeeeee</h2>
-          </div>
-          <div class="Contents_item">
-            <div class="Contents_item-thumb"></div>
-            <h2>ああああああ</h2>
-          </div> -->
         </div>
       </div>
     </section>
     <el-pagination
       ref="pagination"
+      class="pagination"
       background
-      layout="prev, pager, next, ->"
-      :total="100"
-      :current-page.sync="currentPage"
       router
+      layout="prev, pager, next, ->"
+      :small="this.$store.state.deviceType === 'sp'"
+      :total="renderPosts.length"
+      :current-page.sync="currentPage"
     >
     </el-pagination>
   </main>
@@ -115,40 +52,26 @@ export default {
     return {
       value: null,
       currentPage: 1,
-      internalPage: null,
-      posts: this.$store.state.posts.data
+      internalPage: null
     }
   },
-  // computed: {
-  //   ...mapState({
-  //     posts: this.$store.state.posts.data
-  //   })
-  // },
-  computed() {
-    console.log('コンピューテッド')
-    // this.getList()
-    console.log(this.posts)
+  computed: {
+    renderPosts() {
+      /* eslint-disable no-console */
+      console.log('コンピューテッド')
+      return this.$store.state.posts.data
+    }
   },
   watch: {
     currentPage() {
-      // this.currentPage = 1
-      // this.internalPage.bottom.internalCurrentPage = this.currentPage
       this.internalPage.internalCurrentPage = this.currentPage
     }
   },
   mounted() {
-    this.internalPage = this.$refs.pagination
-    // async fetchSomething: () => () {
-    // const ip = await this.$axios.$get('http://icanhazip.com')
-    // this.ip = ip
-    // console.log(this.ip)
-    // }
     /* eslint-disable no-console */
     console.log('マウント')
     this.getPosts()
-    // console.log(this.getList())
-    this.posts = this.$store.state.posts.data
-    console.log(this.posts)
+    this.internalPage = this.$refs.pagination
   },
   methods: {
     ...mapActions({
@@ -158,4 +81,8 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.pagination {
+  padding: 16px 16px 32px;
+}
+</style>

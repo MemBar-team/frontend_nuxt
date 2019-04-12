@@ -1,7 +1,7 @@
 <template>
   <header id="LayoutsHeader" class="Header">
     <div class="Header_inner">
-      <nuxt-link class="Header_logo" to="/">
+      <nuxt-link class="Header_logo" tag="h1" to="/">
         MemBar
       </nuxt-link>
     </div>
@@ -40,7 +40,7 @@ export default {
     // color: $color_white;
     color: $main_text;
     padding: 4px 0;
-    font-size: $font_26;
+    font-size: $font26;
     margin: 0 24px 0 0px;
   }
 
@@ -53,7 +53,7 @@ export default {
 
     &_logo {
       margin: auto;
-      font-size: $font_22;
+      font-size: $font22;
     }
   }
 }

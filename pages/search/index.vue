@@ -1,7 +1,8 @@
 <template>
   <section class="Section">
     <div class="Section_inner">
-      <div class="Contents">
+      <h1>サーチ</h1>
+      <!-- <div class="Contents">
         <div class="Contents_item">
           <div class="Contents_item-thumb"></div>
           <h2>ああああああああ</h2>
@@ -82,7 +83,7 @@
           <div class="Contents_item-thumb"></div>
           <h2>ああああああ</h2>
         </div>
-      </div>
+      </div> -->
     </div>
   </section>
 </template>

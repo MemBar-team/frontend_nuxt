@@ -4,21 +4,13 @@
       <LayoutsHeader />
       <NavMenu />
       <nuxt />
-      <!-- <el-pagination
-        ref="pagination"
-        background
-        layout="prev, pager, next"
-        :total="50"
-        :current-page.sync="currentPage"
-      >
-      </el-pagination> -->
       <LayoutsFooter />
     </div>
   </transition>
 </template>
 
 <script>
-// import { mapActions } from 'vuex'
+import { mapActions } from 'vuex'
 import LayoutsHeader from '~/layouts/_header/LayoutsHeader'
 import LayoutsFooter from '~/layouts/_footer/LayoutsFooter'
 import NavMenu from '~/components/navigation/NavMenu'
@@ -29,37 +21,13 @@ export default {
     LayoutsFooter,
     NavMenu
   },
-  data() {
-    return {
-      // currentPage: 1,
-      // internalPage: {
-      //   top: null,
-      //   bottom: null
-      // }
-      // currentPage: 1,
-      // internalPage: null
-    }
-  },
-  watch: {
-    // currentPage() {
-    //   // this.currentPage = 1
-    //   // this.internalPage.bottom.internalCurrentPage = this.currentPage
-    //   this.internalPage.internalCurrentPage = this.currentPage
-    // }
-  },
   mounted() {
-    // this.internalPage = this.$refs.pagination
-    // // async fetchSomething: () => () {
-    // // const ip = await this.$axios.$get('http://icanhazip.com')
-    // // this.ip = ip
-    // // console.log(this.ip)
-    // // }
-    // this.getList()
+    this.getUserAgent()
   },
   methods: {
-    // ...mapActions({
-    //   getList: 'getList'
-    // })
+    ...mapActions({
+      getUserAgent: 'getUserAgent'
+    })
   }
 }
 </script>
@@ -78,7 +46,7 @@ export default {
   }
 }
 
-.Contents {
+.Posts {
   display: flex;
   flex-wrap: wrap;
   align-items: flex-start;
@@ -92,9 +60,56 @@ export default {
     flex-grow: 1;
     overflow: hidden;
 
+    &-header {
+      background-color: $bg_posts_header;
+      padding: 8px;
+      position: relative;
+    }
+    &-icon {
+      width: 32px;
+      height: 32px;
+      overflow: hidden;
+      border-radius: 100px;
+      background-color: $bg_posts_icon;
+
+      img {
+        width: 100%;
+      }
+    }
+    &-name {
+      font-size: $font16;
+      font-weight: $font_bold;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      width: 100%;
+      color: $color_white;
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translate(0, -50%);
+      padding-left: 48px;
+    }
     &-thumb {
-      background-color: rgba($color_black, 0.2);
+      background-color: $color_black20;
       height: 100px;
+    }
+    &-contents {
+      padding: 12px;
+    }
+    &-title {
+      font-size: $font20;
+      font-weight: $font_bold;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      width: 100%;
+      margin: 0 0 4px;
+    }
+    &-read {
+      font-size: $font14;
+      font-weight: $font_medium;
+      line-height: 1.5;
     }
   }
 

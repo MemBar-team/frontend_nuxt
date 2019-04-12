@@ -6,6 +6,7 @@ export const state = () => ({
   hogeFromStore: 'Hello, Vuex!',
   user: null,
   posts: getPostsData,
+  deviceType: 'pc',
   page: [
     {
       url: '/',
@@ -36,6 +37,10 @@ export const mutations = {
     state.posts = value
   },
 
+  setDeviceType(state, value) {
+    state.deviceType = value
+  },
+
   // ここでは hogeFromStore の状態（値）を変更する処理を定義
   setHogeFromStore(state, value) {
     state.hogeFromStore = value
@@ -44,18 +49,27 @@ export const mutations = {
 
 // 実際に各コンポーネントから呼び出す処理をactionとしてexportする
 export const actions = {
-  writeHoge(state, value) {
-    /* eslint-disable no-console */
-    console.log(state)
-    // コミットすることで状態変更が反映される
-    state.commit('setHogeFromStore', value)
+  getUserAgent(state) {
+    // ユーザーエージェント取得
+    const ua = navigator.userAgent.toLowerCase()
+    // iPhone
+    const iphone = ua.indexOf('iphone') > -1
+    // Android
+    const android = ua.indexOf('android') > -1 && ua.indexOf('mobile') > -1
+
+    // PC or SP 判定
+    if (iphone || android) {
+      // スマホ（iPhone, Android）の時
+      state.commit('setDeviceType', 'sp')
+    } else {
+      // それ以外はPC
+      state.commit('setDeviceType', 'pc')
+    }
   },
 
-  async getPosts({ commit }) {
+  async getPosts(state) {
+    // 投稿データを取得
     const res = await this.$axios.$get('/api/posts.json')
-    /* eslint-disable no-console */
-    console.log('アクション')
-    console.log(res)
-    commit('setPostsStore', res)
+    state.commit('setPostsStore', res)
   }
 }

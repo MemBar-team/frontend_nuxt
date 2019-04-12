@@ -2,21 +2,27 @@
 @charset "utf-8";
 
 // Color
-$color_white: #fff;
 $color_red: #e14343;
 $color_orange: #f69d51;
 $color_black: #35495e;
+$color_black80: #5d6d7e;
+$color_black60: #86929e;
+$color_black40: #aeb6bf;
+$color_black20: #d7dbdf;
+$color_black10: #ebedef;
+$color_white: #fff;
+
 
 // Text
-$font_10: 1rem;
-$font_12: 1.2rem;
-$font_14: 1.4rem;
-$font_16: 1.6rem;
-$font_18: 1.8rem;
-$font_20: 2.0rem;
-$font_22: 2.2rem;
-$font_24: 2.4rem;
-$font_26: 2.6rem;
+$font10: 1rem;
+$font12: 1.2rem;
+$font14: 1.4rem;
+$font16: 1.6rem;
+$font18: 1.8rem;
+$font20: 2.0rem;
+$font22: 2.2rem;
+$font24: 2.4rem;
+$font26: 2.6rem;
 
 $font_bold: 600;
 $font_medium: 500;
@@ -25,13 +31,18 @@ $font_light: 300;
 
 
 
-// Function
+// === Function ===
 $main_text: $color_black;
 $bg_header: $color_white;
 $bg_navMenu: $color_white;
+$bg_button_active: $color_red;
+// .Posts
+$bg_posts_header: $color_black40;
+$bg_posts_icon: $color_black10;
+$bg_posts_thumb: $color_black20;
 $gradientToRight: linear-gradient(to right, $color_red, $color_orange);
 
-// Width
+// === Width ===
 $width_sm: 400px;
 $width_md: 768px;
 $width_lg: 1080px;
