@@ -1,139 +1,224 @@
 <template>
-  <div class="TopPage">
-    <!-- <transition name="fade"> -->
-    <div class="TopPage_inner">
-      <div class="TopPage_bg"></div>
-      <div class="TopPage_overlay"></div>
-      <!-- <div class="TopPage_contents"> -->
-      <h1 class="TopPage_title">
-        趣味と仲間を繋げよう
-      </h1>
-      <h2 class="TopPage_logo">Mem<br />Bar</h2>
-      <nuxt-link to="/home">
-        <el-button type="primary">スタート</el-button>
-      </nuxt-link>
-      <div class="TopPage_access">
-        <nuxt-link to="/signup">
-          <el-button type="primary">アカウント作成</el-button>
-        </nuxt-link>
-        <nuxt-link to="/login">
-          <el-button type="primary" plain>ログイン</el-button>
-        </nuxt-link>
+  <main>
+    <section class="Section">
+      <!-- {{ this.$store.state }} -->
+      <!-- {{ checkAuth }} -->
+      <div class="Section_inner">
+        <div class="Posts">
+          <div
+            v-for="(renderPost, title) in renderPosts"
+            :key="title"
+            class="Posts_item"
+          >
+            <div class="Posts_item-inner">
+              <div class="Posts_item-header">
+                <div class="Posts_item-icon">
+                  <img :src="renderPost.icon" :alt="renderPost.name" />
+                </div>
+                <p class="Posts_item-name">{{ renderPost.name }}</p>
+              </div>
+              <div class="Posts_item-thumb">
+                <img :src="renderPost.thumb" :alt="renderPost.title" />
+              </div>
+              <div class="Posts_item-contents">
+                <h2 class="Posts_item-title">{{ renderPost.title }}</h2>
+                <p class="Posts_item-read">{{ renderPost.read }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-      <!-- </div> -->
-    </div>
-    <!-- </transition> -->
-  </div>
+    </section>
+    <el-pagination
+      ref="pagination"
+      class="pagination"
+      router
+      layout="prev, pager, next, ->"
+      :small="this.$store.state.deviceType === 'sp'"
+      :total="renderPosts.length"
+      :current-page.sync="currentPage"
+    >
+    </el-pagination>
+  </main>
 </template>
 
 <script>
+import { mapActions } from 'vuex'
 export default {
+  components: {},
+  layout: 'contents',
   data() {
+    /* eslint-disable no-console */
+    console.log('データ')
     return {
-      value: null
+      value: null,
+      currentPage: 1,
+      internalPage: null
     }
+  },
+  computed: {
+    renderPosts() {
+      /* eslint-disable no-console */
+      console.log('コンピューテッド')
+      return this.$store.state.posts.data
+    },
+    checkAuth(redirect) {
+      /* eslint-disable no-console */
+      console.log('チェック')
+      // console.log(store)
+      console.log(this.$store.state)
+      console.log(this.$store.state.auth.login)
+      // console.log(this.$store.state.auth)
+      if (!this.$store.state.auth.login) {
+        console.log('チェック リダイレクト')
+        // this.router.push('top')
+        return redirect('/top')
+      }
+      return this.$store.state.auth
+      // this.redirect()
+    }
+  },
+  watch: {
+    currentPage() {
+      /* eslint-disable no-console */
+      console.log('ウォッチ')
+      this.internalPage.internalCurrentPage = this.currentPage
+    }
+  },
+  // fetch({ store, redirect }) {
+  //   console.log('フェッチ')
+  //   console.log(store.state.auth.login)
+  //   // console.log(this.$store.state.auth)
+  //   if (!store.state.auth.login) {
+  //     return redirect('/top')
+  //   }
+  // },
+  async fetch({ store, params, redirect }) {
+    console.log('フェッチ')
+    console.log(store)
+    console.log(params)
+    console.log(store.state.auth.login)
+    await store.dispatch('GET_AUTH')
+    // this.getAuth()
+  },
+  mounted() {
+    /* eslint-disable no-console */
+    console.log('マウント')
+    console.log(this.$store.state.auth.login)
+    // this.getAuth()
+    // if (!this.$store.state.auth.login) {
+    //   console.log('!!!!!1マウント')
+    //   return redirect('/top')
+    // }
+    this.getPosts()
+    this.internalPage = this.$refs.pagination
+  },
+  methods: {
+    // redirect({ redirect }) {
+    //   console.log('リダイレクト')
+    //   if (!this.$store.state.auth.login) {
+    //     return redirect('/top')
+    //   }
+    // },
+    ...mapActions({
+      getAuth: 'getAuth',
+      getPosts: 'getPosts'
+    })
   }
+  // middleware: 'authenticated'
 }
 </script>
 
 <style lang="scss" scoped>
-.TopPage {
-  &_inner {
-    position: relative;
-    height: 100vh;
-  }
-  &_bg {
-    height: 100%;
-    width: 100%;
-    background: url(/images/toppage_bg.jpg) no-repeat center;
-    background-size: cover;
-    opacity: 0.4;
-    position: absolute;
-    z-index: 10;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    // mix-blend-mode: overlay;
-  }
-  &_overlay {
-    // position: absolute;
-    // z-index: 10;
-    // top: 0;
-    // left: 0;
-    // right: 0;
-    // bottom: 0;
-    height: 100%;
-    width: 100%;
-    mix-blend-mode: overlay;
-    background: linear-gradient(
-      45deg,
-      rgba($color_pink, 0.8),
-      rgba($color_orange, 0.8)
-    );
-    background-size: 600% 600%;
-    animation: moveGradient 6s ease infinite;
+.Posts {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  align-content: flex-start;
 
-    @keyframes moveGradient {
-      0% {
-        background-position: 0% 50%;
-      }
-      50% {
-        background-position: 100% 50%;
-      }
-      100% {
-        background-position: 0% 50%;
+  &_item {
+    width: calc(100% / 4);
+    padding: 12px;
+    flex-grow: 1;
+    overflow: hidden;
+
+    &-inner {
+      @include boxShadow_spread(0.1);
+      background-color: $color_white;
+    }
+    &-header {
+      background-color: $bg_posts_header;
+      padding: 8px;
+      position: relative;
+    }
+    &-icon {
+      width: 32px;
+      height: 32px;
+      overflow: hidden;
+      border-radius: 100px;
+      background-color: $bg_posts_icon;
+
+      img {
+        width: 100%;
       }
     }
+    &-name {
+      font-size: $font16;
+      font-weight: $font_bold;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      width: 100%;
+      color: $color_white;
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translate(0, -50%);
+      padding-left: 48px;
+    }
+    &-thumb {
+      background-color: $color_black20;
+      height: 100px;
+    }
+    &-contents {
+      padding: 12px;
+    }
+    &-title {
+      font-size: $font20;
+      font-weight: $font_bold;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      width: 100%;
+      margin: 0 0 4px;
+    }
+    &-read {
+      font-size: $font14;
+      font-weight: $font_medium;
+      line-height: 1.5;
+    }
   }
-  &_contents {
-    min-height: 400px;
-    width: 100%;
-    padding: 16px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 20;
-    text-align: center;
-    // mix-blend-mode: ;
+
+  @include mq(lg) {
+    &_item {
+      // width: calc(100% / 4);
+    }
   }
-  &_title {
-    font-size: $font28;
-    font-weight: $font_bold;
-    text-align: center;
-    color: $color_white;
-    margin: 0 auto 16px;
-    mix-blend-mode: color-burn;
-    position: absolute;
-    top: 60px;
-    left: 0;
-    right: 0;
-    z-index: 1;
-    background-clip: text;
-    text-fill-color: transparent;
-    // background: linear-gradient(
-    //   45deg,
-    //   rgba($color_pink, 0.8),
-    //   rgba($color_orange, 0.8)
-    // );
-  }
-  &_logo {
-    font-size: 5rem;
-    font-weight: $font_bold;
-    color: $color_white;
-  }
-  &_access {
-    width: 300px;
-    margin: auto;
-    display: flex;
-    justify-content: space-between;
+
+  @include mq(md) {
+    &_item {
+      width: calc(100% / 2);
+    }
   }
 
   @include mq(sm) {
-    &_bg {
-      // background-size: 100%;
+    &_item {
+      width: 100%;
     }
   }
+}
+
+.pagination {
+  padding: 16px 16px 32px;
 }
 </style>

@@ -41,6 +41,8 @@ time, mark, audio, video {
   outline: 0;
   vertical-align: middle;
   background: transparent;
+  font-feature-settings : "palt";
+  letter-spacing: 0.05em;
 }
 
 *,

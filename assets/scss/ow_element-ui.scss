@@ -33,6 +33,11 @@
 
   &-button {
     padding: 0.8em 1em;
+
+    &.is-round {
+      border-radius: 100px;
+    }
+
     &--primary {
       // background: linear-gradient(to right, #e14343, #f69d51);
       background-color: $color_red;

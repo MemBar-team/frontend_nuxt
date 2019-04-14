@@ -38,7 +38,6 @@ export default {
   .Footer {
     &_inner {
       padding: 12px;
-      height: 40px;
     }
   }
 }

@@ -6,7 +6,11 @@
       mode="horizontal"
       router
     >
-      <el-menu-item class="NavMenu_item" index="home" :route="{ name: 'home' }">
+      <el-menu-item
+        class="NavMenu_item"
+        index="index"
+        :route="{ name: 'index' }"
+      >
         <div class="NavMenu_item-inner">
           <i class="material-icons">home</i>
           <span class="NavMenu_item-text">ホーム</span>

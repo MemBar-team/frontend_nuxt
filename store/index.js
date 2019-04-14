@@ -2,9 +2,10 @@ import getPostsData from '~/assets/json/topPage.json'
 
 // 状態管理したい要素に名前をつけて、stateとしてexportする
 export const state = () => ({
-  // 'hogeFromStore' という名前の状態を管理する
-  hogeFromStore: 'Hello, Vuex!',
   user: null,
+  auth: {
+    login: false
+  },
   posts: getPostsData,
   deviceType: 'pc',
   page: [
@@ -33,22 +34,30 @@ export const mutations = {
     state.user = null
   },
 
+  SET_AUTH(state, value) {
+    state.auth = value
+  },
+
   setPostsStore(state, value) {
     state.posts = value
   },
 
   setDeviceType(state, value) {
     state.deviceType = value
-  },
-
-  // ここでは hogeFromStore の状態（値）を変更する処理を定義
-  setHogeFromStore(state, value) {
-    state.hogeFromStore = value
   }
 }
 
 // 実際に各コンポーネントから呼び出す処理をactionとしてexportする
 export const actions = {
+  async GET_AUTH(state) {
+    // 投稿データを取得
+    const res = await this.$axios.$get('/api/auth.json')
+    /* eslint-disable no-console */
+    console.log('GET_AUTH')
+    console.log(res.auth)
+    state.commit('SET_AUTH', res.auth)
+  },
+
   getUserAgent(state) {
     // ユーザーエージェント取得
     const ua = navigator.userAgent.toLowerCase()
