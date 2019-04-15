@@ -42,6 +42,7 @@ export default {
     padding: 4px 0;
     font-size: $font26;
     margin: 0 24px 0 0px;
+    cursor: pointer;
   }
 
   @include mq(sm) {

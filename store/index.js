@@ -1,7 +1,9 @@
 import getPostsData from '~/assets/json/topPage.json'
+import axios from 'axios'
 
 // 状態管理したい要素に名前をつけて、stateとしてexportする
 export const state = () => ({
+  authUser: null,
   user: null,
   auth: {
     login: false
@@ -26,6 +28,10 @@ export const state = () => ({
 
 // 状態を変更する処理は mutationとしてexportする
 export const mutations = {
+  SET_USER: (state, user) => {
+    state.authUser = user
+  },
+
   login(state, user) {
     state.user = user
   },
@@ -49,6 +55,27 @@ export const mutations = {
 
 // 実際に各コンポーネントから呼び出す処理をactionとしてexportする
 export const actions = {
+  nuxtServerInit({ commit }, { req }) {
+    if (req.session && req.session.authUser) {
+      commit('SET_USER', req.session.authUser)
+    }
+  },
+  async login({ commit }, { username, password }) {
+    try {
+      const { data } = await axios.post('/api/login', { username, password })
+      commit('SET_USER', data)
+    } catch (error) {
+      if (error.response && error.response.status === 401) {
+        throw new Error('Bad credentials')
+      }
+      throw error
+    }
+  },
+  async logout({ commit }) {
+    await axios.post('/api/logout')
+    commit('SET_USER', null)
+  },
+
   async GET_AUTH(state) {
     // 投稿データを取得
     const res = await this.$axios.$get('/api/auth.json')

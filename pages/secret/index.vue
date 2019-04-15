@@ -8,10 +8,11 @@
 <script>
 export default {
   // データをこのコンポーネントにセットする必要がないため fetch() を使う
-  fetch({ store, redirect }) {
-    if (!store.state.auth.login) {
-      return redirect('/top')
-    }
-  }
+  // fetch({ store, redirect }) {
+  //   if (!store.state.auth.login) {
+  //     return redirect('/top')
+  //   }
+  // }
+  middleware: 'auth'
 }
 </script>
