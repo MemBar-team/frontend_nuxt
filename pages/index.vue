@@ -63,6 +63,7 @@ export default {
     renderPosts() {
       /* eslint-disable no-console */
       console.log('コンピューテッド')
+      console.log(this.$store.state)
       return this.$store.state.posts.data
     },
     checkAuth(redirect) {
@@ -96,13 +97,16 @@ export default {
   //     return redirect('/top')
   //   }
   // },
-  async fetch({ store, params, redirect }) {
+  fetch({ store, params, redirect }) {
     console.log('フェッチ')
     console.log(store)
     console.log(params)
-    console.log(store.state.auth.login)
-    await store.dispatch('GET_AUTH')
-    // this.getAuth()
+    console.log(store.state.auth)
+    // await store.dispatch('GET_AUTH')
+    // // this.getAuth()
+    // if (!store.state.auth.login) {
+    //   this.$router.push('/top')
+    // }
   },
   mounted() {
     /* eslint-disable no-console */
@@ -113,6 +117,7 @@ export default {
     //   console.log('!!!!!1マウント')
     //   return redirect('/top')
     // }
+    this.nuxtServerInit()
     this.getPosts()
     this.internalPage = this.$refs.pagination
   },
@@ -143,10 +148,14 @@ export default {
         this.formError = e.message
       }
     },
+    // async getAuth() {
+    //   this.getAuth()
+    // },
 
     ...mapActions({
       getAuth: 'getAuth',
-      getPosts: 'getPosts'
+      getPosts: 'getPosts',
+      nuxtServerInit: 'nuxtServerInit'
     })
   }
   // middleware: 'authenticated'

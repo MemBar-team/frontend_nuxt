@@ -1,10 +1,8 @@
 <template>
   <!-- <transition name="fade"> -->
   <div class="Wrapper">
-    <!-- <transition-group name="fade"> -->
     <!-- <LayoutsHeader /> -->
     <nuxt />
-    <!-- </transition-group> -->
     <LayoutsFooter />
   </div>
   <!-- </transition> -->

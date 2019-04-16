@@ -55,12 +55,20 @@ export const mutations = {
 
 // 実際に各コンポーネントから呼び出す処理をactionとしてexportする
 export const actions = {
-  nuxtServerInit({ commit }, { req }) {
-    if (req.session && req.session.authUser) {
-      commit('SET_USER', req.session.authUser)
+  async nuxtServerInit(state) {
+    const res = await this.$axios.$get('/api/auth.json')
+    /* eslint-disable no-console */
+    console.log('nuxtServerInit GET_AUTH')
+    console.log(res.auth)
+    state.commit('SET_AUTH', res.auth)
+
+    if (!res.auth.login) {
+      this.$router.push('/top')
     }
   },
   async login({ commit }, { username, password }) {
+    /* eslint-disable no-console */
+    console.log('ログインアクション')
     try {
       const { data } = await axios.post('/api/login', { username, password })
       commit('SET_USER', data)

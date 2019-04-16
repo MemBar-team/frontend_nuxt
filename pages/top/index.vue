@@ -8,7 +8,6 @@
         <h1 class="TopPage_title">
           趣味と仲間を繋げよう
         </h1>
-        <!-- <h2 class="TopPage_logo">Mem<br />Bar</h2> -->
         <div class="TopPage_access">
           <nuxt-link to="/signup">
             <el-button type="primary">アカウント作成</el-button>
