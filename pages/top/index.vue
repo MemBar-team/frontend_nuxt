@@ -83,7 +83,7 @@ export default {
     text-align: center;
   }
   &_title {
-    font-size: 6rem;
+    font-size: $top_text_size;
     font-weight: $font_bold;
     text-align: center;
     color: rgba($color_white, 0);

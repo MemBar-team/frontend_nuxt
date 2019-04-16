@@ -34,6 +34,7 @@ $font24: 2.4rem;
 $font26: 2.6rem;
 $font28: 2.8rem;
 $font30: 3rem;
+$font60: 6rem;
 
 $font_bold: 600;
 $font_medium: 500;
@@ -43,6 +44,7 @@ $font_light: 300;
 
 
 // === Function ===
+$top_text_size: $font60;
 $main_text: $color_black;
 $bg_header: $color_white;
 $bg_navMenu: $color_white;
