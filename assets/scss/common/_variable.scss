@@ -12,14 +12,15 @@ $color_orange: #f69d51;
 $color_yellow: #f2e952;
 // $color_blue: #1a8ead;
 $color_blue: #1a92bd;
-$color_black100: #000;
-$color_black: #35495e;
-$color_black80: #5d6d7e;
-$color_black60: #86929e;
-$color_black40: #aeb6bf;
-$color_black20: #d7dbdf;
-$color_black10: #ebedef;
-$color_white: #fff;
+$blue_origin: #409eff;
+$black_origin: #35495e;
+$black_origin_80: #5d6d7e;
+$black_origin_60: #86929e;
+$black_origin_40: #aeb6bf;
+$black_origin_20: #d7dbdf;
+$black_origin_10: #ebedef;
+$black_100: #000;
+$white_100: #fff;
 
 
 // Text
@@ -34,6 +35,8 @@ $font24: 2.4rem;
 $font26: 2.6rem;
 $font28: 2.8rem;
 $font30: 3rem;
+$font40: 4rem;
+$font50: 5rem;
 $font60: 6rem;
 
 $font_bold: 600;
@@ -44,15 +47,25 @@ $font_light: 300;
 
 
 // === Function ===
-$top_text_size: $font60;
-$main_text: $color_black;
-$bg_header: $color_white;
-$bg_navMenu: $color_white;
+$font-size_p-top_title: $font60;
+$font-size_p-top_title_sm: $font50;
+
+$font-size_c-form_title: $font26;
+$font-size_c-form_forgot: $font14;
+$font-size_c-form_notRegister: $font12;
+
+$color_link: $blue_origin;
+$main_text: $black_origin;
+
+$bg_wrapper: $black_origin_10;
+$bg_header: $white_100;
+$bg_navMenu: $white_100;
 $bg_button_active: $color_red;
+
 // .Posts
-$bg_posts_header: $color_black40;
-$bg_posts_icon: $color_black10;
-$bg_posts_thumb: $color_black20;
+$bg_posts_header: $black_origin_40;
+$bg_posts_icon: $black_origin_10;
+$bg_posts_thumb: $black_origin_20;
 $gradientToRight: linear-gradient(to right, $color_red, $color_orange);
 $gradientToLowerRight: linear-gradient(135deg, $color_red, $color_orange);
 

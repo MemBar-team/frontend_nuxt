@@ -1,86 +1,86 @@
 <template>
-  <section class="Section">
-    <div class="Section_inner">
+  <section class="c-section">
+    <div class="c-section_inner">
       <h1>サーチ</h1>
-      <!-- <div class="Contents">
-        <div class="Contents_item">
-          <div class="Contents_item-thumb"></div>
+      <!-- <div class="c-contents">
+        <div class="c-contents_item">
+          <div class="c-contents_item-thumb"></div>
           <h2>ああああああああ</h2>
         </div>
-        <div class="Contents_item">
-          <div class="Contents_item-thumb"></div>
+        <div class="c-contents_item">
+          <div class="c-contents_item-thumb"></div>
           <h2>iiiiiiiiiiiii</h2>
         </div>
-        <div class="Contents_item">
-          <div class="Contents_item-thumb"></div>
+        <div class="c-contents_item">
+          <div class="c-contents_item-thumb"></div>
           <h2>うううううううううううううううううう</h2>
         </div>
-        <div class="Contents_item">
-          <div class="Contents_item-thumb"></div>
+        <div class="c-contents_item">
+          <div class="c-contents_item-thumb"></div>
           <h2>eeeeeeeeeeeeeeeeeeeeeeee</h2>
         </div>
-        <div class="Contents_item">
-          <div class="Contents_item-thumb"></div>
+        <div class="c-contents_item">
+          <div class="c-contents_item-thumb"></div>
           <h2>ああああああ</h2>
         </div>
-        <div class="Contents_item">
-          <div class="Contents_item-thumb"></div>
+        <div class="c-contents_item">
+          <div class="c-contents_item-thumb"></div>
           <h2>ああああああああ</h2>
         </div>
-        <div class="Contents_item">
-          <div class="Contents_item-thumb"></div>
+        <div class="c-contents_item">
+          <div class="c-contents_item-thumb"></div>
           <h2>iiiiiiiiiiiii</h2>
         </div>
-        <div class="Contents_item">
-          <div class="Contents_item-thumb"></div>
+        <div class="c-contents_item">
+          <div class="c-contents_item-thumb"></div>
           <h2>うううううううううううううううううう</h2>
         </div>
-        <div class="Contents_item">
-          <div class="Contents_item-thumb"></div>
+        <div class="c-contents_item">
+          <div class="c-contents_item-thumb"></div>
           <h2>eeeeeeeeeeeeeeeeeeeeeeee</h2>
         </div>
-        <div class="Contents_item">
-          <div class="Contents_item-thumb"></div>
+        <div class="c-contents_item">
+          <div class="c-contents_item-thumb"></div>
           <h2>ああああああ</h2>
         </div>
-        <div class="Contents_item">
-          <div class="Contents_item-thumb"></div>
+        <div class="c-contents_item">
+          <div class="c-contents_item-thumb"></div>
           <h2>ああああああああ</h2>
         </div>
-        <div class="Contents_item">
-          <div class="Contents_item-thumb"></div>
+        <div class="c-contents_item">
+          <div class="c-contents_item-thumb"></div>
           <h2>iiiiiiiiiiiii</h2>
         </div>
-        <div class="Contents_item">
-          <div class="Contents_item-thumb"></div>
+        <div class="c-contents_item">
+          <div class="c-contents_item-thumb"></div>
           <h2>うううううううううううううううううう</h2>
         </div>
-        <div class="Contents_item">
-          <div class="Contents_item-thumb"></div>
+        <div class="c-contents_item">
+          <div class="c-contents_item-thumb"></div>
           <h2>eeeeeeeeeeeeeeeeeeeeeeee</h2>
         </div>
-        <div class="Contents_item">
-          <div class="Contents_item-thumb"></div>
+        <div class="c-contents_item">
+          <div class="c-contents_item-thumb"></div>
           <h2>ああああああ</h2>
         </div>
-        <div class="Contents_item">
-          <div class="Contents_item-thumb"></div>
+        <div class="c-contents_item">
+          <div class="c-contents_item-thumb"></div>
           <h2>ああああああああ</h2>
         </div>
-        <div class="Contents_item">
-          <div class="Contents_item-thumb"></div>
+        <div class="c-contents_item">
+          <div class="c-contents_item-thumb"></div>
           <h2>iiiiiiiiiiiii</h2>
         </div>
-        <div class="Contents_item">
-          <div class="Contents_item-thumb"></div>
+        <div class="c-contents_item">
+          <div class="c-contents_item-thumb"></div>
           <h2>うううううううううううううううううう</h2>
         </div>
-        <div class="Contents_item">
-          <div class="Contents_item-thumb"></div>
+        <div class="c-contents_item">
+          <div class="c-contents_item-thumb"></div>
           <h2>eeeeeeeeeeeeeeeeeeeeeeee</h2>
         </div>
-        <div class="Contents_item">
-          <div class="Contents_item-thumb"></div>
+        <div class="c-contents_item">
+          <div class="c-contents_item-thumb"></div>
           <h2>ああああああ</h2>
         </div>
       </div> -->
@@ -91,7 +91,7 @@
 <script>
 export default {
   components: {},
-  layout: 'contents',
+  layout: 'c-contents',
   data() {
     return {
       value: null

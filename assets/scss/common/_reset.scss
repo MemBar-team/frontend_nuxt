@@ -11,6 +11,7 @@ html {
   font-size: 62.5%;
   // overflow-x: hidden;
   // overflow-y: auto;
+  color: $black_origin;
 }
 
 html,
@@ -78,6 +79,13 @@ a {
   font-size: 100%;
   vertical-align: baseline;
   background: transparent;
+  color: $color_link;
+  transition: all 0.3s;
+  cursor: pointer;
+
+  &:hover {
+    opacity: 0.7;
+  }
 }
 
 ins {

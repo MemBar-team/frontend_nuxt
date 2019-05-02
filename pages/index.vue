@@ -1,9 +1,9 @@
 <template>
   <main>
-    <section class="Section">
+    <section class="c-section">
       <!-- {{ this.$store.state }} -->
       <!-- {{ checkAuth }} -->
-      <div class="Section_inner">
+      <div class="c-section_inner">
         <div class="Posts">
           <div
             v-for="(renderPost, title) in renderPosts"
@@ -60,27 +60,31 @@ export default {
     }
   },
   computed: {
+    // state() {
+    //   console.log('aaaa-----state')
+    //   return JSON.stringify(this.$auth.$state, undefined, 2)
+    // },
     renderPosts() {
       /* eslint-disable no-console */
       console.log('コンピューテッド')
       console.log(this.$store.state)
       return this.$store.state.posts.data
-    },
-    checkAuth(redirect) {
-      /* eslint-disable no-console */
-      console.log('チェック')
-      // console.log(store)
-      console.log(this.$store.state)
-      console.log(this.$store.state.auth.login)
-      // console.log(this.$store.state.auth)
-      if (!this.$store.state.auth.login) {
-        console.log('チェック リダイレクト')
-        // this.router.push('top')
-        return redirect('/top')
-      }
-      return this.$store.state.auth
-      // this.redirect()
     }
+    // checkAuth(redirect) {
+    //   /* eslint-disable no-console */
+    //   console.log('チェック')
+    //   // console.log(store)
+    //   console.log(this.$store.state)
+    //   console.log(this.$store.state.auth.login)
+    //   // console.log(this.$store.state.auth)
+    //   if (!this.$store.state.auth.login) {
+    //     console.log('チェック リダイレクト')
+    //     // this.router.push('top')
+    //     return redirect('/top')
+    //   }
+    //   return this.$store.state.auth
+    //   // this.redirect()
+    // }
   },
   watch: {
     currentPage() {
@@ -117,7 +121,7 @@ export default {
     //   console.log('!!!!!1マウント')
     //   return redirect('/top')
     // }
-    this.nuxtServerInit()
+    // this.nuxtServerInit()
     this.getPosts()
     this.internalPage = this.$refs.pagination
   },
@@ -128,37 +132,38 @@ export default {
     //     return redirect('/top')
     //   }
     // },
-    async login() {
-      try {
-        await this.$store.dispatch('login', {
-          username: this.formUsername,
-          password: this.formPassword
-        })
-        this.formUsername = ''
-        this.formPassword = ''
-        this.formError = null
-      } catch (e) {
-        this.formError = e.message
-      }
-    },
-    async logout() {
-      try {
-        await this.$store.dispatch('logout')
-      } catch (e) {
-        this.formError = e.message
-      }
-    },
+    // async login() {
+    //   try {
+    //     await this.$store.dispatch('login', {
+    //       username: this.formUsername,
+    //       password: this.formPassword
+    //     })
+    //     this.formUsername = ''
+    //     this.formPassword = ''
+    //     this.formError = null
+    //   } catch (e) {
+    //     this.formError = e.message
+    //   }
+    // },
+    // async logout() {
+    //   try {
+    //     await this.$store.dispatch('logout')
+    //   } catch (e) {
+    //     this.formError = e.message
+    //   }
+    // },
     // async getAuth() {
     //   this.getAuth()
     // },
 
     ...mapActions({
-      getAuth: 'getAuth',
-      getPosts: 'getPosts',
-      nuxtServerInit: 'nuxtServerInit'
+      // getAuth: 'getAuth',
+      getPosts: 'getPosts'
+      // nuxtServerInit: 'nuxtServerInit'
     })
   }
   // middleware: 'authenticated'
+  // middleware: 'auth'
 }
 </script>
 
@@ -177,7 +182,7 @@ export default {
 
     &-inner {
       @include boxShadow_spread(0.1);
-      background-color: $color_white;
+      background-color: $white_100;
     }
     &-header {
       background-color: $bg_posts_header;
@@ -202,7 +207,7 @@ export default {
       text-overflow: ellipsis;
       white-space: nowrap;
       width: 100%;
-      color: $color_white;
+      color: $white_100;
       position: absolute;
       left: 0;
       top: 50%;
@@ -210,7 +215,7 @@ export default {
       padding-left: 48px;
     }
     &-thumb {
-      background-color: $color_black20;
+      background-color: $black_origin_20;
       height: 100px;
     }
     &-contents {

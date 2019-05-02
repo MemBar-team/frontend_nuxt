@@ -1,14 +1,14 @@
 <template>
-  <div class="TopPage">
+  <div class="p-top">
     <!-- <transition name="fade"> -->
-    <div class="TopPage_inner">
-      <div class="TopPage_bg"></div>
-      <div class="TopPage_overlay"></div>
-      <div class="TopPage_contents">
-        <h1 class="TopPage_title">
+    <div class="p-top_inner">
+      <div class="p-top_bg"></div>
+      <div class="p-top_overlay"></div>
+      <div class="p-top_contents">
+        <h1 class="p-top_title">
           趣味と仲間を繋げよう
         </h1>
-        <div class="TopPage_access">
+        <div class="p-top_access">
           <nuxt-link to="/signup">
             <el-button type="primary">アカウント作成</el-button>
           </nuxt-link>
@@ -33,7 +33,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.TopPage {
+.p-top {
   &_inner {
     position: relative;
     height: calc(100vh - 46px);
@@ -43,7 +43,7 @@ export default {
     width: 100%;
     opacity: 0.8;
     mix-blend-mode: luminosity;
-    background: rgba($color_black10, 1);
+    background: rgba($black_origin_10, 1);
   }
   &_overlay {
     height: 100%;
@@ -83,10 +83,10 @@ export default {
     text-align: center;
   }
   &_title {
-    font-size: $top_text_size;
+    font-size: $font-size_p-top_title;
     font-weight: $font_bold;
     text-align: center;
-    color: rgba($color_white, 0);
+    color: rgba($white_100, 0);
     margin: 0 auto 1.5em;
     line-height: 1.5;
     background: linear-gradient(
@@ -113,7 +113,7 @@ export default {
   &_logo {
     font-size: 5rem;
     font-weight: $font_bold;
-    color: $color_white;
+    color: $white_100;
   }
   &_access {
     max-width: 300px;
@@ -126,6 +126,9 @@ export default {
     &_inner {
       position: relative;
       height: calc(100vh - 38px);
+    }
+    &_title {
+      font-size: $font-size_p-top_title_sm;
     }
   }
 }

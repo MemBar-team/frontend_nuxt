@@ -1,7 +1,7 @@
 <template>
-  <footer id="LayoutsFooter" class="Footer">
-    <div class="Footer_inner">
-      <p class="Footer_copyright">&copy; {{ copyright }}</p>
+  <footer id="LayoutsFooter" class="l-footer">
+    <div class="l-footer_inner">
+      <p class="l-footer_copyright">&copy; {{ copyright }}</p>
     </div>
   </footer>
 </template>
@@ -18,7 +18,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.Footer {
+.l-footer {
   background: $gradientToRight;
   position: relative;
 
@@ -30,12 +30,11 @@ export default {
   &_copyright {
     font-size: 14px;
     text-align: center;
-    color: $color_white;
+    color: $white_100;
     font-weight: $font_light;
   }
-}
-@include mq(sm) {
-  .Footer {
+
+  @include mq(sm) {
     &_inner {
       padding: 12px;
     }

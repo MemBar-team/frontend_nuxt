@@ -33,11 +33,14 @@ export default {
 </script>
 
 <style lang="scss">
-.Section {
+.c-section {
+  height: inherit;
   &_inner {
     max-width: $width_xl;
     margin: auto;
     padding: 12px;
+    position: relative;
+    height: inherit;
   }
   @include mq(sm) {
     &_inner {

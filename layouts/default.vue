@@ -40,16 +40,16 @@ export default {
 
 .container {
   margin: 0 auto;
-  background: $color_white;
+  background: $white_100;
 }
 
-// .fade-enter-active,
-// .fade-leave-active {
-//   transition: all 0.1s;
-// }
-// .fade-enter,
-// .fade-leave-active {
-//   opacity: 0;
-//   transform: scale(0);
-// }
+.fade-enter-active,
+.fade-leave-active {
+  transition: all 0.1s;
+}
+.fade-enter,
+.fade-leave-active {
+  opacity: 0;
+  transform: scale(0);
+}
 </style>
