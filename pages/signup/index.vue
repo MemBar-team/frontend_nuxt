@@ -42,6 +42,19 @@
             >
               <el-input v-model="validateForm.password"></el-input>
             </el-form-item>
+            <el-form-item
+              label="Password（確認用）"
+              prop="password"
+              :rules="[
+                {
+                  required: true,
+                  message: 'パスワードを入力してください',
+                  trigger: 'blur'
+                }
+              ]"
+            >
+              <el-input v-model="validateForm.password"></el-input>
+            </el-form-item>
             <el-form-item class="c-form_btn">
               <el-button type="primary" @click="submitForm('validateForm')">
                 ログイン
