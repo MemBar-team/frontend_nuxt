@@ -55,26 +55,24 @@ export const mutations = {
 
 // 実際に各コンポーネントから呼び出す処理をactionとしてexportする
 export const actions = {
-  async nuxtServerInit(state) {
-    const res = await this.$axios.$get('/api/auth.json')
-    /* eslint-disable no-console */
-    console.log('nuxtServerInit GET_AUTH')
-    console.log(res.auth)
-    state.commit('SET_AUTH', res.auth)
-
-    if (!res.auth.login) {
-      this.$router.push('/top')
+  nuxtServerInit({ commit }, { req }) {
+    if (req.session && req.session.authUser) {
+      commit('SET_USER', req.session.authUser)
     }
   },
   async login({ commit }, { username, password }) {
     /* eslint-disable no-console */
     console.log('ログインアクション')
+    console.log(username)
+    console.log(password)
     try {
       const { data } = await axios.post('/api/login', { username, password })
+      console.log(data)
       commit('SET_USER', data)
+      this.$router.replace('/')
     } catch (error) {
       if (error.response && error.response.status === 401) {
-        throw new Error('Bad credentials')
+        throw new Error('ユーザー情報が正しくありません')
       }
       throw error
     }
@@ -82,6 +80,7 @@ export const actions = {
   async logout({ commit }) {
     await axios.post('/api/logout')
     commit('SET_USER', null)
+    this.$router.replace('/top')
   },
 
   async GET_AUTH(state) {

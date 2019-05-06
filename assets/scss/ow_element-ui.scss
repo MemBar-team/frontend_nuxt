@@ -24,7 +24,7 @@
 
           &.is-active {
             border-bottom: solid 2px $color_red;
-            color: $main_text;
+            color: $color_main_text;
           }
         }
       }
@@ -34,6 +34,7 @@
   &-button {
     padding: 0.8em 1em;
     font-size: 1.2rem;
+    transition: 0.3s;
 
     &.is-round {
       border-radius: 100px;

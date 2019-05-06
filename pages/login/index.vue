@@ -37,28 +37,29 @@
           <h2 class="c-form_title">
             ログインフォーム
           </h2>
+          {{ this.$store.state }}
+
+          <div v-if="formError">
+            {{ formError }}
+          </div>
           <el-form
             ref="validateForm"
             :model="validateForm"
             class="c-form_login"
+            @submit.prevent="login"
           >
             <el-form-item
-              label="Email"
-              prop="email"
+              label="ID or Email"
+              prop="id"
               :rules="[
                 {
                   required: true,
-                  message: 'メールアドレスを入力してください',
-                  trigger: 'blur'
-                },
-                {
-                  type: 'email',
-                  message: '正しいメールアドレス形式で入力してください',
+                  message: 'ユーザーIDかメールアドレスを入力してください',
                   trigger: 'blur'
                 }
               ]"
             >
-              <el-input v-model="validateForm.email"></el-input>
+              <el-input v-model="validateForm.id"></el-input>
             </el-form-item>
             <el-form-item
               label="Password"
@@ -84,7 +85,7 @@
           </el-form>
 
           <p class="c-form_forgot">
-            <nuxt-link to="/forgot">
+            <nuxt-link to="/login/forgot">
               パスワードを忘れた場合はこちら
             </nuxt-link>
           </p>
@@ -105,31 +106,36 @@ export default {
   layout: 'signupLogin',
   data() {
     return {
-      error: null,
-      email: '',
-      password: '',
+      formError: null,
+      logged: false,
       validateForm: {
-        email: '',
+        id: '',
         password: ''
       }
     }
   },
   methods: {
     async login() {
+      console.log('ログインクリック')
       try {
+        console.log('トライ')
         await this.$store.dispatch('login', {
-          email: this.email,
-          password: this.password
+          username: this.validateForm.id,
+          password: this.validateForm.password
         })
-        this.$router.push('/')
+        this.validateForm.id = ''
+        this.validateForm.password = ''
+        this.formError = null
       } catch (e) {
-        this.error = e.message
+        console.log('エラー')
+        this.formError = e.message
       }
     },
     submitForm(formName) {
       this.$refs[formName].validate(valid => {
         if (valid) {
-          alert('submit!')
+          // alert('submit!')
+          this.login()
         } else {
           /* eslint-disable no-console */
           console.log('error submit!!')
@@ -140,7 +146,8 @@ export default {
     resetForm(formName) {
       this.$refs[formName].resetFields()
     }
-  }
+  },
+  middleware: 'authLogged'
 }
 </script>
 

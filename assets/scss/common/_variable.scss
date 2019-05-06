@@ -2,16 +2,11 @@
 @charset "utf-8";
 
 // Color
-$color_red: #e14343;
-// $color_red: #d0253c;
-$color_red_black40: #7d1624;
-// $color_pink: #e13870;
-$color_pink: #ef3a65;
-$color_orange: #f69d51;
-// $color_yellow: #e6d950;
-$color_yellow: #f2e952;
-// $color_blue: #1a8ead;
-$color_blue: #1a92bd;
+$red_origin: #e14343;
+$red_origin_black40: #7d1624;
+$pink_origin: #ef3a65;
+$orange_origin: #f69d51;
+// $color_yellow: #f2e952;
 $blue_origin: #409eff;
 $black_origin: #35495e;
 $black_origin_80: #5d6d7e;
@@ -55,7 +50,13 @@ $font-size_c-form_forgot: $font14;
 $font-size_c-form_notRegister: $font12;
 
 $color_link: $blue_origin;
-$main_text: $black_origin;
+$color_white: $white_100;
+$color_black: $black_100;
+$color_red: $red_origin;
+$color_orange: $orange_origin;
+$color_pink: $pink_origin;
+$color_main_text: $black_origin;
+$color_bg_hover_common: $black_origin_10;
 
 $bg_wrapper: $black_origin_10;
 $bg_header: $white_100;

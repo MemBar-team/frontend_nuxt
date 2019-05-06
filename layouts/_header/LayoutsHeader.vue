@@ -6,6 +6,18 @@
           MemBar
         </nuxt-link>
       </h1>
+      <div class="l-header_option">
+        <button
+          v-if="this.$store.state.authUser"
+          class="l-header_option-logout"
+          @click="logout"
+        >
+          <i class="material-icons">
+            exit_to_app
+          </i>
+          ログアウト
+        </button>
+      </div>
     </div>
   </header>
 </template>
@@ -21,6 +33,13 @@ export default {
   methods: {
     handleSelect(key, keyPath) {
       // console.log(key, keyPath)
+    },
+    async logout() {
+      try {
+        await this.$store.dispatch('logout')
+      } catch (e) {
+        this.formError = e.message
+      }
     }
   }
 }
@@ -40,16 +59,33 @@ export default {
   }
 
   &_logo {
-    // color: $color_white;
-    color: $main_text;
+    color: $color_main_text;
     padding: 4px 0;
     font-size: $font26;
     margin: 0 24px 0 0px;
     cursor: pointer;
 
     a {
-      color: $main_text;
+      color: $color_main_text;
       text-decoration: none;
+
+      &:hover {
+        color: $color_link;
+      }
+    }
+  }
+
+  &_option {
+    margin-left: auto;
+
+    &-logout {
+      padding: 4px;
+      cursor: pointer;
+      transition: 0.3s;
+
+      &:hover {
+        background-color: $color_bg_hover_common;
+      }
     }
   }
 

@@ -161,9 +161,9 @@ export default {
       getPosts: 'getPosts'
       // nuxtServerInit: 'nuxtServerInit'
     })
-  }
+  },
   // middleware: 'authenticated'
-  // middleware: 'auth'
+  middleware: 'auth'
 }
 </script>
 

@@ -127,3 +127,8 @@ hr {
 input, select {
   vertical-align: middle;
 }
+
+input, button, textarea, select {
+  appearance: none;
+  border: none;
+}
