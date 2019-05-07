@@ -60,102 +60,31 @@ export default {
     }
   },
   computed: {
-    // state() {
-    //   console.log('aaaa-----state')
-    //   return JSON.stringify(this.$auth.$state, undefined, 2)
-    // },
     renderPosts() {
-      /* eslint-disable no-console */
       console.log('コンピューテッド')
       console.log(this.$store.state)
       return this.$store.state.posts.data
     }
-    // checkAuth(redirect) {
-    //   /* eslint-disable no-console */
-    //   console.log('チェック')
-    //   // console.log(store)
-    //   console.log(this.$store.state)
-    //   console.log(this.$store.state.auth.login)
-    //   // console.log(this.$store.state.auth)
-    //   if (!this.$store.state.auth.login) {
-    //     console.log('チェック リダイレクト')
-    //     // this.router.push('top')
-    //     return redirect('/top')
-    //   }
-    //   return this.$store.state.auth
-    //   // this.redirect()
-    // }
   },
   watch: {
     currentPage() {
-      /* eslint-disable no-console */
       console.log('ウォッチ')
       this.internalPage.internalCurrentPage = this.currentPage
     }
   },
-  // fetch({ store, redirect }) {
-  //   console.log('フェッチ')
-  //   console.log(store.state.auth.login)
-  //   // console.log(this.$store.state.auth)
-  //   if (!store.state.auth.login) {
-  //     return redirect('/top')
-  //   }
-  // },
   fetch({ store, params, redirect }) {
     console.log('フェッチ')
     console.log(store)
     console.log(params)
     console.log(store.state.auth)
-    // await store.dispatch('GET_AUTH')
-    // // this.getAuth()
-    // if (!store.state.auth.login) {
-    //   this.$router.push('/top')
-    // }
   },
   mounted() {
-    /* eslint-disable no-console */
     console.log('マウント')
     console.log(this.$store.state.auth.login)
-    // this.getAuth()
-    // if (!this.$store.state.auth.login) {
-    //   console.log('!!!!!1マウント')
-    //   return redirect('/top')
-    // }
-    // this.nuxtServerInit()
     this.getPosts()
     this.internalPage = this.$refs.pagination
   },
   methods: {
-    // redirect({ redirect }) {
-    //   console.log('リダイレクト')
-    //   if (!this.$store.state.auth.login) {
-    //     return redirect('/top')
-    //   }
-    // },
-    // async login() {
-    //   try {
-    //     await this.$store.dispatch('login', {
-    //       username: this.formUsername,
-    //       password: this.formPassword
-    //     })
-    //     this.formUsername = ''
-    //     this.formPassword = ''
-    //     this.formError = null
-    //   } catch (e) {
-    //     this.formError = e.message
-    //   }
-    // },
-    // async logout() {
-    //   try {
-    //     await this.$store.dispatch('logout')
-    //   } catch (e) {
-    //     this.formError = e.message
-    //   }
-    // },
-    // async getAuth() {
-    //   this.getAuth()
-    // },
-
     ...mapActions({
       // getAuth: 'getAuth',
       getPosts: 'getPosts'

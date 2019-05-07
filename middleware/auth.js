@@ -7,6 +7,5 @@ export default ({ store, redirect }) => {
     // })
     return redirect('/top')
   }
-
   return redirect('/')
 }

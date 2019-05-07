@@ -28,8 +28,8 @@ export default {
     return {
       value: null
     }
-  },
-  middleware: 'auth'
+  }
+  // middleware: 'auth'
 }
 </script>
 

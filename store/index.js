@@ -1,13 +1,14 @@
 import getPostsData from '~/assets/json/topPage.json'
 import axios from 'axios'
+// import { nextTick } from 'q'
 
 // 状態管理したい要素に名前をつけて、stateとしてexportする
 export const state = () => ({
   authUser: null,
   user: null,
-  auth: {
-    login: false
-  },
+  // auth: {
+  //   login: false
+  // },
   posts: getPostsData,
   deviceType: 'pc',
   page: [
@@ -57,7 +58,10 @@ export const mutations = {
 export const actions = {
   nuxtServerInit({ commit }, { req }) {
     if (req.session && req.session.authUser) {
+      console.log('nuxtServerInit')
       commit('SET_USER', req.session.authUser)
+      // this.$router.push({ name: 'index' })
+      // this.$router.replace('/')
     }
   },
   async login({ commit }, { username, password }) {
@@ -66,16 +70,47 @@ export const actions = {
     console.log(username)
     console.log(password)
     try {
+      console.log('トライ')
       const { data } = await axios.post('/api/login', { username, password })
       console.log(data)
+      console.log(this.$router)
       commit('SET_USER', data)
-      this.$router.replace('/')
+      // this.$router.replace('/')
+      // this.$router.push('/')
+      // this.$router.push({ path: '/' })
+      // this.$route.router.go('/')
     } catch (error) {
+      console.log('えらー')
       if (error.response && error.response.status === 401) {
         throw new Error('ユーザー情報が正しくありません')
       }
       throw error
     }
+
+    // return fetch('/api/login', {
+    //   // クライアントのクッキーをサーバーに送信
+    //   credentials: 'same-origin',
+    //   method: 'POST',
+    //   headers: {
+    //     'Content-Type': 'application/json'
+    //   },
+    //   body: JSON.stringify({
+    //     username,
+    //     password
+    //   })
+    // })
+    //   .then(res => {
+    //     if (res.status === 401) {
+    //       throw new Error('Bad credentials')
+    //     } else {
+    //       // console.log(res.json())
+    //       return res.json()
+    //     }
+    //   })
+    //   .then(authUser => {
+    //     commit('SET_USER', authUser)
+    //     this.$router.push('/')
+    //   })
   },
   async logout({ commit }) {
     await axios.post('/api/logout')

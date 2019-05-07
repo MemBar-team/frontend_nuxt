@@ -2,37 +2,6 @@
   <main class="c-main">
     <section class="c-section">
       <div class="c-section_inner">
-        <!-- <h1 class="title">
-          ログイン
-        </h1>
-        <nuxt-link to="/">
-          <el-button type="primary" icon="el-icon-arrow-left">戻る</el-button>
-        </nuxt-link>
-        <div class="login-form">
-          <form @submit.prevent="login">
-            <p v-if="error" class="error">{{ error }}</p>
-            <p>
-              <input
-                v-model="email"
-                type="text"
-                placeholder="email"
-                name="email"
-              />
-            </p>
-            <p>
-              <input
-                v-model="password"
-                type="text"
-                placeholder="password"
-                name="password"
-              />
-            </p>
-            <div class="login-btn">
-              <button type="submit">ログイン</button>
-            </div>
-          </form>
-        </div> -->
-
         <div class="c-form">
           <h2 class="c-form_title">
             ログインフォーム
@@ -101,6 +70,7 @@
 </template>
 
 <script>
+// import { mapActions } from 'vuex'
 export default {
   components: {},
   layout: 'signupLogin',
@@ -114,6 +84,27 @@ export default {
       }
     }
   },
+  computed: {
+    // loggedRedirect() {
+    //   if (this.$store.state.authUser) {
+    //     console.log('ログインしている')
+    //     return this.$router.push('/')
+    //   }
+    // }
+  },
+  // mounted: {
+  //   loggedRedirect() {
+  //     if (this.$store.state.authUser) {
+  //       console.log('ログインしている')
+  //       return this.$router.push('/')
+  //     }
+  //   }
+  // },
+  // fetch({ store, redirect }) {
+  //   if (!store.state.authUser) {
+  //     return redirect('/')
+  //   }
+  // },
   methods: {
     async login() {
       console.log('ログインクリック')
@@ -126,6 +117,8 @@ export default {
         this.validateForm.id = ''
         this.validateForm.password = ''
         this.formError = null
+        // this.$router.push({ name: '/' })
+        // this.$router.push({ path: '/' })
       } catch (e) {
         console.log('エラー')
         this.formError = e.message
@@ -135,6 +128,7 @@ export default {
       this.$refs[formName].validate(valid => {
         if (valid) {
           // alert('submit!')
+          console.log('aaaaaa')
           this.login()
         } else {
           /* eslint-disable no-console */
@@ -146,59 +140,14 @@ export default {
     resetForm(formName) {
       this.$refs[formName].resetFields()
     }
-  },
-  middleware: 'authLogged'
+    // ...mapActions({
+    //   login: 'login'
+    //   // getAuth: 'getAuth',
+    //   // getPosts: 'getPosts'
+    //   // nuxtServerInit: 'nuxtServerInit'
+    // })
+  }
 }
 </script>
 
-<style lang="scss" scoped>
-// .c-main {
-//   min-height: 400px;
-//   height: calc(100vh - 50px - 46px); // 画面高さ - Header - Footer の高さ
-
-//   @include mq(sm) {
-//     height: calc(100vh - 46px - 38px); // 画面高さ - Header - Footer の高さ
-//   }
-// }
-// .c-form {
-//   max-width: 500px;
-//   min-width: 300px;
-//   margin: auto;
-//   padding: 0 16px 80px;
-//   position: absolute;
-//   width: 100%;
-//   top: 50%;
-//   left: 50%;
-//   transform: translate(-50%, -50%);
-
-//   &_title {
-//     font-size: $font-size_c-form_title;
-//     text-align: center;
-//     padding: 32px 0;
-//   }
-
-//   &_login {
-//     margin: 0 0 40px;
-//   }
-
-//   &_btn {
-//     text-align: center;
-//   }
-
-//   &_forgot {
-//     font-size: $font-size_c-form_forgot;
-//     text-align: center;
-//     margin: 0 0 16px;
-//   }
-
-//   &_notRegister {
-//     font-size: $font-size_c-form_notRegister;
-//     font-weight: $font_bold;
-//     text-align: center;
-//   }
-
-//   @include mq(sm) {
-//     padding: 0 16px 40px;
-//   }
-// }
-</style>
+<style lang="scss" scoped></style>
