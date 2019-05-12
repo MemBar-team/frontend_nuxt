@@ -2,11 +2,11 @@
 @import './variable';
 
 @mixin boxShadow_down($opacity) {
-  box-shadow: 0 1px 4px 0 rgba($color_black, $opacity);
+  box-shadow: 0 1px 4px 0 rgba($black_origin, $opacity);
 }
 
 @mixin boxShadow_spread($opacity) {
-  box-shadow: 0 0 4px 0 rgba($color_black, $opacity)
+  box-shadow: 0 0 4px 0 rgba($black_origin, $opacity)
 }
 
 @mixin mq($breakpoint: md) {

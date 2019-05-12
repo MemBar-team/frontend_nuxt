@@ -1,38 +1,44 @@
 <template>
-  <el-menu
-    :default-active="activeIndex"
-    class="NavMenu"
-    mode="horizontal"
-    router
-  >
-    <el-menu-item class="NavMenu_item" index="home" :route="{ name: 'home' }">
-      <div class="NavMenu_item-inner">
-        <i class="material-icons">home</i>
-        <span class="NavMenu_item-text">ホーム</span>
-      </div>
-    </el-menu-item>
-    <el-menu-item
-      class="NavMenu_item"
-      index="search"
-      :route="{ name: 'search' }"
+  <nav class="NavMenu">
+    <el-menu
+      :default-active="activeIndex"
+      class="NavMenu_inner"
+      mode="horizontal"
+      router
     >
-      <!-- <p>{{ this.$route }}</p> -->
-      <div class="NavMenu_item-inner">
-        <i class="material-icons">search</i>
-        <span class="NavMenu_item-text">サーチ</span>
-      </div>
-    </el-menu-item>
-    <el-menu-item
-      class="NavMenu_item"
-      index="message"
-      :route="{ name: 'message' }"
-    >
-      <div class="NavMenu_item-inner">
-        <i class="material-icons">alternate_email</i>
-        <span class="NavMenu_item-text">メッセージ</span>
-      </div>
-    </el-menu-item>
-  </el-menu>
+      <el-menu-item
+        class="NavMenu_item"
+        index="index"
+        :route="{ name: 'index' }"
+      >
+        <div class="NavMenu_item-inner">
+          <i class="material-icons">home</i>
+          <span class="NavMenu_item-text">ホーム</span>
+        </div>
+      </el-menu-item>
+      <el-menu-item
+        class="NavMenu_item"
+        index="search"
+        :route="{ name: 'search' }"
+      >
+        <!-- <p>{{ this.$route }}</p> -->
+        <div class="NavMenu_item-inner">
+          <i class="material-icons">search</i>
+          <span class="NavMenu_item-text">サーチ</span>
+        </div>
+      </el-menu-item>
+      <el-menu-item
+        class="NavMenu_item"
+        index="message"
+        :route="{ name: 'message' }"
+      >
+        <div class="NavMenu_item-inner">
+          <i class="material-icons">alternate_email</i>
+          <span class="NavMenu_item-text">メッセージ</span>
+        </div>
+      </el-menu-item>
+    </el-menu>
+  </nav>
 </template>
 
 <script>
@@ -64,16 +70,20 @@ export default {
   border-top: solid 2px;
   border-image: $gradientToRight;
   border-image-slice: 1;
+  background-color: $bg_navMenu;
   @include boxShadow_down(0.1);
+
+  &_inner {
+    max-width: $width_xl;
+    margin: 0 auto;
+  }
 
   &_item {
     height: 48px;
     line-height: 48px;
   }
-}
 
-@include mq(sm) {
-  .NavMenu {
+  @include mq(sm) {
     top: auto;
     bottom: 0px;
     position: fixed;

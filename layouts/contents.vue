@@ -1,23 +1,16 @@
 <template>
   <transition name="fade">
-    <div class="Wrapper">
+    <div class="l-wrapper">
       <LayoutsHeader />
       <NavMenu />
       <nuxt />
-      <el-pagination
-        ref="paginationBottom"
-        background
-        layout="prev, pager, next"
-        :total="50"
-        :current-page.sync="currentPage"
-      >
-      </el-pagination>
       <LayoutsFooter />
     </div>
   </transition>
 </template>
 
 <script>
+import { mapActions } from 'vuex'
 import LayoutsHeader from '~/layouts/_header/LayoutsHeader'
 import LayoutsFooter from '~/layouts/_footer/LayoutsFooter'
 import NavMenu from '~/components/navigation/NavMenu'
@@ -28,29 +21,44 @@ export default {
     LayoutsFooter,
     NavMenu
   },
-  data() {
-    return {
-      currentPage: 1,
-      internalPage: {
-        top: null,
-        bottom: null
-      }
-    }
-  },
-  watch: {
-    currentPage() {
-      this.currentPage = 1
-      this.internalPage.bottom.internalCurrentPage = this.currentPage
-    }
-  },
   mounted() {
-    this.internalPage.top = this.$refs.paginationTop
-    this.internalPage.bottom = this.$refs.paginationBottom
+    this.getUserAgent()
+  },
+  methods: {
+    ...mapActions({
+      getUserAgent: 'getUserAgent'
+    })
   }
 }
 </script>
 
 <style lang="scss">
-.Contents {
+.c-main {
+  min-height: 400px;
+  height: calc(100vh - 50px - 46px); // 画面高さ - Header - Footer の高さ
+  overflow-x: hidden;
+  overflow-y: auto;
+
+  @include mq(sm) {
+    height: calc(100vh - 46px - 38px); // 画面高さ - Header - Footer の高さ
+  }
+}
+
+.c-section {
+  // height: inherit;
+
+  &_inner {
+    max-width: $width_xl;
+    margin: auto;
+    padding: 12px;
+    position: relative;
+    height: inherit;
+  }
+
+  @include mq(sm) {
+    &_inner {
+      padding: 8px;
+    }
+  }
 }
 </style>

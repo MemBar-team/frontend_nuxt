@@ -2,25 +2,93 @@
 @charset "utf-8";
 
 // Color
-$color_white: #fff;
-$color_red: #e14343;
-$color_orange: #f69d51;
-$color_black: #35495e;
+$red_origin: #e14343;
+$red_origin_black40: #7d1624;
+$pink_origin: #ef3a65;
+$orange_origin: #f69d51;
+// $color_yellow: #f2e952;
+$blue_origin: #409eff;
+$blue_hover: #66b1ff;
+$black_origin: #35495e;
+$black_origin_80: #5d6d7e;
+$black_origin_60: #86929e;
+$black_origin_40: #aeb6bf;
+$black_origin_20: #d7dbdf;
+$black_origin_10: #ebedef;
+$black_origin_5:#f5f6f7;
+$black_100: #000;
+$white_100: #fff;
+$color_google: #4284f4;
+$color_facebook: #3c65c4;
+
 
 // Text
+$font10: 1rem;
+$font12: 1.2rem;
+$font14: 1.4rem;
+$font16: 1.6rem;
+$font18: 1.8rem;
+$font20: 2.0rem;
+$font22: 2.2rem;
+$font24: 2.4rem;
+$font26: 2.6rem;
+$font28: 2.8rem;
+$font30: 3rem;
+$font40: 4rem;
+$font50: 5rem;
+$font60: 6rem;
+
 $font_bold: 600;
 $font_medium: 500;
 $font_normal: 400;
 $font_light: 300;
 
-// Function
-$main_text: $color_black;
+
+
+// === Function ===
+$font-size_p-top_title: $font60;
+$font-size_p-top_title_sm: $font50;
+
+$font-size_c-form_title: $font26;
+$font-size_c-form_sns-title: $font20;
+$font-size_c-form_error: $font18;
+$font-size_c-form_forgot: $font14;
+$font-size_c-form_notRegister: $font12;
+
+$color_link: $blue_origin;
+$color_white: $white_100;
+$color_black: $black_100;
+$color_red: $red_origin;
+$color_error: $red_origin;
+$color_orange: $orange_origin;
+$color_pink: $pink_origin;
+$color_main_text: $black_origin;
+$color_bg_common: $black_origin_20;
+$color_bg_hover_common: $black_origin_5;
+$colro_hover_primary: $blue_hover;
+
+$bg_wrapper: $black_origin_10;
+$bg_header: $white_100;
+$bg_navMenu: $white_100;
+$bg_button_active: $color_red;
+
+// .Posts
+$bg_posts_header: $black_origin_40;
+$bg_posts_icon: $black_origin_10;
+$bg_posts_thumb: $black_origin_20;
 $gradientToRight: linear-gradient(to right, $color_red, $color_orange);
+$gradientToLowerRight: linear-gradient(135deg, $color_red, $color_orange);
+
+// === Width ===
+$width_sm: 400px;
+$width_md: 768px;
+$width_lg: 1080px;
+$width_xl: 1280px;
 
 // Media Query
 $breakpoints: (
-  'sm': 'screen and (max-width: 400px)',
-  'md': 'screen and (max-width: 768px)',
-  'lg': 'screen and (max-width: 1080px)',
-  'xl': 'screen and (max-width: 1280px)',
+  'sm': 'screen and (max-width: ' + $width_sm + ')',
+  'md': 'screen and (max-width: ' + $width_md + ')',
+  'lg': 'screen and (max-width: ' + $width_lg + ')',
+  'xl': 'screen and (max-width: ' + $width_xl + ')',
 ) !default;
