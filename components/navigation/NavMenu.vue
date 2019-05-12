@@ -82,10 +82,8 @@ export default {
     height: 48px;
     line-height: 48px;
   }
-}
 
-@include mq(sm) {
-  .NavMenu {
+  @include mq(sm) {
     top: auto;
     bottom: 0px;
     position: fixed;

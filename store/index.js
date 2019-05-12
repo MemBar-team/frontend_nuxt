@@ -79,6 +79,7 @@ export const actions = {
       // this.$router.push('/')
       // this.$router.push({ path: '/' })
       // this.$route.router.go('/')
+      this.$router.replace('/')
     } catch (error) {
       console.log('えらー')
       if (error.response && error.response.status === 401) {
@@ -113,9 +114,11 @@ export const actions = {
     //   })
   },
   async logout({ commit }) {
+    console.log('ログアウト')
     await axios.post('/api/logout')
     commit('SET_USER', null)
     this.$router.replace('/top')
+    console.log('aaa')
   },
 
   async GET_AUTH(state) {
@@ -147,7 +150,10 @@ export const actions = {
 
   async getPosts(state) {
     // 投稿データを取得
-    const res = await this.$axios.$get('/api/posts.json')
+    console.log('投稿データを取得')
+    const res = await this.$axios.$get('/db/posts.json')
+    console.log(res)
+    console.log('取得')
     state.commit('setPostsStore', res)
   }
 }

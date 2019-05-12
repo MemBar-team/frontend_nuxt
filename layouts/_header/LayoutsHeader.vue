@@ -47,11 +47,13 @@ export default {
 
 <style lang="scss" scoped>
 .l-header {
-  // background: linear-gradient(to right, $color_red, $color_orange);
-  // background-color: $bg_header;
   @include boxShadow_down(0.1);
+  position: relative;
+  background-color: $color_white;
+  z-index: 100;
 
   &_inner {
+    position: relative;
     display: flex;
     padding: 8px 24px;
     max-width: $width_xl;
@@ -69,22 +71,35 @@ export default {
       color: $color_main_text;
       text-decoration: none;
 
-      &:hover {
-        color: $color_link;
-      }
+      // &:hover {
+      //   color: $color_link;
+      // }
     }
   }
 
   &_option {
-    margin-left: auto;
+    position: absolute;
+    top: 50%;
+    right: 24px;
+    transform: translate(0, -50%);
 
     &-logout {
-      padding: 4px;
+      padding: 8px;
       cursor: pointer;
       transition: 0.3s;
+      position: relative;
+      padding-left: 28px;
+      background-color: $color_white;
 
       &:hover {
         background-color: $color_bg_hover_common;
+      }
+
+      .material-icons {
+        position: absolute;
+        top: 50%;
+        left: 4px;
+        transform: translate(0, -50%);
       }
     }
   }
@@ -94,11 +109,16 @@ export default {
 
     &_inner {
       text-align: center;
+      padding: 8px;
     }
 
     &_logo {
       margin: auto;
       font-size: $font22;
+    }
+
+    &_option {
+      right: 8px;
     }
   }
 }

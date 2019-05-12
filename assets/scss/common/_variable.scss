@@ -8,14 +8,18 @@ $pink_origin: #ef3a65;
 $orange_origin: #f69d51;
 // $color_yellow: #f2e952;
 $blue_origin: #409eff;
+$blue_hover: #66b1ff;
 $black_origin: #35495e;
 $black_origin_80: #5d6d7e;
 $black_origin_60: #86929e;
 $black_origin_40: #aeb6bf;
 $black_origin_20: #d7dbdf;
 $black_origin_10: #ebedef;
+$black_origin_5:#f5f6f7;
 $black_100: #000;
 $white_100: #fff;
+$color_google: #4284f4;
+$color_facebook: #3c65c4;
 
 
 // Text
@@ -46,6 +50,8 @@ $font-size_p-top_title: $font60;
 $font-size_p-top_title_sm: $font50;
 
 $font-size_c-form_title: $font26;
+$font-size_c-form_sns-title: $font20;
+$font-size_c-form_error: $font18;
 $font-size_c-form_forgot: $font14;
 $font-size_c-form_notRegister: $font12;
 
@@ -53,10 +59,13 @@ $color_link: $blue_origin;
 $color_white: $white_100;
 $color_black: $black_100;
 $color_red: $red_origin;
+$color_error: $red_origin;
 $color_orange: $orange_origin;
 $color_pink: $pink_origin;
 $color_main_text: $black_origin;
-$color_bg_hover_common: $black_origin_10;
+$color_bg_common: $black_origin_20;
+$color_bg_hover_common: $black_origin_5;
+$colro_hover_primary: $blue_hover;
 
 $bg_wrapper: $black_origin_10;
 $bg_header: $white_100;

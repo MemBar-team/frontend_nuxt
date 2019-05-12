@@ -63,6 +63,7 @@ export default {
     renderPosts() {
       console.log('コンピューテッド')
       console.log(this.$store.state)
+      // this.getPosts()
       return this.$store.state.posts.data
     }
   },
@@ -72,16 +73,26 @@ export default {
       this.internalPage.internalCurrentPage = this.currentPage
     }
   },
+  asyncData(context) {
+    console.log('asyncData')
+    console.log(context)
+    // this.$store.dispatch('getPosts')
+  },
   fetch({ store, params, redirect }) {
     console.log('フェッチ')
     console.log(store)
     console.log(params)
     console.log(store.state.auth)
   },
+  created() {
+    console.log('クリエイテッド')
+    this.getPosts()
+  },
   mounted() {
     console.log('マウント')
-    console.log(this.$store.state.auth.login)
-    this.getPosts()
+    console.log(this.$store.state)
+    // this.getPosts()
+    // this.$store.dispatch('getPosts')
     this.internalPage = this.$refs.pagination
   },
   methods: {
@@ -91,8 +102,8 @@ export default {
       // nuxtServerInit: 'nuxtServerInit'
     })
   },
-  // middleware: 'authenticated'
-  middleware: 'auth'
+  middleware: 'notLoggedRedirect'
+  // middleware: 'auth'
 }
 </script>
 
@@ -168,7 +179,7 @@ export default {
 
   @include mq(lg) {
     &_item {
-      // width: calc(100% / 4);
+      width: calc(100% / 3);
     }
   }
 

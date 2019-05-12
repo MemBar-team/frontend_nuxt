@@ -1,6 +1,6 @@
 <template>
   <!-- <transition name="fade"> -->
-  <div class="Wrapper">
+  <div class="l-wrapper">
     <!-- <LayoutsHeader /> -->
     <nuxt />
     <LayoutsFooter />
@@ -26,12 +26,11 @@ export default {
   position: relative;
 }
 
-.Wrapper {
+.l-wrapper {
   width: 100%;
   height: 100%;
   margin: auto;
   position: relative;
-  overflow: hidden;
 }
 
 .block {

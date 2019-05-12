@@ -91,7 +91,7 @@
 <script>
 export default {
   components: {},
-  layout: 'c-contents',
+  layout: 'contents',
   data() {
     return {
       value: null
