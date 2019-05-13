@@ -31,16 +31,6 @@ export default {
 
 <style lang="scss">
 .c-form {
-  // max-width: 500px;
-  // min-width: 300px;
-  // margin: auto;
-  // padding: 0 16px 80px;
-  // position: absolute;
-  // width: 100%;
-  // top: 50%;
-  // left: 50%;
-  // transform: translate(-50%, -50%);
-
   &_col3 {
     display: flex;
     align-items: center;
