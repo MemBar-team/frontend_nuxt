@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex'
+// import { mapActions } from 'vuex'
 import LayoutsHeader from '~/layouts/_header/LayoutsHeader'
 import LayoutsFooter from '~/layouts/_footer/LayoutsFooter'
 
@@ -17,14 +17,6 @@ export default {
   components: {
     LayoutsHeader,
     LayoutsFooter
-  },
-  mounted() {
-    this.getUserAgent()
-  },
-  methods: {
-    ...mapActions({
-      getUserAgent: 'getUserAgent'
-    })
   }
 }
 </script>

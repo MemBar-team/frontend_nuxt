@@ -10,7 +10,6 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex'
 import LayoutsHeader from '~/layouts/_header/LayoutsHeader'
 import LayoutsFooter from '~/layouts/_footer/LayoutsFooter'
 import NavMenu from '~/components/navigation/NavMenu'
@@ -20,14 +19,6 @@ export default {
     LayoutsHeader,
     LayoutsFooter,
     NavMenu
-  },
-  mounted() {
-    this.getUserAgent()
-  },
-  methods: {
-    ...mapActions({
-      getUserAgent: 'getUserAgent'
-    })
   }
 }
 </script>

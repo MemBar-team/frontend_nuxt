@@ -1,11 +1,11 @@
 <template>
-  <!-- <transition name="fade"> -->
-  <div class="l-wrapper">
-    <!-- <LayoutsHeader /> -->
-    <nuxt />
-    <LayoutsFooter />
-  </div>
-  <!-- </transition> -->
+  <transition name="fade">
+    <div class="l-wrapper">
+      <!-- <LayoutsHeader /> -->
+      <nuxt />
+      <LayoutsFooter />
+    </div>
+  </transition>
 </template>
 
 <script>
@@ -31,15 +31,6 @@ export default {
   height: 100%;
   margin: auto;
   position: relative;
-}
-
-.block {
-  padding: 0 20px;
-}
-
-.container {
-  margin: 0 auto;
-  background: $white_100;
 }
 
 .fade-enter-active,
