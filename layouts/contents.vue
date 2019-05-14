@@ -24,33 +24,26 @@ export default {
 </script>
 
 <style lang="scss">
-.c-main {
+.l-main {
   min-height: 400px;
-  height: calc(100vh - 50px - 46px); // 画面高さ - Header - Footer の高さ
   overflow-x: hidden;
   overflow-y: auto;
-
-  @include mq(sm) {
-    // height: calc(100vh - 46px - 38px); // 画面高さ - Header - Footer の高さ
-    height: auto;
-  }
 }
 
 .c-section {
-  // height: inherit;
-
   &_inner {
     max-width: $width_xl;
     margin: auto;
-    padding: 12px;
+    // padding: 12px;
+    @include padding(8px);
     position: relative;
     height: inherit;
   }
 
-  @include mq(sm) {
-    &_inner {
-      padding: 8px;
-    }
-  }
+  // @include mq(sm) {
+  //   &_inner {
+  //     padding: 8px;
+  //   }
+  // }
 }
 </style>

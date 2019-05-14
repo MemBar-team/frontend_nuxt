@@ -1,5 +1,5 @@
 <template>
-  <div class="p-top">
+  <main class="p-top">
     <!-- <transition name="fade"> -->
     <div class="p-top_inner">
       <div class="p-top_bg"></div>
@@ -19,7 +19,7 @@
       </div>
     </div>
     <!-- </transition> -->
-  </div>
+  </main>
 </template>
 
 <script>

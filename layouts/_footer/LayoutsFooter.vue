@@ -20,7 +20,10 @@ export default {
 <style lang="scss" scoped>
 .l-footer {
   background: $gradientToRight;
-  position: relative;
+  width: 100%;
+  // position: relative;
+  position: absolute;
+  bottom: 0;
 
   &_inner {
     padding: 16px 0;

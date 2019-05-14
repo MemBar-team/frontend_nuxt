@@ -31,12 +31,12 @@
 @mixin fontSize($fontSize) {
   font-size: $fontSize;
   @include mq(sm) {
-    font-size: $fontSize - 0.8;
+    font-size: $fontSize - 0.6;
   }
 }
 
 @mixin fontSize_sm($fontSize) {
-  font-size: $fontSize - 1;
+  font-size: $fontSize - 0.6;
 }
 
 @mixin padding($paddingTop: null, $paddingRight: null, $paddingBottom: null, $paddingLeft: null) {

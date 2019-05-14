@@ -53,7 +53,7 @@ export default {
   &_title {
     @include padding(36px, 0, 28px);
     @include margin(0, 0, 20px);
-    font-size: $font-size_c-form_title;
+    @include fontSize($font-size_c-form_title);
     text-align: center;
   }
 
@@ -66,27 +66,27 @@ export default {
   }
 
   &_forgot {
-    font-size: $font-size_c-form_forgot;
+    @include fontSize($font-size_c-form_forgot);
     text-align: center;
     @include margin(0, 0, 16px);
   }
 
   &_notRegister {
-    font-size: $font-size_c-form_notRegister;
+    @include fontSize($font-size_c-form_notRegister);
     font-weight: $font_bold;
     text-align: center;
     @include margin(auto, auto, 16px);
   }
 
   &_error {
-    font-size: $font-size_c-form_error;
+    @include fontSize($font-size_c-form_error);
     text-align: center;
     color: $color-error;
     @include margin(auto, auto, 20px);
 
     &-message {
       position: relative;
-      @include padding(4px, 4px, 4px, 28px);
+      padding: 4px 4px 4px 28px;
 
       .material-icons {
         position: absolute;
@@ -115,7 +115,7 @@ export default {
     padding: 0 4px 20px;
 
     &_title {
-      font-size: $font18;
+      // font-size: $font18;
     }
   }
 }

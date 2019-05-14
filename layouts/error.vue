@@ -1,5 +1,5 @@
 <template>
-  <main class="c-main">
+  <main class="l-main">
     <section class="c-section">
       <div class="c-section_inner">
         <h1 v-if="error.statusCode === 404">ページが見つかりません</h1>

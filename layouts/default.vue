@@ -23,15 +23,15 @@ export default {
 <style lang="scss">
 #__nuxt,
 #__layout {
-  position: relative;
+  // position: relative;
 }
 
-.l-wrapper {
-  width: 100%;
-  height: 100%;
-  margin: auto;
-  position: relative;
-}
+// .l-wrapper {
+//   width: 100%;
+//   height: 100%;
+//   margin: auto;
+//   position: relative;
+// }
 
 .fade-enter-active,
 .fade-leave-active {

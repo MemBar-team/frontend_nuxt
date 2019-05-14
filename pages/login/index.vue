@@ -1,5 +1,5 @@
 <template>
-  <main class="c-main">
+  <main class="l-main">
     <section class="c-section">
       <div class="c-section_inner">
         <div class="c-form">
@@ -24,7 +24,7 @@
                   ref="validateForm"
                   :model="validateForm"
                   class="c-form_login"
-                  :status-icon="true"
+                  status-icon
                 >
                   <el-form-item
                     label="User ID or Email"
@@ -55,13 +55,13 @@
                         trigger: 'blur'
                       }
                     ]"
-                    status-icon
                   >
                     <el-input
                       v-model="validateForm.password"
                       type="password"
                       autocomplete="on"
                       maxlength="100"
+                      show-password
                     >
                     </el-input>
                   </el-form-item>
@@ -216,6 +216,9 @@ export default {
     },
     resetForm(formName) {
       this.$refs[formName].resetFields()
+    },
+    passwordToggle() {
+      console.log('クリック')
     }
     // ...mapActions({
     //   login: 'login'
