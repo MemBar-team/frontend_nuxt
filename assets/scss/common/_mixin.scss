@@ -1,6 +1,25 @@
 @charset "utf-8";
 @import './variable';
 
+// ========== function ==========
+@function mqSmDivision($value, $division) {
+  @if($value == auto) {
+    $value: auto;
+  } @else if ($value == 0) {
+    $value: 0;
+  } @else {
+    $value: $value / $division;
+  }
+  @return $value;
+}
+
+// ========== mixin ==========
+@mixin mq($breakpoint: md) {
+  @media #{map-get($breakpoints, $breakpoint)} {
+    @content;
+  }
+}
+
 @mixin boxShadow_down($opacity) {
   box-shadow: 0 1px 4px 0 rgba($black_origin, $opacity);
 }
@@ -9,8 +28,155 @@
   box-shadow: 0 0 4px 0 rgba($black_origin, $opacity)
 }
 
-@mixin mq($breakpoint: md) {
-  @media #{map-get($breakpoints, $breakpoint)} {
-    @content;
+@mixin fontSize($fontSize) {
+  font-size: $fontSize;
+  @include mq(sm) {
+    font-size: $fontSize - 0.8;
+  }
+}
+
+@mixin fontSize_sm($fontSize) {
+  font-size: $fontSize - 1;
+}
+
+@mixin padding($paddingTop: null, $paddingRight: null, $paddingBottom: null, $paddingLeft: null) {
+  @if (($paddingTop == null) and ($paddingRight == null) and ($paddingBottom == null) and ($paddingLeft == null)) {
+    padding: {
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+    }
+  } @else if (($paddingTop != null) and ($paddingRight == null) and ($paddingBottom == null) and ($paddingLeft == null)) {
+    padding: {
+      top: $paddingTop;
+      right:  $paddingTop;
+      bottom: $paddingTop;
+      left: $paddingTop;
+    }
+    @include mq(sm) {
+      padding: {
+        top: mqSmDivision($paddingTop, 2);
+        right:  mqSmDivision($paddingTop, 2);
+        bottom: mqSmDivision($paddingTop, 2);
+        left: mqSmDivision($paddingTop, 2);
+      }
+    }
+  } @else if (($paddingTop != null) and ($paddingRight != null) and ($paddingBottom == null) and ($paddingLeft == null)) {
+    padding: {
+      top: $paddingTop;
+      right:  $paddingRight;
+      bottom: $paddingTop;
+      left: $paddingRight;
+    }
+    @include mq(sm) {
+      padding: {
+        top: mqSmDivision($paddingTop, 2);
+        right:  mqSmDivision($paddingRight, 2);
+        bottom: mqSmDivision($paddingTop, 2);
+        left: mqSmDivision($paddingRight, 2);
+      }
+    }
+  } @else if (($paddingTop != null) and ($paddingRight != null) and ($paddingBottom != null) and ($paddingLeft == null)) {
+    padding: {
+      top: $paddingTop;
+      right:  $paddingRight;
+      bottom: $paddingBottom;
+      left: $paddingRight;
+    }
+    @include mq(sm) {
+      padding: {
+        top: mqSmDivision($paddingTop, 2);
+        right:  mqSmDivision($paddingRight, 2);
+        bottom: mqSmDivision($paddingBottom, 2);
+        left: mqSmDivision($paddingRight, 2);
+      }
+    }
+  } @else {
+    padding: {
+      top: $paddingTop;
+      right:  $paddingRight;
+      bottom: $paddingBottom;
+      left: $paddingLeft;
+    }
+    @include mq(sm) {
+      padding: {
+        top: mqSmDivision($paddingTop, 2);
+        right: mqSmDivision($paddingRight, 2);
+        bottom: mqSmDivision($paddingBottom, 2);
+        left: mqSmDivision($paddingLeft, 2);
+      }
+    }
+  }
+}
+
+@mixin margin($marginTop: null, $marginRight: null, $marginBottom: null, $marginLeft: null) {
+  @if (($marginTop == null) and ($marginRight == null) and ($marginBottom == null) and ($marginLeft == null)) {
+    margin: {
+      top: auto;
+      right: auto;
+      bottom: auto;
+      left: auto;
+    }
+  } @else if (($marginTop != null) and ($marginRight == null) and ($marginBottom == null) and ($marginLeft == null)) {
+    margin: {
+      top: $marginTop;
+      right:  $marginTop;
+      bottom: $marginTop;
+      left: $marginTop;
+    }
+    @include mq(sm) {
+      margin: {
+        top: mqSmDivision($marginTop, 2);
+        right:  mqSmDivision($marginTop, 2);
+        bottom: mqSmDivision($marginTop, 2);
+        left: mqSmDivision($marginTop, 2);
+      }
+    }
+  } @else if (($marginTop != null) and ($marginRight != null) and ($marginBottom == null) and ($marginLeft == null)) {
+    margin: {
+      top: $marginTop;
+      right:  $marginRight;
+      bottom: $marginTop;
+      left: $marginRight;
+    }
+    @include mq(sm) {
+      margin: {
+        top: mqSmDivision($marginTop, 2);
+        right:  mqSmDivision($marginRight, 2);
+        bottom: mqSmDivision($marginTop, 2);
+        left: mqSmDivision($marginRight, 2);
+      }
+    }
+  } @else if (($marginTop != null) and ($marginRight != null) and ($marginBottom != null) and ($marginLeft == null)) {
+    margin: {
+      top: $marginTop;
+      right:  $marginRight;
+      bottom: $marginBottom;
+      left: $marginRight;
+    }
+    @include mq(sm) {
+      margin: {
+        top: mqSmDivision($marginTop, 2);
+        right:  mqSmDivision($marginRight, 2);
+        bottom: mqSmDivision($marginBottom, 2);
+        left: mqSmDivision($marginRight, 2);
+      }
+    }
+  } @else {
+    margin: {
+      top: $marginTop;
+      right:  $marginRight;
+      bottom: $marginBottom;
+      left: $marginLeft;
+    }
+    @include mq(sm) {
+      margin: {
+        top: mqSmDivision($marginTop, 2);
+        right: mqSmDivision($marginRight, 2);
+        bottom: mqSmDivision($marginBottom, 2);
+        left: mqSmDivision($marginLeft, 2);
+      }
+    }
   }
 }

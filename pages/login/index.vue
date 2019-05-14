@@ -233,12 +233,12 @@ export default {
     &-title {
       font-size: $font-size_c-form_sns-title;
       text-align: center;
-      padding: 8px 0;
-      margin: 0 0 12px;
+      @include padding(8px, 0);
+      @include margin(0, 0, 12px);
     }
 
     &-btn {
-      margin: 0 0 20px;
+      @include margin(0, 0, 20px);
       transition: all 0.3s;
       width: 100%;
 
@@ -257,6 +257,14 @@ export default {
       margin-bottom: 0;
       background-color: $color_facebook;
       border-color: $color_facebook;
+    }
+  }
+
+  @include mq(sm) {
+    &_sns {
+      &-title {
+        font-size: $font14;
+      }
     }
   }
 }

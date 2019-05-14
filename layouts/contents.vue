@@ -31,7 +31,8 @@ export default {
   overflow-y: auto;
 
   @include mq(sm) {
-    height: calc(100vh - 46px - 38px); // 画面高さ - Header - Footer の高さ
+    // height: calc(100vh - 46px - 38px); // 画面高さ - Header - Footer の高さ
+    height: auto;
   }
 }
 
