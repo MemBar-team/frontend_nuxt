@@ -40,7 +40,6 @@
                     <el-input
                       v-model="validateForm.id"
                       type="email"
-                      autocomplete="on"
                       maxlength="100"
                     >
                     </el-input>
@@ -59,7 +58,6 @@
                     <el-input
                       v-model="validateForm.password"
                       type="password"
-                      autocomplete="on"
                       maxlength="100"
                       show-password
                     >
@@ -226,7 +224,8 @@ export default {
     //   // getPosts: 'getPosts'
     //   // nuxtServerInit: 'nuxtServerInit'
     // })
-  }
+  },
+  middleware: 'authCheck'
 }
 </script>
 

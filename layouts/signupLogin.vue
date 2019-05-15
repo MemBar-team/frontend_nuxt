@@ -110,7 +110,7 @@ export default {
   }
 
   @include mq(sm) {
-    padding: 0 4px 20px;
+    padding: 0 4px 16px;
   }
 }
 </style>
