@@ -2,13 +2,30 @@
 @import './variable';
 
 // ========== function ==========
-@function mqSmDivision($value, $division) {
+@function mqSm_division($value, $division) {
   @if($value == auto) {
     $value: auto;
   } @else if ($value == 0) {
     $value: 0;
   } @else {
     $value: $value / $division;
+  }
+  @return $value;
+}
+
+@function mqSm_fontSize($value) {
+  @if($value >= 5rem) {
+    $value: $value - 1rem;
+  } @else if ($value >= 3.4rem) {
+    $value: $value - 0.8rem;
+  } @else if ($value >= 2.8rem) {
+    $value: $value - 0.6rem;
+  } @else if ($value >= 2rem) {
+    $value: $value - 0.4rem;
+  } @else if ($value >= 1.6rem) {
+    $value: $value - 0.2rem;
+  } @else {
+    $value: $value;
   }
   @return $value;
 }
@@ -31,7 +48,7 @@
 @mixin fontSize($fontSize) {
   font-size: $fontSize;
   @include mq(sm) {
-    font-size: $fontSize - 0.6;
+    font-size: mqSm_fontSize($fontSize);
   }
 }
 
@@ -56,10 +73,10 @@
     }
     @include mq(sm) {
       padding: {
-        top: mqSmDivision($paddingTop, 2);
-        right:  mqSmDivision($paddingTop, 2);
-        bottom: mqSmDivision($paddingTop, 2);
-        left: mqSmDivision($paddingTop, 2);
+        top: mqSm_division($paddingTop, 2);
+        right:  mqSm_division($paddingTop, 2);
+        bottom: mqSm_division($paddingTop, 2);
+        left: mqSm_division($paddingTop, 2);
       }
     }
   } @else if (($paddingTop != null) and ($paddingRight != null) and ($paddingBottom == null) and ($paddingLeft == null)) {
@@ -71,10 +88,10 @@
     }
     @include mq(sm) {
       padding: {
-        top: mqSmDivision($paddingTop, 2);
-        right:  mqSmDivision($paddingRight, 2);
-        bottom: mqSmDivision($paddingTop, 2);
-        left: mqSmDivision($paddingRight, 2);
+        top: mqSm_division($paddingTop, 2);
+        right:  mqSm_division($paddingRight, 2);
+        bottom: mqSm_division($paddingTop, 2);
+        left: mqSm_division($paddingRight, 2);
       }
     }
   } @else if (($paddingTop != null) and ($paddingRight != null) and ($paddingBottom != null) and ($paddingLeft == null)) {
@@ -86,10 +103,10 @@
     }
     @include mq(sm) {
       padding: {
-        top: mqSmDivision($paddingTop, 2);
-        right:  mqSmDivision($paddingRight, 2);
-        bottom: mqSmDivision($paddingBottom, 2);
-        left: mqSmDivision($paddingRight, 2);
+        top: mqSm_division($paddingTop, 2);
+        right:  mqSm_division($paddingRight, 2);
+        bottom: mqSm_division($paddingBottom, 2);
+        left: mqSm_division($paddingRight, 2);
       }
     }
   } @else {
@@ -101,10 +118,10 @@
     }
     @include mq(sm) {
       padding: {
-        top: mqSmDivision($paddingTop, 2);
-        right: mqSmDivision($paddingRight, 2);
-        bottom: mqSmDivision($paddingBottom, 2);
-        left: mqSmDivision($paddingLeft, 2);
+        top: mqSm_division($paddingTop, 2);
+        right: mqSm_division($paddingRight, 2);
+        bottom: mqSm_division($paddingBottom, 2);
+        left: mqSm_division($paddingLeft, 2);
       }
     }
   }
@@ -127,10 +144,10 @@
     }
     @include mq(sm) {
       margin: {
-        top: mqSmDivision($marginTop, 2);
-        right:  mqSmDivision($marginTop, 2);
-        bottom: mqSmDivision($marginTop, 2);
-        left: mqSmDivision($marginTop, 2);
+        top: mqSm_division($marginTop, 2);
+        right:  mqSm_division($marginTop, 2);
+        bottom: mqSm_division($marginTop, 2);
+        left: mqSm_division($marginTop, 2);
       }
     }
   } @else if (($marginTop != null) and ($marginRight != null) and ($marginBottom == null) and ($marginLeft == null)) {
@@ -142,10 +159,10 @@
     }
     @include mq(sm) {
       margin: {
-        top: mqSmDivision($marginTop, 2);
-        right:  mqSmDivision($marginRight, 2);
-        bottom: mqSmDivision($marginTop, 2);
-        left: mqSmDivision($marginRight, 2);
+        top: mqSm_division($marginTop, 2);
+        right:  mqSm_division($marginRight, 2);
+        bottom: mqSm_division($marginTop, 2);
+        left: mqSm_division($marginRight, 2);
       }
     }
   } @else if (($marginTop != null) and ($marginRight != null) and ($marginBottom != null) and ($marginLeft == null)) {
@@ -157,10 +174,10 @@
     }
     @include mq(sm) {
       margin: {
-        top: mqSmDivision($marginTop, 2);
-        right:  mqSmDivision($marginRight, 2);
-        bottom: mqSmDivision($marginBottom, 2);
-        left: mqSmDivision($marginRight, 2);
+        top: mqSm_division($marginTop, 2);
+        right:  mqSm_division($marginRight, 2);
+        bottom: mqSm_division($marginBottom, 2);
+        left: mqSm_division($marginRight, 2);
       }
     }
   } @else {
@@ -172,10 +189,10 @@
     }
     @include mq(sm) {
       margin: {
-        top: mqSmDivision($marginTop, 2);
-        right: mqSmDivision($marginRight, 2);
-        bottom: mqSmDivision($marginBottom, 2);
-        left: mqSmDivision($marginLeft, 2);
+        top: mqSm_division($marginTop, 2);
+        right: mqSm_division($marginRight, 2);
+        bottom: mqSm_division($marginBottom, 2);
+        left: mqSm_division($marginLeft, 2);
       }
     }
   }

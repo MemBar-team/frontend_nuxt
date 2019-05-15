@@ -1,5 +1,5 @@
 <template>
-  <main>
+  <main class="l-main">
     <section class="c-section">
       <!-- {{ this.$store.state }} -->
       <!-- {{ checkAuth }} -->
@@ -31,7 +31,7 @@
     </section>
     <el-pagination
       ref="pagination"
-      class="pagination"
+      class="c-pagination"
       router
       layout="prev, pager, next, ->"
       :small="this.$store.state.deviceType === 'sp'"
@@ -102,8 +102,7 @@ export default {
       // nuxtServerInit: 'nuxtServerInit'
     })
   },
-  middleware: 'notLoggedRedirect'
-  // middleware: 'auth'
+  middleware: 'unAuthRedirect'
 }
 </script>
 
@@ -116,7 +115,6 @@ export default {
 
   &_item {
     width: calc(100% / 4);
-    // padding: 12px;
     @include padding(8px);
     flex-grow: 1;
     overflow: hidden;
@@ -142,7 +140,7 @@ export default {
       }
     }
     &-name {
-      font-size: $font16;
+      @include fontSize($font16);
       font-weight: $font_bold;
       overflow: hidden;
       text-overflow: ellipsis;
@@ -163,7 +161,7 @@ export default {
       padding: 12px;
     }
     &-title {
-      font-size: $font20;
+      @include fontSize($font20);
       font-weight: $font_bold;
       overflow: hidden;
       text-overflow: ellipsis;
@@ -172,7 +170,7 @@ export default {
       margin: 0 0 4px;
     }
     &-read {
-      font-size: $font14;
+      @include fontSize($font14);
       font-weight: $font_medium;
       line-height: 1.5;
     }
@@ -197,7 +195,7 @@ export default {
   }
 }
 
-.pagination {
+.c-pagination {
   padding: 16px 16px 32px;
 }
 </style>

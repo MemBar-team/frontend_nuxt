@@ -32,14 +32,12 @@ export default {
     &-item {
       text-align: center;
     }
-
     &-inner {
       width: 300px;
       height: inherit;
       @include padding(16px, 20px, 24px);
       @include boxShadow_spread(0.1);
     }
-
     &-center {
       background-color: $color_bg_common;
       font-size: $font16;
@@ -113,10 +111,6 @@ export default {
 
   @include mq(sm) {
     padding: 0 4px 20px;
-
-    &_title {
-      // font-size: $font18;
-    }
   }
 }
 </style>

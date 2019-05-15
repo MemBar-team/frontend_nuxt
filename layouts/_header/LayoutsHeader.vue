@@ -63,7 +63,7 @@ export default {
   &_logo {
     color: $color_main_text;
     padding: 4px 0;
-    font-size: $font26;
+    @include fontSize($font26);
     margin: 0 24px 0 0px;
     cursor: pointer;
 
@@ -114,7 +114,6 @@ export default {
 
     &_logo {
       margin: auto;
-      font-size: $font22;
     }
 
     &_option {

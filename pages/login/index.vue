@@ -234,7 +234,7 @@ export default {
 .c-form {
   &_sns {
     &-title {
-      font-size: $font-size_c-form_sns-title;
+      @include fontSize($font-size_c-form_sns-title);
       text-align: center;
       @include padding(8px, 0);
       @include margin(0, 0, 12px);
@@ -260,14 +260,6 @@ export default {
       margin-bottom: 0;
       background-color: $color_facebook;
       border-color: $color_facebook;
-    }
-  }
-
-  @include mq(sm) {
-    &_sns {
-      &-title {
-        font-size: $font14;
-      }
     }
   }
 }

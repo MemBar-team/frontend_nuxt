@@ -34,16 +34,9 @@ export default {
   &_inner {
     max-width: $width_xl;
     margin: auto;
-    // padding: 12px;
     @include padding(8px);
     position: relative;
     height: inherit;
   }
-
-  // @include mq(sm) {
-  //   &_inner {
-  //     padding: 8px;
-  //   }
-  // }
 }
 </style>
