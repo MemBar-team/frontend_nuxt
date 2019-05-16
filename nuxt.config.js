@@ -1,3 +1,4 @@
+process.traceDeprecation = true;
 import pkg from './package'
 import bodyParser from 'body-parser'
 import session from 'express-session'
@@ -56,6 +57,8 @@ export default {
     '@nuxtjs/auth',
     '@nuxtjs/pwa',
     '@nuxtjs/style-resources',
+    // '@nuxtjs/google-analytics',
+    // '@nuxtjs/google-tag-manager', { id: 'GTM-XXXXXXX' }
   ],
 
   styleResources: {
@@ -64,6 +67,10 @@ export default {
       '@/assets/scss/common/_mixin.scss',
     ],
   },
+
+  // googleAnalytics: {
+  //   id: 'UA-12301-2'
+  // },
 
   /*
    ** Axios module configuration
