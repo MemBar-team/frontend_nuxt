@@ -7,6 +7,7 @@ const router = express.Router()
 // So we can use res.status() & res.json()
 const app = express()
 router.use((req, res, next) => {
+  console.log('express 起動')
   Object.setPrototypeOf(req, app.request)
   Object.setPrototypeOf(res, app.response)
   req.res = res
@@ -18,6 +19,8 @@ router.use((req, res, next) => {
 router.post('/login', (req, res) => {
   console.log('-----req-----')
   console.log(req.body)
+  console.log(req)
+  console.log(res)
   if (req.body.username === 'demo@gmail.com' && req.body.password === 'demo') {
     req.session.authUser = { username: 'demo@gmail.com' }
     return res.json({ username: 'demo@gmail.com' })

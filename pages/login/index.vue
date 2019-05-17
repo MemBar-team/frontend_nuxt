@@ -83,10 +83,10 @@
                   </nuxt-link>
                 </p>
 
-                <div class="c-form_notRegister ">
+                <p class="c-form_notRegister ">
                   アカウントを登録していない？
                   <nuxt-link to="/signup">新規登録する</nuxt-link>
-                </div>
+                </p>
               </div>
             </div>
 

@@ -1,55 +1,59 @@
 <template>
-  <main class="l-main">
-    <section class="c-section">
-      <!-- {{ this.$store.state }} -->
-      <!-- {{ checkAuth }} -->
-      <div class="c-section_inner">
-        <div class="c-posts">
-          <div
-            v-for="(renderPost, title) in renderPosts"
-            :key="title"
-            class="c-posts_item"
-          >
-            <div class="c-posts_item-inner">
-              <div class="c-posts_item-header">
-                <div class="c-posts_item-icon">
-                  <img :src="renderPost.icon" :alt="renderPost.name" />
+  <div class="l-wrapper_contents">
+    <main class="l-main">
+      <section class="c-section">
+        <!-- {{ this.$store.state }} -->
+        <!-- {{ checkAuth }} -->
+        <div class="c-section_inner">
+          <div class="c-posts">
+            <div
+              v-for="(renderPost, title) in renderPosts"
+              :key="title"
+              class="c-posts_item"
+            >
+              <div class="c-posts_item-inner">
+                <div class="c-posts_item-header">
+                  <div class="c-posts_item-icon">
+                    <img :src="renderPost.icon" :alt="renderPost.name" />
+                  </div>
+                  <p class="c-posts_item-name">{{ renderPost.name }}</p>
                 </div>
-                <p class="c-posts_item-name">{{ renderPost.name }}</p>
-              </div>
-              <div class="c-posts_item-thumb">
-                <img :src="renderPost.thumb" :alt="renderPost.title" />
-              </div>
-              <div class="c-posts_item-contents">
-                <h2 class="c-posts_item-title">{{ renderPost.title }}</h2>
-                <p class="c-posts_item-read">{{ renderPost.read }}</p>
+                <div class="c-posts_item-thumb">
+                  <img :src="renderPost.thumb" :alt="renderPost.title" />
+                </div>
+                <div class="c-posts_item-contents">
+                  <h2 class="c-posts_item-title">{{ renderPost.title }}</h2>
+                  <p class="c-posts_item-read">{{ renderPost.read }}</p>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
-    <el-pagination
-      ref="pagination"
-      class="c-pagination"
-      router
-      layout="prev, pager, next, ->"
-      :small="this.$store.state.deviceType === 'sp'"
-      :total="renderPosts.length"
-      :current-page.sync="currentPage"
-    >
-    </el-pagination>
-  </main>
+      </section>
+      <el-pagination
+        ref="pagination"
+        class="c-pagination"
+        router
+        layout="prev, pager, next, ->"
+        :small="this.$store.state.deviceType === 'sp'"
+        :total="renderPosts.length"
+        :current-page.sync="currentPage"
+      >
+      </el-pagination>
+    </main>
+    <ContensSidebar />
+  </div>
 </template>
 
 <script>
 import { mapActions } from 'vuex'
+import ContensSidebar from '~/components/_sidebar/ContentsSidebar'
 export default {
-  components: {},
+  components: {
+    ContensSidebar
+  },
   layout: 'contents',
   data() {
-    /* eslint-disable no-console */
-    console.log('データ')
     return {
       value: null,
       currentPage: 1,

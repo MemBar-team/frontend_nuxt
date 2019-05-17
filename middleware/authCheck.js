@@ -1,21 +1,14 @@
-// export default context => {
-//   console.log('aaaaa')
-//   console.log(context)
-//   console.log(context.app)
-//   console.log(context.app.$auth)
-//   console.log(context.app.$auth.$state)
-// }
-
 import { routeOption } from './utilities'
 
 export default ctx => {
-  console.log('aaaaaa-----')
+  console.log('authCheck-----')
+  console.log(ctx)
   console.log(ctx.route)
   console.log(ctx.app.$auth.$state)
   // console.log(routeOption)
   // Disable middleware if options: { auth: false } is set on the route
   if (routeOption(ctx.route, 'auth', false)) {
-    console.log('jjjjj')
+    console.log('auth False----')
     return false
   }
 

@@ -12,7 +12,7 @@
 <script>
 import LayoutsHeader from '~/layouts/_header/LayoutsHeader'
 import LayoutsFooter from '~/layouts/_footer/LayoutsFooter'
-import NavMenu from '~/components/navigation/NavMenu'
+import NavMenu from '~/components/_navigation/NavMenu'
 
 export default {
   components: {
