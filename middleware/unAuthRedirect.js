@@ -1,10 +1,8 @@
-// export default ({ store, redirect }) => {
-export default ctx => {
+export default ({ store, redirect }) => {
   console.log('unAuthRedirect')
-  console.log(ctx)
-  // console.log(store)
-  // console.log(redirect)
-  // if (!store.state.authUser) {
-  //   return redirect('/top')
-  // }
+  console.log(store)
+  console.log(redirect)
+  if (!store.state.authUser) {
+    return redirect('/top')
+  }
 }
