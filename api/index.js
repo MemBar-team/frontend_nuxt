@@ -17,7 +17,7 @@ router.use((req, res, next) => {
 
 // Add POST - /api/login
 router.post('/login', (req, res) => {
-  console.log('-----req-----')
+  console.log('-----psot login-----')
   console.log(req.body)
   console.log(req)
   console.log(res)

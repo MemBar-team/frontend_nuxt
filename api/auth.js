@@ -23,6 +23,7 @@ export default class Auth {
   }
 
   async init () {
+    console.log('----auth api----')
     // Restore strategy
     this.$storage.syncUniversal('strategy', this.options.defaultStrategy)
 
