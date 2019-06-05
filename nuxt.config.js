@@ -112,8 +112,8 @@ export default {
     }),
     // Api middleware
     // We add /api/login & /api/logout routes
-    '~/api',
-    '~/api/auth'
+    '~/api'
+    // '~/api/auth'
   ],
   router: {
     // すべてのページで middleware/user-agent.js を実行します

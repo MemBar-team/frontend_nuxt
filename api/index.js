@@ -16,13 +16,31 @@ router.use((req, res, next) => {
   next()
 })
 
+
+// const connection = mysql2.createConnection({
+//   host: 'localhost',
+//   user: 'dbuser',
+//   password: 's3kreee7',
+//   database: 'my_db'
+// })
+
+// connection.connect()
+
+// connection.query('SELECT 1 + 1 AS solution', function (err, rows, fields) {
+//   if (err) throw err
+
+//   console.log('The solution is: ', rows[0].solution)
+// })
+
+// connection.end()
+
 // Add POST - /api/login
 router.post('/login', (req, res) => {
   console.log('-----post login-----')
-  console.log(mysql2)
+  // console.log(mysql2)
   console.log(req.body)
-  console.log(req)
-  console.log(res)
+  // console.log(req)
+  // console.log(res.json({message}))
   if (req.body.username === 'demo@gmail.com' && req.body.password === 'demo') {
     req.session.authUser = { username: 'demo@gmail.com' }
     return res.json({ username: 'demo@gmail.com' })
