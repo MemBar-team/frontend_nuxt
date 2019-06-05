@@ -1,4 +1,5 @@
 import express from 'express'
+import mysql2 from 'mysql2'
 
 // Create express router
 const router = express.Router()
@@ -17,7 +18,8 @@ router.use((req, res, next) => {
 
 // Add POST - /api/login
 router.post('/login', (req, res) => {
-  console.log('-----psot login-----')
+  console.log('-----post login-----')
+  console.log(mysql2)
   console.log(req.body)
   console.log(req)
   console.log(res)

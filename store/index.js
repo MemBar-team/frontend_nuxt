@@ -73,15 +73,10 @@ export const actions = {
       console.log('トライ')
       const { data } = await axios.post('/api/login', { username, password })
       console.log(data)
-      console.log(this.$router)
       commit('SET_USER', data)
-      // this.$router.replace('/')
-      // this.$router.push('/')
-      // this.$router.push({ path: '/' })
-      // this.$route.router.go('/')
       this.$router.replace('/')
     } catch (error) {
-      console.log('えらー')
+      console.log('store login エラー')
       if (error.response && error.response.status === 401) {
         throw new Error('ユーザー情報が正しくありません')
       }
