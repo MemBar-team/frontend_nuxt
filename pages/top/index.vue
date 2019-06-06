@@ -128,7 +128,7 @@ export default {
   @include mq(sm) {
     &_inner {
       position: relative;
-      height: calc(100vh - 38px);
+      height: calc(100vh - 42px);
     }
   }
 }

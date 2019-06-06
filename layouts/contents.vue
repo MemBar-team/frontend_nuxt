@@ -34,7 +34,7 @@ export default {
   &_inner {
     max-width: $width_xl;
     margin: auto;
-    @include padding(8px);
+    padding: 8px;
     position: relative;
     height: inherit;
   }

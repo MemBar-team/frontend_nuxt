@@ -3,6 +3,9 @@
     <div class="l-header_inner">
       <h1 class="l-header_logo">
         <nuxt-link to="/">
+          <span class="l-header_logo-img">
+            <img src="/images/common/logo_membar_primary.svg" alt="MemBar" />
+          </span>
           MemBar
         </nuxt-link>
       </h1>
@@ -51,6 +54,7 @@ export default {
   position: relative;
   background-color: $color_white;
   z-index: 100;
+  height: 50px;
 
   &_inner {
     position: relative;
@@ -70,10 +74,26 @@ export default {
     a {
       color: $color_main_text;
       text-decoration: none;
+      display: inline-block;
+      position: relative;
+      padding-left: 32px;
 
       // &:hover {
       //   color: $color_link;
       // }
+    }
+
+    &-img {
+      display: inline-block;
+      max-width: 28px;
+      position: absolute;
+      top: 50%;
+      left: 0;
+      transform: translate(0, -50%);
+
+      img {
+        width: 100%;
+      }
     }
   }
 
@@ -106,6 +126,7 @@ export default {
 
   @include mq(sm) {
     @include boxShadow_down(0.1);
+    height: 46px;
 
     &_inner {
       text-align: center;
