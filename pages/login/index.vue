@@ -179,9 +179,7 @@ export default {
   },
   methods: {
     async login() {
-      console.log('ログインクリック')
       try {
-        console.log('トライ')
         await this.$store.dispatch('login', {
           username: this.validateForm.id,
           password: this.validateForm.password
@@ -189,25 +187,16 @@ export default {
         this.validateForm.id = ''
         this.validateForm.password = ''
         this.formError = null
-        // this.$router.push({ name: '/' })
-        // this.$router.push({ path: '/' })
       } catch (e) {
-        console.log('エラー')
         this.formError = e.message
       }
     },
     submitForm(formName, event) {
-      console.log(this.$refs)
-      console.log(event)
       event.preventDefault()
       this.$refs[formName].validate(valid => {
         if (valid) {
-          // alert('submit!')
-          // console.log('aaaaaa')
           this.login()
         } else {
-          /* eslint-disable no-console */
-          console.log('error submit!!')
           return false
         }
       })

@@ -23,6 +23,11 @@ export default {
 
 <style lang="scss">
 .c-form {
+  &_content {
+    max-width: 400px;
+    padding: 16px 20px 24px;
+    @include boxShadow_spread(0.1);
+  }
   &_col3 {
     display: flex;
     align-items: center;
@@ -35,7 +40,8 @@ export default {
     &-inner {
       width: 300px;
       height: inherit;
-      @include padding(16px, 20px, 24px);
+      // @include padding(16px, 20px, 24px);
+      padding: 16px 20px 24px;
       @include boxShadow_spread(0.1);
     }
     &-center {
@@ -66,7 +72,7 @@ export default {
   &_forgot {
     @include fontSize($font-size_c-form_forgot);
     text-align: center;
-    @include margin(0, 0, 16px);
+    margin-bottom: 16px;
   }
 
   &_notRegister {
