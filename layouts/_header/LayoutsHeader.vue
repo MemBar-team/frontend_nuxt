@@ -13,7 +13,7 @@
         <div
           class="slideMenu_btn"
           :class="{ active: menuActive }"
-          @click="modalOpen()"
+          @click="slideMenuToggle()"
         >
           <span></span>
         </div>
@@ -33,7 +33,7 @@
                 id="nav-home"
                 to="/"
                 exact
-                @click.native="modalClose()"
+                @click.native="slideMenuClose()"
               >
                 <a>ホーム</a>
               </router-link>
@@ -41,7 +41,7 @@
                 tag="li"
                 id="nav-operator"
                 to="/operator/"
-                @click.native="modalClose()"
+                @click.native="slideMenuClose()"
               >
                 <a>オペレーター</a>
               </router-link>
@@ -58,7 +58,7 @@
             </ul>
           </nav>
         </div>
-        <div class="slideMenu_bg" @click="modalOpen()"></div>
+        <div class="slideMenu_bg" @click="slideMenuToggle()"></div>
       </div>
     </transition>
   </header>
@@ -91,7 +91,7 @@ export default {
         this.formError = e.message
       }
     },
-    modalOpen: () => {
+    slideMenuToggle() {
       this.menuActive = !this.menuActive
       const el = document.documentElement
       if (this.menuActive === true) {
@@ -100,7 +100,7 @@ export default {
         el.classList.remove('htmlFixed')
       }
     },
-    modalClose: () => {
+    slideMenuClose() {
       this.menuActive = false
       const el = document.documentElement
       if (this.menuActive === true) {
@@ -118,7 +118,7 @@ export default {
   @include boxShadow_down(0.1);
   position: relative;
   background-color: $color_white;
-  z-index: 100;
+  z-index: 200;
   height: 50px;
 
   &_inner {
@@ -165,7 +165,7 @@ export default {
   &_option {
     position: absolute;
     top: 50%;
-    right: 24px;
+    right: 0;
     transform: translate(0, -50%);
 
     &-logout {
@@ -208,28 +208,35 @@ export default {
   }
 }
 
+.htmlFixed {
+  overflow: hidden;
+
+  body {
+    overflow: hidden;
+  }
+}
+
 .slideMenu {
   opacity: 0;
   transition: 0.3s all;
   position: fixed;
   width: 100%;
   height: 100%;
-  top: 42px;
-  left: -100%;
+  right: -100%;
   pointer-events: none;
 
   &_btn {
-    width: 44px;
-    height: 42px;
+    width: 50px;
+    height: 50px;
     background-color: $color_white;
-    border-right: solid 1px $black_origin_60;
+    border-left: solid 1px $black_origin_20;
     position: relative;
     transition: all 0.3s;
     cursor: pointer;
     box-sizing: content-box;
 
     span {
-      background-color: #000;
+      background-color: $black_origin;
       display: block;
       width: 24px;
       height: 4px;
@@ -240,11 +247,12 @@ export default {
       bottom: 0;
       margin: auto;
       transition: all 0.3s;
+      border-radius: 100px;
     }
 
     &::after {
       content: '';
-      background-color: #000;
+      background-color: $black_origin;
       display: block;
       width: 24px;
       height: 4px;
@@ -256,10 +264,11 @@ export default {
       margin: auto;
       transition: all 0.3s;
       z-index: 10;
+      border-radius: 100px;
     }
     &::before {
       content: '';
-      background-color: #000;
+      background-color: $black_origin;
       display: block;
       width: 24px;
       height: 4px;
@@ -271,10 +280,11 @@ export default {
       margin: auto;
       transition: all 0.3s;
       z-index: 10;
+      border-radius: 100px;
     }
   }
   &_btn:hover {
-    background-color: #000;
+    background-color: $black_origin;
 
     span {
       background-color: $color_white;
@@ -287,7 +297,7 @@ export default {
     }
   }
   &_btn.active {
-    background-color: #000;
+    background-color: $black_origin;
 
     span {
       background: none !important;
@@ -314,11 +324,11 @@ export default {
   &.active {
     opacity: 1;
     pointer-events: auto;
-    left: 0;
+    right: 0;
 
     .slideMenu {
       &_list {
-        left: 0;
+        right: 0;
         opacity: 1;
         pointer-events: auto;
       }
@@ -348,7 +358,7 @@ export default {
   &_list {
     position: absolute;
     top: 0;
-    left: -220px;
+    right: -220px;
     width: 220px;
     background-color: #000;
     color: rgba(255, 255, 255, 0.8);
@@ -397,7 +407,7 @@ export default {
   }
   &-enter,
   &-leave-to {
-    transform: translateX(-280px);
+    transform: translateX(280px);
     opacity: 0;
   }
 }
