@@ -76,7 +76,7 @@ export default {
 
   styleResources: {
     sass: [
-      '@/assets/scss/common/_variable.scss',
+      '@/assets/scss/common/_variables.scss',
       '@/assets/scss/common/_mixin.scss',
     ],
   },

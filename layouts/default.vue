@@ -32,6 +32,9 @@ export default {
 //   margin: auto;
 //   position: relative;
 // }
+.l-wrapper {
+  overflow-y: hidden;
+}
 
 .fade-enter-active,
 .fade-leave-active {

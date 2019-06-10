@@ -6,13 +6,14 @@
           <span class="l-header_logo-img">
             <img src="/images/common/logo_membar_primary.svg" alt="MemBar" />
           </span>
-          MemBar{{ menuActive }}
+          MemBar
         </nuxt-link>
       </h1>
       <div class="l-header_option">
         <div
+          v-if="this.$store.state.authUser"
           class="slideMenu_btn"
-          :class="{ active: menuActive }"
+          :class="{ active: this.$store.state.slideMenuOpen }"
           @click="slideMenuToggle()"
         >
           <span></span>
@@ -21,9 +22,10 @@
     </div>
     <transition name="slideFade">
       <div
+        v-if="this.$store.state.authUser"
         id="LayoutsSlideMenu"
         class="slideMenu"
-        :class="{ active: menuActive }"
+        :class="{ active: this.$store.state.slideMenuOpen }"
       >
         <div class="slideMenu_inner">
           <nav class="slideMenu_list">
@@ -54,9 +56,9 @@
                 <a>ログイン</a>
               </router-link>
               <button
-                v-if="this.$store.state.authUser"
                 class="l-header_option-logout"
-                @click="logout"
+                @click="logout()"
+                @click.native="slideMenuClose()"
               >
                 <i class="material-icons">
                   exit_to_app
@@ -77,19 +79,18 @@ export default {
   data() {
     return {
       activeIndex: '1',
-      activeIndex2: '1',
-      menuActive: false
+      activeIndex2: '1'
     }
   },
   mounted() {
-    this.$nextTick(() => {
-      const el = document.documentElement
-      if (this.menuActive === true) {
-        el.classList.add('htmlFixed')
-      } else {
-        el.classList.remove('htmlFixed')
-      }
-    })
+    // this.$nextTick(() => {
+    //   const el = document.documentElement
+    //   if (this.menuActive === true) {
+    //     el.classList.add('htmlFixed')
+    //   } else {
+    //     el.classList.remove('htmlFixed')
+    //   }
+    // })
   },
   methods: {
     async logout() {
@@ -100,22 +101,10 @@ export default {
       }
     },
     slideMenuToggle() {
-      this.menuActive = !this.menuActive
-      const el = document.documentElement
-      if (this.menuActive === true) {
-        el.classList.add('htmlFixed')
-      } else {
-        el.classList.remove('htmlFixed')
-      }
+      this.$store.dispatch('slideMenuToggle')
     },
     slideMenuClose() {
-      this.menuActive = false
-      const el = document.documentElement
-      if (this.menuActive === true) {
-        el.classList.add('htmlFixed')
-      } else {
-        el.classList.remove('htmlFixed')
-      }
+      this.$store.dispatch('slideMenuClose')
     }
   }
 }
@@ -209,10 +198,6 @@ export default {
     &_logo {
       margin: auto;
     }
-
-    &_option {
-      right: 8px;
-    }
   }
 }
 
@@ -225,15 +210,38 @@ export default {
   right: -100%;
   pointer-events: none;
 
+  &.active {
+    opacity: 1;
+    pointer-events: auto;
+    right: 0;
+
+    .slideMenu {
+      &_list {
+        right: 0;
+        opacity: 1;
+        pointer-events: auto;
+      }
+      &_bg {
+        background-color: rgba(0, 0, 0, 0.4);
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        margin: auto;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+      }
+    }
+  }
+
   &_btn {
     width: 50px;
     height: 50px;
     background-color: $color_white;
-    border-left: solid 1px $black_origin_20;
     position: relative;
     transition: all 0.3s;
     cursor: pointer;
-    box-sizing: content-box;
 
     span,
     &::after,
@@ -261,63 +269,41 @@ export default {
       content: '';
       bottom: -12px;
     }
-  }
-  &_btn:hover {
-    background-color: $black_origin;
 
-    span,
-    &::after,
-    &::before {
-      background-color: $color_white;
-    }
-  }
-  &_btn.active {
-    background-color: $black_origin;
+    &:hover {
+      background-color: $black_origin;
 
-    span {
-      background: none !important;
-    }
-
-    &::after,
-    &::before {
-      background-color: $color_white;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-    }
-    &::after {
-      transform: rotate(-45deg);
-    }
-    &::before {
-      transform: rotate(45deg);
-    }
-  }
-
-  &.active {
-    opacity: 1;
-    pointer-events: auto;
-    right: 0;
-
-    .slideMenu {
-      &_list {
-        right: 0;
-        opacity: 1;
-        pointer-events: auto;
+      span,
+      &::after,
+      &::before {
+        background-color: $color_white;
       }
-      &_bg {
-        background-color: rgba(0, 0, 0, 0.4);
-        width: 100%;
-        height: 100%;
-        position: absolute;
-        margin: auto;
+    }
+
+    &.active {
+      background-color: $black_origin;
+
+      span {
+        background: none !important;
+      }
+
+      &::after,
+      &::before {
+        background-color: $color_white;
         top: 0;
         left: 0;
         right: 0;
         bottom: 0;
       }
+      &::after {
+        transform: rotate(-45deg);
+      }
+      &::before {
+        transform: rotate(45deg);
+      }
     }
   }
+
   &_inner {
     position: relative;
     max-width: 1280px;
@@ -328,15 +314,15 @@ export default {
     transition: 0.3s all;
     pointer-events: none;
   }
+
   &_list {
     position: absolute;
     top: 0;
     right: -220px;
     width: 220px;
     background-color: $black_origin;
-    background-color: $red_origin;
     color: rgba($color_white, 0.8);
-    box-shadow: 0px 1px 2px 1px rgba(0, 0, 0, 0.2);
+    @include boxShadow_spread(0.2);
     overflow-x: hidden;
     height: 100%;
     transition: 0.3s all;
@@ -368,6 +354,13 @@ export default {
           }
         }
       }
+    }
+  }
+
+  @include mq(sm) {
+    &_btn {
+      width: 46px;
+      height: 46px;
     }
   }
 }

@@ -11,6 +11,7 @@ export const state = () => ({
   // },
   posts: getPostsData,
   deviceType: 'pc',
+  slideMenuOpen: false,
   page: [
     {
       url: '/',
@@ -51,6 +52,10 @@ export const mutations = {
 
   setDeviceType(state, value) {
     state.deviceType = value
+  },
+
+  SET_SLIDE_MENU_TOGGLE(state, value) {
+    state.slideMenuOpen = value
   }
 }
 
@@ -132,5 +137,23 @@ export const actions = {
     console.log(res)
     console.log('取得')
     state.commit('setPostsStore', res)
+  },
+
+  slideMenuToggle(context) {
+    console.log('スライド')
+    console.log(context.state)
+    const toggleStatus = context.state.slideMenuOpen
+    if (toggleStatus === true) {
+      context.commit('SET_SLIDE_MENU_TOGGLE', false)
+    } else {
+      context.commit('SET_SLIDE_MENU_TOGGLE', true)
+    }
+  },
+
+  slideMenuClose(context) {
+    console.log('スライド')
+    console.log(context.state)
+    const toggleStatus = false
+    context.commit('SET_SLIDE_MENU_TOGGLE', toggleStatus)
   }
 }
