@@ -140,3 +140,11 @@ input, button, textarea, select {
   appearance: none;
   border: none;
 }
+
+.htmlFixed {
+  // overflow: hidden;
+
+  body {
+    overflow: hidden;
+  }
+}

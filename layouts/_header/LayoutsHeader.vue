@@ -29,8 +29,8 @@
           <nav class="slideMenu_list">
             <ul>
               <router-link
-                tag="li"
                 id="nav-home"
+                tag="li"
                 to="/"
                 exact
                 @click.native="slideMenuClose()"
@@ -38,12 +38,20 @@
                 <a>ホーム</a>
               </router-link>
               <router-link
+                id="nav-account"
                 tag="li"
-                id="nav-operator"
-                to="/operator/"
+                to="/account/"
                 @click.native="slideMenuClose()"
               >
-                <a>オペレーター</a>
+                <a>アカウント</a>
+              </router-link>
+              <router-link
+                id="nav-login"
+                tag="li"
+                to="/login/"
+                @click.native="slideMenuClose()"
+              >
+                <a>ログイン</a>
               </router-link>
               <button
                 v-if="this.$store.state.authUser"
@@ -208,20 +216,12 @@ export default {
   }
 }
 
-.htmlFixed {
-  overflow: hidden;
-
-  body {
-    overflow: hidden;
-  }
-}
-
 .slideMenu {
   opacity: 0;
   transition: 0.3s all;
-  position: fixed;
+  position: sticky;
   width: 100%;
-  height: 100%;
+  height: 100vh;
   right: -100%;
   pointer-events: none;
 
@@ -235,11 +235,13 @@ export default {
     cursor: pointer;
     box-sizing: content-box;
 
-    span {
+    span,
+    &::after,
+    &::before {
       background-color: $black_origin;
       display: block;
-      width: 24px;
-      height: 4px;
+      width: 20px;
+      height: 2px;
       position: absolute;
       top: 0;
       left: 0;
@@ -247,51 +249,24 @@ export default {
       bottom: 0;
       margin: auto;
       transition: all 0.3s;
+      z-index: 10;
       border-radius: 100px;
     }
 
     &::after {
       content: '';
-      background-color: $black_origin;
-      display: block;
-      width: 24px;
-      height: 4px;
-      position: absolute;
-      top: -18px;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      margin: auto;
-      transition: all 0.3s;
-      z-index: 10;
-      border-radius: 100px;
+      top: -12px;
     }
     &::before {
       content: '';
-      background-color: $black_origin;
-      display: block;
-      width: 24px;
-      height: 4px;
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: -18px;
-      margin: auto;
-      transition: all 0.3s;
-      z-index: 10;
-      border-radius: 100px;
+      bottom: -12px;
     }
   }
   &_btn:hover {
     background-color: $black_origin;
 
-    span {
-      background-color: $color_white;
-    }
-    &::after {
-      background-color: $color_white;
-    }
+    span,
+    &::after,
     &::before {
       background-color: $color_white;
     }
@@ -303,20 +278,18 @@ export default {
       background: none !important;
     }
 
-    &::after {
-      background-color: $color_white;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      transform: rotate(-45deg);
-    }
+    &::after,
     &::before {
       background-color: $color_white;
       top: 0;
       left: 0;
       right: 0;
       bottom: 0;
+    }
+    &::after {
+      transform: rotate(-45deg);
+    }
+    &::before {
       transform: rotate(45deg);
     }
   }
@@ -360,11 +333,12 @@ export default {
     top: 0;
     right: -220px;
     width: 220px;
-    background-color: #000;
-    color: rgba(255, 255, 255, 0.8);
+    background-color: $black_origin;
+    background-color: $red_origin;
+    color: rgba($color_white, 0.8);
     box-shadow: 0px 1px 2px 1px rgba(0, 0, 0, 0.2);
     overflow-x: hidden;
-    height: calc(100% - 42px);
+    height: 100%;
     transition: 0.3s all;
 
     > ul {
