@@ -65,8 +65,10 @@ export default {
 .NavMenu {
   position: sticky;
   z-index: 100;
-  width: 100%;
+  // width: 100%;
   top: 0;
+  left: 0;
+  right: 0;
   border-top: solid 2px;
   border-image: $gradientToRight;
   border-image-slice: 1;

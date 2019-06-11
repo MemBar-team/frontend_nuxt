@@ -33,7 +33,7 @@ export default {
 //   position: relative;
 // }
 .l-wrapper {
-  overflow-y: hidden;
+  // overflow-x: hidden;
 }
 
 .fade-enter-active,

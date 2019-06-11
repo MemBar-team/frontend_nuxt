@@ -22,7 +22,7 @@
     </div>
     <transition name="slideFade">
       <div
-        v-if="this.$store.state.authUser"
+        v-if="this.$store.state.authUser && this.$store.state.slideMenuOpen"
         id="LayoutsSlideMenu"
         class="slideMenu"
         :class="{ active: this.$store.state.slideMenuOpen }"
@@ -55,7 +55,10 @@
               >
                 <a>ログイン</a>
               </router-link>
-              <button
+              <router-link id="nav-loout" tag="li" to="/top/" @click="logout()">
+                <a>ログアウト</a>
+              </router-link>
+              <!-- <button
                 class="l-header_option-logout"
                 @click="logout()"
                 @click.native="slideMenuClose()"
@@ -64,7 +67,7 @@
                   exit_to_app
                 </i>
                 ログアウト
-              </button>
+              </button> -->
             </ul>
           </nav>
         </div>
@@ -85,26 +88,45 @@ export default {
   mounted() {
     // this.$nextTick(() => {
     //   const el = document.documentElement
-    //   if (this.menuActive === true) {
+    //   if (this.$store.state.slideMenuOpen === true) {
     //     el.classList.add('htmlFixed')
     //   } else {
     //     el.classList.remove('htmlFixed')
     //   }
     // })
   },
+  // computed() {
+  //   const el = document.documentElement
+  //   if (this.$store.state.slideMenuOpen === true) {
+  //     el.classList.add('htmlFixed')
+  //   } else {
+  //     el.classList.remove('htmlFixed')
+  //   }
+  // },
   methods: {
     async logout() {
       try {
         await this.$store.dispatch('logout')
+        await this.$store.dispatch('slideMenuClose')
       } catch (e) {
         this.formError = e.message
       }
     },
+    htmlFixedToggle() {
+      const el = document.documentElement
+      if (this.$store.state.slideMenuOpen === true) {
+        el.classList.add('htmlFixed')
+      } else {
+        el.classList.remove('htmlFixed')
+      }
+    },
     slideMenuToggle() {
       this.$store.dispatch('slideMenuToggle')
+      this.htmlFixedToggle()
     },
     slideMenuClose() {
       this.$store.dispatch('slideMenuClose')
+      this.htmlFixedToggle()
     }
   }
 }
