@@ -1,40 +1,40 @@
 <template>
-  <nav class="NavMenu">
+  <nav class="p-globalNav">
     <el-menu
       :default-active="activeIndex"
-      class="NavMenu_inner"
+      class="p-globalNav_inner"
       mode="horizontal"
       router
     >
       <el-menu-item
-        class="NavMenu_item"
+        class="p-globalNav_item"
         index="index"
         :route="{ name: 'index' }"
       >
-        <div class="NavMenu_item-inner">
+        <div class="p-globalNav_item-inner">
           <i class="material-icons">home</i>
-          <span class="NavMenu_item-text">ホーム</span>
+          <span class="p-globalNav_item-text">ホーム</span>
         </div>
       </el-menu-item>
       <el-menu-item
-        class="NavMenu_item"
+        class="p-globalNav_item"
         index="search"
         :route="{ name: 'search' }"
       >
         <!-- <p>{{ this.$route }}</p> -->
-        <div class="NavMenu_item-inner">
+        <div class="p-globalNav_item-inner">
           <i class="material-icons">search</i>
-          <span class="NavMenu_item-text">サーチ</span>
+          <span class="p-globalNav_item-text">サーチ</span>
         </div>
       </el-menu-item>
       <el-menu-item
-        class="NavMenu_item"
+        class="p-globalNav_item"
         index="message"
         :route="{ name: 'message' }"
       >
-        <div class="NavMenu_item-inner">
+        <div class="p-globalNav_item-inner">
           <i class="material-icons">alternate_email</i>
-          <span class="NavMenu_item-text">メッセージ</span>
+          <span class="p-globalNav_item-text">メッセージ</span>
         </div>
       </el-menu-item>
     </el-menu>
@@ -62,10 +62,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.NavMenu {
+.p-globalNav {
   position: sticky;
   z-index: 100;
-  // width: 100%;
+  width: 100%;
   top: 0;
   left: 0;
   right: 0;

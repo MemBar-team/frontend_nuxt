@@ -12,7 +12,7 @@
       <div class="l-header_option">
         <div
           v-if="this.$store.state.authUser"
-          class="slideMenu_btn"
+          class="l-slideMenu-btn"
           :class="{ active: this.$store.state.slideMenuOpen }"
           @click="slideMenuToggle()"
         >
@@ -24,11 +24,11 @@
       <div
         v-if="this.$store.state.authUser && this.$store.state.slideMenuOpen"
         id="LayoutsSlideMenu"
-        class="slideMenu"
+        class="l-slideMenu"
         :class="{ active: this.$store.state.slideMenuOpen }"
       >
-        <div class="slideMenu_inner">
-          <nav class="slideMenu_list">
+        <div class="l-slideMenu_inner">
+          <nav class="l-slideMenu_list">
             <ul>
               <router-link
                 id="nav-home"
@@ -56,7 +56,10 @@
                 <a>ログイン</a>
               </router-link>
               <router-link id="nav-loout" tag="li" to="/top/" @click="logout()">
-                <a>ログアウト</a>
+                <a class="">
+                  <i class="material-icons">exit_to_app</i>
+                  ログアウト
+                </a>
               </router-link>
               <!-- <button
                 class="l-header_option-logout"
@@ -71,7 +74,7 @@
             </ul>
           </nav>
         </div>
-        <div class="slideMenu_bg" @click="slideMenuToggle()"></div>
+        <div class="l-slideMenu_bg" @click="slideMenuToggle()"></div>
       </div>
     </transition>
   </header>
@@ -223,7 +226,7 @@ export default {
   }
 }
 
-.slideMenu {
+.l-slideMenu {
   opacity: 0;
   transition: 0.3s all;
   position: sticky;
@@ -237,7 +240,7 @@ export default {
     pointer-events: auto;
     right: 0;
 
-    .slideMenu {
+    .l-slideMenu {
       &_list {
         right: 0;
         opacity: 1;
@@ -257,7 +260,60 @@ export default {
     }
   }
 
-  &_btn {
+  &_inner {
+    position: relative;
+    max-width: 1280px;
+    margin: auto;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    transition: 0.3s all;
+    pointer-events: none;
+  }
+
+  &_list {
+    position: absolute;
+    top: 0;
+    right: -220px;
+    width: 220px;
+    background-color: $black_origin;
+    color: rgba($color_white, 0.8);
+    @include boxShadow_spread(0.2);
+    overflow-x: hidden;
+    height: 100%;
+    transition: 0.3s all;
+
+    > ul {
+      li {
+        a {
+          color: rgba(255, 255, 255, 0.8);
+          text-decoration: none;
+          display: block;
+          padding: 16px 12px;
+          font-size: 16px;
+          border-bottom: solid 1px rgba(255, 255, 255, 0.2);
+          &:hover {
+            background-color: rgba(255, 255, 255, 0.4);
+            color: rgba(255, 255, 255, 1);
+            transition: 0.3s;
+          }
+        }
+        &.nuxt-link-active {
+          a {
+            color: rgba(255, 255, 255, 1);
+            background-color: rgba(255, 255, 255, 0.2);
+          }
+        }
+        &:last-child {
+          a {
+            border-bottom: solid 1px #000;
+          }
+        }
+      }
+    }
+  }
+
+  &-btn {
     width: 50px;
     height: 50px;
     background-color: $color_white;
@@ -326,61 +382,8 @@ export default {
     }
   }
 
-  &_inner {
-    position: relative;
-    max-width: 1280px;
-    margin: auto;
-    width: 100%;
-    height: 100%;
-    z-index: 10;
-    transition: 0.3s all;
-    pointer-events: none;
-  }
-
-  &_list {
-    position: absolute;
-    top: 0;
-    right: -220px;
-    width: 220px;
-    background-color: $black_origin;
-    color: rgba($color_white, 0.8);
-    @include boxShadow_spread(0.2);
-    overflow-x: hidden;
-    height: 100%;
-    transition: 0.3s all;
-
-    > ul {
-      li {
-        a {
-          color: rgba(255, 255, 255, 0.8);
-          text-decoration: none;
-          display: block;
-          padding: 16px 12px;
-          font-size: 16px;
-          border-bottom: solid 1px rgba(255, 255, 255, 0.2);
-          &:hover {
-            background-color: rgba(255, 255, 255, 0.4);
-            color: rgba(255, 255, 255, 1);
-            transition: 0.3s;
-          }
-        }
-        &.nuxt-link-active {
-          a {
-            color: rgba(255, 255, 255, 1);
-            background-color: rgba(255, 255, 255, 0.2);
-          }
-        }
-        &:last-child {
-          a {
-            border-bottom: solid 1px #000;
-          }
-        }
-      }
-    }
-  }
-
   @include mq(sm) {
-    &_btn {
+    &-btn {
       width: 46px;
       height: 46px;
     }
