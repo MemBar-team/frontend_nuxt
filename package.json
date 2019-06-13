@@ -27,7 +27,9 @@
     "material-design-icons": "^3.0.1",
     "mysql2": "^1.6.5",
     "nuxt": "^2.8.1",
+    "popmotion": "^8.6.10",
     "sequelize": "^5.8.7",
+    "vue-pose": "^0.5.1",
     "vuex": "^3.1.0",
     "whatwg-fetch": "^3.0.0"
   },
