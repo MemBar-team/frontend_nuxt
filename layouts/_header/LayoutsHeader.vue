@@ -7,6 +7,7 @@
             <img src="/images/common/logo_membar_primary.svg" alt="MemBar" />
           </span>
           MemBar
+          <img src="/images/common/logo_membar_normal_text.svg" alt="MemBar" />
         </nuxt-link>
       </h1>
       <div class="l-header_option">
@@ -21,54 +22,6 @@
       </div>
     </div>
     <SlideMenu />
-    <!-- <transition name="slideFade">
-      <div
-        v-if="this.$store.state.authUser && this.$store.state.slideMenuOpen"
-        class="l-slideMenu"
-        :class="{ active: this.$store.state.slideMenuOpen }"
-      >
-        <div class="l-slideMenu_inner">
-          <nav class="l-slideMenu_list">
-            <ul>
-              <router-link
-                tag="li"
-                to="/"
-                exact
-                @click.native="slideMenuClose()"
-              >
-                <a>
-                  <span>
-                    <i class="material-icons">home</i>
-                    ホーム
-                  </span>
-                </a>
-              </router-link>
-              <router-link
-                tag="li"
-                to="/account/"
-                @click.native="slideMenuClose()"
-              >
-                <a>
-                  <span>
-                    <i class="material-icons">account_circle</i>
-                    アカウント
-                  </span>
-                </a>
-              </router-link>
-              <li @click="logout($event)">
-                <a>
-                  <span>
-                    <i class="material-icons">exit_to_app</i>
-                    ログアウト
-                  </span>
-                </a>
-              </li>
-            </ul>
-          </nav>
-        </div>
-        <div class="l-slideMenu_bg" @click="slideMenuToggle()"></div>
-      </div>
-    </transition> -->
   </header>
 </template>
 
