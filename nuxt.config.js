@@ -125,8 +125,8 @@ export default {
     }),
     // Api middleware
     // We add /api/login & /api/logout routes
-    '~/api',
-    '~/api/db'
+    '~/api'
+    // '~/api/db'
     // '~/api/auth'
   ],
   router: {

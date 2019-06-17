@@ -51,29 +51,18 @@ router.post('/login', (req, res) => {
   connection
     .then(conn => {
       console.log('POST DBアクセス')
-      // const email = 'test@gmail.com';
       const email = req.body.username;
       const password = req.body.password;
       console.log(email)
       console.log(password)
-      // conn.query(`SELECT user_email, user_password from users WHERE user_email="${email}"`)
-      conn.query(`SELECT user_email, user_password from users WHERE user_password="${password}"`)
+      conn.query(`SELECT email, password from users WHERE email="${email}"`)
         .then(rows => {
-          // console.log(rows.length);
-          const sample ='pass1234';
-          const data = rows[0];
-          // console.log(rows);
-          console.log(rows[0].user_email);
-          console.log(rows[0].user_password);
-          console.log(email);
-          console.log(password);
+          console.log(password === rows[0].password);
+          console.log(email === rows[0].email);
+          console.log(_.isEqual(email, rows[0].email));
           console.log(_.isEqual(password, rows[0].password));
-          // console.log(_.isEqual(password, sample));
-          // console.log(_.isEqual(rows[0].password, sample));
-          // console.log(Object.is(rows[0].password, sample))
 
-          // if (email === rows[0].user_email && password === rows[0].password) {
-          if (password === rows[0].password) {
+          if (email === rows[0].email && password === rows[0].password) {
             console.log('ログイン成功')
             // req.session.authUser = { username: 'demo@gmail.com' }
             return res.json({ username: email })
