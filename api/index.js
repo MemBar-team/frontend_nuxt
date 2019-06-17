@@ -62,7 +62,7 @@ router.post('/login', (req, res) => {
           console.log(_.isEqual(email, rows[0].email));
           console.log(_.isEqual(password, rows[0].password));
 
-          if (email === rows[0].email && password === rows[0].password) {
+          if (_.isEqual(email, rows[0].email) && _.isEqual(password, rows[0].password)) {
             console.log('ログイン成功')
             // req.session.authUser = { username: 'demo@gmail.com' }
             return res.json({ username: email })

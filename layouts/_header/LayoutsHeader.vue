@@ -6,8 +6,12 @@
           <span class="l-header_logo-img">
             <img src="/images/common/logo_membar_primary.svg" alt="MemBar" />
           </span>
-          MemBar
-          <img src="/images/common/logo_membar_normal_text.svg" alt="MemBar" />
+          <span class="l-header_logo-text">
+            <img
+              src="/images/common/logo_membar_normal_text.svg"
+              alt="MemBar"
+            />
+          </span>
         </nuxt-link>
       </h1>
       <div class="l-header_option">
@@ -90,9 +94,19 @@ export default {
       top: 50%;
       left: 0;
       transform: translate(0, -50%);
+      font-size: 0;
 
       img {
         width: 100%;
+      }
+    }
+    &-text {
+      display: inline-block;
+      height: 24px;
+      font-size: 0;
+
+      img {
+        height: 100%;
       }
     }
   }
