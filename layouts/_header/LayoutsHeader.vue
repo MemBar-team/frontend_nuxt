@@ -58,7 +58,7 @@ export default {
   position: relative;
   background-color: $color_white;
   z-index: 200;
-  height: 50px;
+  height: 48px;
 
   &_inner {
     position: relative;
@@ -66,6 +66,7 @@ export default {
     padding: 8px 24px;
     max-width: $width_xl;
     margin: 0 auto;
+    height: inherit;
   }
 
   &_logo {

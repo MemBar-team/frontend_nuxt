@@ -50,25 +50,18 @@ router.post('/login', (req, res) => {
   console.log(req.body)
   connection
     .then(conn => {
-      console.log('POST DBアクセス')
       const email = req.body.username;
       const password = req.body.password;
-      console.log(email)
-      console.log(password)
+
       conn.query(`SELECT email, password from users WHERE email="${email}"`)
         .then(rows => {
-          console.log(password === rows[0].password);
-          console.log(email === rows[0].email);
-          console.log(_.isEqual(email, rows[0].email));
-          console.log(_.isEqual(password, rows[0].password));
-
           if (_.isEqual(email, rows[0].email) && _.isEqual(password, rows[0].password)) {
             console.log('ログイン成功')
             // req.session.authUser = { username: 'demo@gmail.com' }
             return res.json({ username: email })
           }
           // return res.json({ rows })
-          // conn.end();
+          conn.end();
         })
         .catch(err => { 
           //handle query error
@@ -76,7 +69,7 @@ router.post('/login', (req, res) => {
         })
         .finally(() => {
           console.log('終了')
-          conn.end();
+          // conn.end();
         });
     })
     .catch(err => {

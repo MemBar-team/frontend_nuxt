@@ -182,8 +182,8 @@ export default {
   }
 
   &-btn {
-    width: 50px;
-    height: 50px;
+    width: 48px;
+    height: 48px;
     background-color: $color_white;
     position: relative;
     transition: all 0.3s;
