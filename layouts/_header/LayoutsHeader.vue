@@ -103,7 +103,7 @@ export default {
     }
     &-text {
       display: inline-block;
-      height: 24px;
+      height: 28px;
       font-size: 0;
 
       img {
