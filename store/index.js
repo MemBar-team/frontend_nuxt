@@ -11,6 +11,7 @@ export const state = () => ({
   // },
   posts: getPostsData,
   deviceType: 'pc',
+  slideMenuOpen: false,
   page: [
     {
       url: '/',
@@ -51,6 +52,10 @@ export const mutations = {
 
   setDeviceType(state, value) {
     state.deviceType = value
+  },
+
+  SET_SLIDE_MENU_TOGGLE(state, value) {
+    state.slideMenuOpen = value
   }
 }
 
@@ -73,15 +78,10 @@ export const actions = {
       console.log('トライ')
       const { data } = await axios.post('/api/login', { username, password })
       console.log(data)
-      console.log(this.$router)
       commit('SET_USER', data)
-      // this.$router.replace('/')
-      // this.$router.push('/')
-      // this.$router.push({ path: '/' })
-      // this.$route.router.go('/')
       this.$router.replace('/')
     } catch (error) {
-      console.log('えらー')
+      console.log('store login エラー')
       if (error.response && error.response.status === 401) {
         throw new Error('ユーザー情報が正しくありません')
       }
@@ -130,24 +130,6 @@ export const actions = {
     state.commit('SET_AUTH', res.auth)
   },
 
-  getUserAgent(state) {
-    // ユーザーエージェント取得
-    const ua = navigator.userAgent.toLowerCase()
-    // iPhone
-    const iphone = ua.indexOf('iphone') > -1
-    // Android
-    const android = ua.indexOf('android') > -1 && ua.indexOf('mobile') > -1
-
-    // PC or SP 判定
-    if (iphone || android) {
-      // スマホ（iPhone, Android）の時
-      state.commit('setDeviceType', 'sp')
-    } else {
-      // それ以外はPC
-      state.commit('setDeviceType', 'pc')
-    }
-  },
-
   async getPosts(state) {
     // 投稿データを取得
     console.log('投稿データを取得')
@@ -155,5 +137,23 @@ export const actions = {
     console.log(res)
     console.log('取得')
     state.commit('setPostsStore', res)
+  },
+
+  slideMenuToggle(context) {
+    console.log('スライド')
+    console.log(context.state)
+    const toggleStatus = context.state.slideMenuOpen
+    if (toggleStatus === true) {
+      context.commit('SET_SLIDE_MENU_TOGGLE', false)
+    } else {
+      context.commit('SET_SLIDE_MENU_TOGGLE', true)
+    }
+  },
+
+  slideMenuClose(context) {
+    console.log('スライド')
+    console.log(context.state)
+    const toggleStatus = false
+    context.commit('SET_SLIDE_MENU_TOGGLE', toggleStatus)
   }
 }

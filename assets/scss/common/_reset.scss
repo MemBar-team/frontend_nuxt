@@ -12,17 +12,14 @@ html {
   // overflow-x: hidden;
   // overflow-y: auto;
   color: $black_origin;
+  min-height: 100%;
+  position: relative;
 }
 
-html,
-body {
-  height: 100%;
-}
-
-body {
-  overflow-y: scroll;
-  overscroll-behavior-y: none;
-}
+// html,
+// body {
+//   height: 100%;
+// }
 
 html, body, div, span, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -44,6 +41,17 @@ time, mark, audio, video {
   background: transparent;
   font-feature-settings : "palt";
   letter-spacing: 0.05em;
+}
+
+body {
+  overflow-y: auto;
+  overflow-x: hidden;
+  overscroll-behavior-y: none;
+  margin-bottom: 46px;
+
+  @include mq(sm) {
+    margin-bottom: 42px;
+  }
 }
 
 *,
@@ -131,4 +139,12 @@ input, select {
 input, button, textarea, select {
   appearance: none;
   border: none;
+}
+
+.htmlFixed {
+  // overflow: hidden;
+
+  body {
+    overflow: hidden;
+  }
 }

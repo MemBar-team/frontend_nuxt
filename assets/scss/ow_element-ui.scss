@@ -1,5 +1,5 @@
 @charset "utf-8";
-@import './common/_variable';
+@import './common/_variables';
 @import './common/_mixin';
 
 /* Overwriting Element-ui SCSS */
@@ -51,7 +51,7 @@
 
   &-button {
     padding: 0.8em 1em;
-    font-size: 1.2rem;
+    font-size: $font12;
     transition: 0.3s;
 
     &.is-round {
@@ -110,10 +110,17 @@
     }
   }
 
+  &-form{
+    &-item {
+      margin-bottom: 20px;
+    }
+  }
+
   &-input {
     &__inner {
       height: inherit;
-      padding: 0 32px 0 16px;
+      line-height: inherit;
+      padding: 0 32px 0 12px; 
     }
     &__suffix {
       top: 50%;

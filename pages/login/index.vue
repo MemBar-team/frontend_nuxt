@@ -1,9 +1,9 @@
 <template>
-  <main class="c-main">
+  <main class="l-main">
     <section class="c-section">
       <div class="c-section_inner">
-        <div class="c-form">
-          <h2 class="c-form_title">
+        <div class="p-form">
+          <h2 class="p-form_title">
             ログインフォーム
           </h2>
           <!-- {{ this.$store.state }} -->
@@ -17,14 +17,14 @@
             </span>
           </div>
 
-          <div class="c-form_col3">
-            <div class="c-form_col3-item">
-              <div class="c-form_col3-inner">
+          <div class="c-form">
+            <div class="c-form_item">
+              <div class="c-form_item_inner">
                 <el-form
                   ref="validateForm"
                   :model="validateForm"
                   class="c-form_login"
-                  :status-icon="true"
+                  status-icon
                 >
                   <el-form-item
                     label="User ID or Email"
@@ -40,7 +40,6 @@
                     <el-input
                       v-model="validateForm.id"
                       type="email"
-                      autocomplete="on"
                       maxlength="100"
                     >
                     </el-input>
@@ -55,13 +54,12 @@
                         trigger: 'blur'
                       }
                     ]"
-                    status-icon
                   >
                     <el-input
                       v-model="validateForm.password"
                       type="password"
-                      autocomplete="on"
                       maxlength="100"
+                      show-password
                     >
                     </el-input>
                   </el-form-item>
@@ -85,19 +83,19 @@
                   </nuxt-link>
                 </p>
 
-                <div class="c-form_notRegister ">
+                <p class="c-form_notRegister ">
                   アカウントを登録していない？
                   <nuxt-link to="/signup">新規登録する</nuxt-link>
-                </div>
+                </p>
               </div>
             </div>
 
-            <div class="c-form_col3-item">
-              <span class="c-form_col3-center">OR</span>
+            <div class="c-form_item">
+              <span class="c-form_item_center">OR</span>
             </div>
 
-            <div class="c-form_col3-item">
-              <div class="c-form_col3-inner">
+            <div class="c-form_item">
+              <div class="c-form_item_inner">
                 <h3 class="c-form_sns-title">ソーシャルログイン</h3>
                 <div>
                   <el-button
@@ -181,9 +179,7 @@ export default {
   },
   methods: {
     async login() {
-      console.log('ログインクリック')
       try {
-        console.log('トライ')
         await this.$store.dispatch('login', {
           username: this.validateForm.id,
           password: this.validateForm.password
@@ -191,31 +187,25 @@ export default {
         this.validateForm.id = ''
         this.validateForm.password = ''
         this.formError = null
-        // this.$router.push({ name: '/' })
-        // this.$router.push({ path: '/' })
       } catch (e) {
-        console.log('エラー')
         this.formError = e.message
       }
     },
     submitForm(formName, event) {
-      console.log(this.$refs)
-      console.log(event)
       event.preventDefault()
       this.$refs[formName].validate(valid => {
         if (valid) {
-          // alert('submit!')
-          // console.log('aaaaaa')
           this.login()
         } else {
-          /* eslint-disable no-console */
-          console.log('error submit!!')
           return false
         }
       })
     },
     resetForm(formName) {
       this.$refs[formName].resetFields()
+    },
+    passwordToggle() {
+      console.log('クリック')
     }
     // ...mapActions({
     //   login: 'login'
@@ -223,7 +213,8 @@ export default {
     //   // getPosts: 'getPosts'
     //   // nuxtServerInit: 'nuxtServerInit'
     // })
-  }
+  },
+  middleware: 'authCheck'
 }
 </script>
 
@@ -231,14 +222,14 @@ export default {
 .c-form {
   &_sns {
     &-title {
-      font-size: $font-size_c-form_sns-title;
+      @include fontSize($font-size_c-form_sns-title);
       text-align: center;
-      padding: 8px 0;
-      margin: 0 0 12px;
+      @include padding(8px, 0);
+      @include margin(0, 0, 12px);
     }
 
     &-btn {
-      margin: 0 0 20px;
+      @include margin(0, 0, 20px);
       transition: all 0.3s;
       width: 100%;
 

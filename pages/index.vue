@@ -1,55 +1,59 @@
 <template>
-  <main>
-    <section class="c-section">
-      <!-- {{ this.$store.state }} -->
-      <!-- {{ checkAuth }} -->
-      <div class="c-section_inner">
-        <div class="Posts">
-          <div
-            v-for="(renderPost, title) in renderPosts"
-            :key="title"
-            class="Posts_item"
-          >
-            <div class="Posts_item-inner">
-              <div class="Posts_item-header">
-                <div class="Posts_item-icon">
-                  <img :src="renderPost.icon" :alt="renderPost.name" />
+  <div class="l-wrapper_contents">
+    <main class="l-main">
+      <section class="c-section">
+        <!-- {{ this.$store.state }} -->
+        <!-- {{ checkAuth }} -->
+        <div class="c-section_inner">
+          <div class="c-posts">
+            <div
+              v-for="(renderPost, title) in renderPosts"
+              :key="title"
+              class="c-posts_item"
+            >
+              <div class="c-posts_item-inner">
+                <div class="c-posts_item-header">
+                  <div class="c-posts_item-icon">
+                    <img :src="renderPost.icon" :alt="renderPost.name" />
+                  </div>
+                  <p class="c-posts_item-name">{{ renderPost.name }}</p>
                 </div>
-                <p class="Posts_item-name">{{ renderPost.name }}</p>
-              </div>
-              <div class="Posts_item-thumb">
-                <img :src="renderPost.thumb" :alt="renderPost.title" />
-              </div>
-              <div class="Posts_item-contents">
-                <h2 class="Posts_item-title">{{ renderPost.title }}</h2>
-                <p class="Posts_item-read">{{ renderPost.read }}</p>
+                <div class="c-posts_item-thumb">
+                  <img :src="renderPost.thumb" :alt="renderPost.title" />
+                </div>
+                <div class="c-posts_item-contents">
+                  <h2 class="c-posts_item-title">{{ renderPost.title }}</h2>
+                  <p class="c-posts_item-read">{{ renderPost.read }}</p>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
-    <el-pagination
-      ref="pagination"
-      class="pagination"
-      router
-      layout="prev, pager, next, ->"
-      :small="this.$store.state.deviceType === 'sp'"
-      :total="renderPosts.length"
-      :current-page.sync="currentPage"
-    >
-    </el-pagination>
-  </main>
+      </section>
+      <el-pagination
+        ref="pagination"
+        class="c-pagination"
+        router
+        layout="prev, pager, next, ->"
+        :small="this.$store.state.deviceType === 'sp'"
+        :total="renderPosts.length"
+        :current-page.sync="currentPage"
+      >
+      </el-pagination>
+    </main>
+    <ContensSidebar />
+  </div>
 </template>
 
 <script>
 import { mapActions } from 'vuex'
+import ContensSidebar from '~/components/_sidebar/ContentsSidebar'
 export default {
-  components: {},
+  components: {
+    ContensSidebar
+  },
   layout: 'contents',
   data() {
-    /* eslint-disable no-console */
-    console.log('データ')
     return {
       value: null,
       currentPage: 1,
@@ -102,13 +106,12 @@ export default {
       // nuxtServerInit: 'nuxtServerInit'
     })
   },
-  middleware: 'notLoggedRedirect'
-  // middleware: 'auth'
+  middleware: 'unAuthRedirect'
 }
 </script>
 
 <style lang="scss" scoped>
-.Posts {
+.c-posts {
   display: flex;
   flex-wrap: wrap;
   align-items: flex-start;
@@ -116,7 +119,7 @@ export default {
 
   &_item {
     width: calc(100% / 4);
-    padding: 12px;
+    @include padding(8px);
     flex-grow: 1;
     overflow: hidden;
 
@@ -141,7 +144,7 @@ export default {
       }
     }
     &-name {
-      font-size: $font16;
+      @include fontSize($font16);
       font-weight: $font_bold;
       overflow: hidden;
       text-overflow: ellipsis;
@@ -162,7 +165,7 @@ export default {
       padding: 12px;
     }
     &-title {
-      font-size: $font20;
+      @include fontSize($font20);
       font-weight: $font_bold;
       overflow: hidden;
       text-overflow: ellipsis;
@@ -171,7 +174,7 @@ export default {
       margin: 0 0 4px;
     }
     &-read {
-      font-size: $font14;
+      @include fontSize($font14);
       font-weight: $font_medium;
       line-height: 1.5;
     }
@@ -196,7 +199,7 @@ export default {
   }
 }
 
-.pagination {
+.c-pagination {
   padding: 16px 16px 32px;
 }
 </style>

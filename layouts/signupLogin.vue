@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex'
+// import { mapActions } from 'vuex'
 import LayoutsHeader from '~/layouts/_header/LayoutsHeader'
 import LayoutsFooter from '~/layouts/_footer/LayoutsFooter'
 
@@ -17,56 +17,58 @@ export default {
   components: {
     LayoutsHeader,
     LayoutsFooter
-  },
-  mounted() {
-    this.getUserAgent()
-  },
-  methods: {
-    ...mapActions({
-      getUserAgent: 'getUserAgent'
-    })
   }
 }
 </script>
 
 <style lang="scss">
+.p-form {
+  &_title {
+    @include padding(36px, 0, 28px);
+    @include margin(0, 0, 20px);
+    @include fontSize($font-size_c-form_title);
+    text-align: center;
+  }
+
+  @include mq(sm) {
+    padding: 0 4px 16px;
+  }
+}
 .c-form {
-  &_col3 {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: auto;
 
-    &-item {
-      text-align: center;
-    }
+  &-single {
+    max-width: 400px;
+    padding: 16px 20px 24px;
+    @include boxShadow_spread(0.1);
+    margin: auto;
+  }
 
-    &-inner {
+  &_item {
+    text-align: center;
+
+    &_inner {
       width: 300px;
       height: inherit;
+      // @include padding(16px, 20px, 24px);
       padding: 16px 20px 24px;
       @include boxShadow_spread(0.1);
     }
-
-    &-center {
+    &_center {
       background-color: $color_bg_common;
       font-size: $font16;
-      padding: 4px 12px;
+      @include padding(4px, 12px);
       border-radius: 100px;
-      margin: 0 40px;
+      @include margin(0, 40px);
       display: inline-block;
     }
   }
 
-  &_title {
-    font-size: $font-size_c-form_title;
-    text-align: center;
-    padding: 40px 0 32px;
-    margin: 0 0 20px;
-  }
-
   &_login {
-    margin: 0 0 40px;
+    @include margin(0, 0, 40px);
   }
 
   &_btn {
@@ -74,22 +76,23 @@ export default {
   }
 
   &_forgot {
-    font-size: $font-size_c-form_forgot;
+    @include fontSize($font-size_c-form_forgot);
     text-align: center;
-    margin: 0 0 16px;
+    margin-bottom: 16px;
   }
 
   &_notRegister {
-    font-size: $font-size_c-form_notRegister;
+    @include fontSize($font-size_c-form_notRegister);
     font-weight: $font_bold;
     text-align: center;
+    @include margin(auto, auto, 16px);
   }
 
   &_error {
-    font-size: $font-size_c-form_error;
+    @include fontSize($font-size_c-form_error);
     text-align: center;
     color: $color-error;
-    margin-bottom: 20px;
+    @include margin(auto, auto, 20px);
 
     &-message {
       position: relative;
@@ -106,20 +109,16 @@ export default {
   }
 
   @include mq(md) {
-    &_col3 {
-      display: block;
+    display: block;
 
-      &-inner {
+    &_item {
+      &_inner {
         width: 100%;
       }
-      &-center {
-        margin: 20px auto;
+      &_center {
+        @include margin(20px, auto);
       }
     }
-  }
-
-  @include mq(sm) {
-    padding: 0 16px 40px;
   }
 }
 </style>

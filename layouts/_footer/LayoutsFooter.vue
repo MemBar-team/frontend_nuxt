@@ -20,11 +20,15 @@ export default {
 <style lang="scss" scoped>
 .l-footer {
   background: $gradientToRight;
-  position: relative;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  height: 46px;
 
   &_inner {
-    padding: 16px 0;
+    padding: 16px;
     position: relative;
+    height: inherit;
   }
 
   &_copyright {
@@ -35,7 +39,10 @@ export default {
   }
 
   @include mq(sm) {
+    height: 42px;
+
     &_inner {
+      height: inherit;
       padding: 12px;
     }
   }

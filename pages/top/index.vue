@@ -1,25 +1,27 @@
 <template>
-  <div class="p-top">
+  <main class="l-main">
     <!-- <transition name="fade"> -->
-    <div class="p-top_inner">
-      <div class="p-top_bg"></div>
-      <div class="p-top_overlay"></div>
-      <div class="p-top_contents">
-        <h1 class="p-top_title">
-          趣味と仲間を繋げよう
-        </h1>
-        <div class="p-top_access">
-          <nuxt-link to="/signup">
-            <el-button type="primary">アカウント作成</el-button>
-          </nuxt-link>
-          <nuxt-link to="/login">
-            <el-button type="primary" plain>ログイン</el-button>
-          </nuxt-link>
+    <div class="p-top">
+      <div class="p-top_inner">
+        <div class="p-top_bg"></div>
+        <div class="p-top_overlay"></div>
+        <div class="p-top_contents">
+          <h1 class="p-top_title">
+            趣味と仲間を繋げよう
+          </h1>
+          <div class="p-top_access">
+            <nuxt-link to="/signup">
+              <el-button type="primary">アカウント作成</el-button>
+            </nuxt-link>
+            <nuxt-link to="/login">
+              <el-button type="primary" plain>ログイン</el-button>
+            </nuxt-link>
+          </div>
         </div>
       </div>
     </div>
     <!-- </transition> -->
-  </div>
+  </main>
 </template>
 
 <script>
@@ -39,6 +41,7 @@ export default {
     position: relative;
     height: calc(100vh - 46px);
   }
+
   &_bg {
     height: 100%;
     width: 100%;
@@ -46,6 +49,7 @@ export default {
     mix-blend-mode: luminosity;
     background: rgba($black_origin_10, 1);
   }
+
   &_overlay {
     height: 100%;
     width: 100%;
@@ -73,6 +77,7 @@ export default {
       }
     }
   }
+
   &_contents {
     width: 100%;
     padding: 16px;
@@ -83,8 +88,9 @@ export default {
     z-index: 20;
     text-align: center;
   }
+
   &_title {
-    font-size: $font-size_p-top_title;
+    @include fontSize($font-size_p-top_title);
     font-weight: $font_bold;
     text-align: center;
     color: rgba($white_100, 0);
@@ -111,11 +117,7 @@ export default {
       }
     }
   }
-  &_logo {
-    font-size: 5rem;
-    font-weight: $font_bold;
-    color: $white_100;
-  }
+
   &_access {
     max-width: 300px;
     margin: auto;
@@ -126,10 +128,7 @@ export default {
   @include mq(sm) {
     &_inner {
       position: relative;
-      height: calc(100vh - 38px);
-    }
-    &_title {
-      font-size: $font-size_p-top_title_sm;
+      height: calc(100vh - 42px);
     }
   }
 }

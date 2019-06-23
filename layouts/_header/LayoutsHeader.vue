@@ -3,43 +3,50 @@
     <div class="l-header_inner">
       <h1 class="l-header_logo">
         <nuxt-link to="/">
-          MemBar
+          <span class="l-header_logo-img">
+            <img src="/images/common/logo_membar_primary.svg" alt="MemBar" />
+          </span>
+          <span class="l-header_logo-text">
+            <img
+              src="/images/common/logo_membar_normal_text.svg"
+              alt="MemBar"
+            />
+          </span>
         </nuxt-link>
       </h1>
       <div class="l-header_option">
-        <button
+        <div
           v-if="this.$store.state.authUser"
-          class="l-header_option-logout"
-          @click="logout"
+          class="l-slideMenu-btn"
+          :class="{ active: this.$store.state.slideMenuOpen }"
+          @click="slideMenuToggle()"
         >
-          <i class="material-icons">
-            exit_to_app
-          </i>
-          ログアウト
-        </button>
+          <span></span>
+        </div>
       </div>
     </div>
+    <SlideMenu />
   </header>
 </template>
 
 <script>
+import SlideMenu from '~/layouts/_slideMenu'
 export default {
-  data() {
-    return {
-      activeIndex: '1',
-      activeIndex2: '1'
-    }
+  components: {
+    SlideMenu
   },
   methods: {
-    handleSelect(key, keyPath) {
-      // console.log(key, keyPath)
-    },
-    async logout() {
-      try {
-        await this.$store.dispatch('logout')
-      } catch (e) {
-        this.formError = e.message
+    htmlFixedToggle() {
+      const el = document.documentElement
+      if (this.$store.state.slideMenuOpen === true) {
+        el.classList.add('htmlFixed')
+      } else {
+        el.classList.remove('htmlFixed')
       }
+    },
+    slideMenuToggle() {
+      this.$store.dispatch('slideMenuToggle')
+      this.htmlFixedToggle()
     }
   }
 }
@@ -50,7 +57,8 @@ export default {
   @include boxShadow_down(0.1);
   position: relative;
   background-color: $color_white;
-  z-index: 100;
+  z-index: 200;
+  height: 48px;
 
   &_inner {
     position: relative;
@@ -58,29 +66,59 @@ export default {
     padding: 8px 24px;
     max-width: $width_xl;
     margin: 0 auto;
+    height: inherit;
   }
 
   &_logo {
     color: $color_main_text;
     padding: 4px 0;
-    font-size: $font26;
+    @include fontSize($font26);
     margin: 0 24px 0 0px;
     cursor: pointer;
 
     a {
       color: $color_main_text;
       text-decoration: none;
+      display: inline-block;
+      position: relative;
+      padding-left: 32px;
+      height: 100%;
+      width: 100%;
 
       // &:hover {
       //   color: $color_link;
       // }
+    }
+
+    &-img {
+      display: inline-block;
+      max-width: 28px;
+      position: absolute;
+      top: 50%;
+      left: 0;
+      transform: translate(0, -50%);
+      font-size: 0;
+
+      img {
+        width: 100%;
+      }
+    }
+    &-text {
+      display: inline-block;
+      height: 28px;
+      font-size: 0;
+      display: none;
+
+      img {
+        height: 100%;
+      }
     }
   }
 
   &_option {
     position: absolute;
     top: 50%;
-    right: 24px;
+    right: 0;
     transform: translate(0, -50%);
 
     &-logout {
@@ -106,6 +144,7 @@ export default {
 
   @include mq(sm) {
     @include boxShadow_down(0.1);
+    height: 46px;
 
     &_inner {
       text-align: center;
@@ -114,11 +153,6 @@ export default {
 
     &_logo {
       margin: auto;
-      font-size: $font22;
-    }
-
-    &_option {
-      right: 8px;
     }
   }
 }

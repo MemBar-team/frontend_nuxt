@@ -10,55 +10,33 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex'
 import LayoutsHeader from '~/layouts/_header/LayoutsHeader'
 import LayoutsFooter from '~/layouts/_footer/LayoutsFooter'
-import NavMenu from '~/components/navigation/NavMenu'
+import NavMenu from '~/components/_navigation/NavMenu'
 
 export default {
   components: {
     LayoutsHeader,
     LayoutsFooter,
     NavMenu
-  },
-  mounted() {
-    this.getUserAgent()
-  },
-  methods: {
-    ...mapActions({
-      getUserAgent: 'getUserAgent'
-    })
   }
 }
 </script>
 
 <style lang="scss">
-.c-main {
+.l-main {
   min-height: 400px;
-  height: calc(100vh - 50px - 46px); // 画面高さ - Header - Footer の高さ
   overflow-x: hidden;
   overflow-y: auto;
-
-  @include mq(sm) {
-    height: calc(100vh - 46px - 38px); // 画面高さ - Header - Footer の高さ
-  }
 }
 
 .c-section {
-  // height: inherit;
-
   &_inner {
     max-width: $width_xl;
     margin: auto;
-    padding: 12px;
+    padding: 8px;
     position: relative;
     height: inherit;
-  }
-
-  @include mq(sm) {
-    &_inner {
-      padding: 8px;
-    }
   }
 }
 </style>
