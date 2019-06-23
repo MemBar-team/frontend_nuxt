@@ -22,29 +22,42 @@ export default {
 </script>
 
 <style lang="scss">
+.p-form {
+  &_title {
+    @include padding(36px, 0, 28px);
+    @include margin(0, 0, 20px);
+    @include fontSize($font-size_c-form_title);
+    text-align: center;
+  }
+
+  @include mq(sm) {
+    padding: 0 4px 16px;
+  }
+}
 .c-form {
-  &_content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: auto;
+
+  &-single {
     max-width: 400px;
     padding: 16px 20px 24px;
     @include boxShadow_spread(0.1);
+    margin: auto;
   }
-  &_col3 {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: auto;
 
-    &-item {
-      text-align: center;
-    }
-    &-inner {
+  &_item {
+    text-align: center;
+
+    &_inner {
       width: 300px;
       height: inherit;
       // @include padding(16px, 20px, 24px);
       padding: 16px 20px 24px;
       @include boxShadow_spread(0.1);
     }
-    &-center {
+    &_center {
       background-color: $color_bg_common;
       font-size: $font16;
       @include padding(4px, 12px);
@@ -52,13 +65,6 @@ export default {
       @include margin(0, 40px);
       display: inline-block;
     }
-  }
-
-  &_title {
-    @include padding(36px, 0, 28px);
-    @include margin(0, 0, 20px);
-    @include fontSize($font-size_c-form_title);
-    text-align: center;
   }
 
   &_login {
@@ -103,20 +109,16 @@ export default {
   }
 
   @include mq(md) {
-    &_col3 {
-      display: block;
+    display: block;
 
-      &-inner {
+    &_item {
+      &_inner {
         width: 100%;
       }
-      &-center {
+      &_center {
         @include margin(20px, auto);
       }
     }
-  }
-
-  @include mq(sm) {
-    padding: 0 4px 16px;
   }
 }
 </style>

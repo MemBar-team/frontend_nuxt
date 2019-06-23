@@ -2,8 +2,8 @@
   <main class="l-main">
     <section class="c-section">
       <div class="c-section_inner">
-        <div class="c-form">
-          <h2 class="c-form_title">
+        <div class="p-form">
+          <h2 class="p-form_title">
             ログインフォーム
           </h2>
           <!-- {{ this.$store.state }} -->
@@ -17,9 +17,9 @@
             </span>
           </div>
 
-          <div class="c-form_col3">
-            <div class="c-form_col3-item">
-              <div class="c-form_col3-inner">
+          <div class="c-form">
+            <div class="c-form_item">
+              <div class="c-form_item_inner">
                 <el-form
                   ref="validateForm"
                   :model="validateForm"
@@ -90,12 +90,12 @@
               </div>
             </div>
 
-            <div class="c-form_col3-item">
-              <span class="c-form_col3-center">OR</span>
+            <div class="c-form_item">
+              <span class="c-form_item_center">OR</span>
             </div>
 
-            <div class="c-form_col3-item">
-              <div class="c-form_col3-inner">
+            <div class="c-form_item">
+              <div class="c-form_item_inner">
                 <h3 class="c-form_sns-title">ソーシャルログイン</h3>
                 <div>
                   <el-button

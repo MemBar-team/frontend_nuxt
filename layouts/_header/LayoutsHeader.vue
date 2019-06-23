@@ -82,6 +82,8 @@ export default {
       display: inline-block;
       position: relative;
       padding-left: 32px;
+      height: 100%;
+      width: 100%;
 
       // &:hover {
       //   color: $color_link;
@@ -105,6 +107,7 @@ export default {
       display: inline-block;
       height: 28px;
       font-size: 0;
+      display: none;
 
       img {
         height: 100%;

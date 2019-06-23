@@ -34,6 +34,8 @@ export default {
 // }
 .l-wrapper {
   // overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
 .fade-enter-active,

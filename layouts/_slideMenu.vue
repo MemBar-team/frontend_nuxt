@@ -51,6 +51,9 @@ export default {
       // e.preventdefault
       console.log('ログアウト、、、、、、')
       e.preventDefault()
+      const el = document.documentElement
+      el.classList.remove('htmlFixed')
+
       try {
         await this.$store.dispatch('logout')
         await this.$store.dispatch('slideMenuClose')

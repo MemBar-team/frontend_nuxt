@@ -2,12 +2,12 @@
   <main class="l-main">
     <section class="c-section">
       <div class="c-section_inner">
-        <div class="c-form">
-          <h2 class="c-form_title">
+        <div class="p-form">
+          <h2 class="p-form_title">
             アカウントを作成
           </h2>
 
-          <div class="c-form_content">
+          <div class="c-form-single">
             <el-form
               ref="validateForm"
               :model="validateForm"
