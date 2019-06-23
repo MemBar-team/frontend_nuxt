@@ -14,6 +14,19 @@
               class="c-form_login"
             >
               <el-form-item
+                label="User Name"
+                prop="userName"
+                :rules="[
+                  {
+                    required: true,
+                    message: 'ユーザー名を入力してください',
+                    trigger: 'blur'
+                  }
+                ]"
+              >
+                <el-input v-model="validateForm.userName"></el-input>
+              </el-form-item>
+              <el-form-item
                 label="Email"
                 prop="email"
                 :rules="[
@@ -63,7 +76,7 @@
                   native-type="submit"
                   @click="submitForm('validateForm', $event)"
                 >
-                  ログイン
+                  アカウント作成
                 </el-button>
                 <el-button @click="resetForm('validateForm')">
                   リセット
@@ -89,28 +102,38 @@ export default {
     return {
       error: null,
       validateForm: {
+        userName: '',
         email: '',
         password: ''
       }
     }
   },
   methods: {
-    async login() {
+    async signup() {
+      console.log('サインアップ 動作')
+      console.log(this.userName)
+      console.log(this.email)
+      console.log(this.password)
       try {
-        await this.$store.dispatch('login', {
-          email: this.email,
-          password: this.password
+        console.log('サインアップ トライ')
+        await this.$store.dispatch('signup', {
+          userName: this.validateForm.userName,
+          email: this.validateForm.email,
+          password: this.validateForm.password
         })
-        // this.$router.push('/')
+        this.validateForm.userName = ''
+        this.validateForm.email = ''
+        this.validateForm.password = ''
+        this.formError = null
       } catch (e) {
-        this.error = e.message
+        this.formError = e.message
       }
     },
     submitForm(formName, event) {
       event.preventDefault()
       this.$refs[formName].validate(valid => {
         if (valid) {
-          this.login()
+          this.signup()
         } else {
           return false
         }

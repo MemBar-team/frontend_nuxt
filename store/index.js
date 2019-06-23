@@ -69,6 +69,29 @@ export const actions = {
       // this.$router.replace('/')
     }
   },
+  async signup({ commit }, { userName, email, password }) {
+    console.log('サインアップ アクション')
+    console.log(userName)
+    console.log(email)
+    console.log(password)
+    try {
+      console.log('トライ')
+      const { data } = await axios.post('/api/signup', {
+        userName,
+        email,
+        password
+      })
+      console.log(data)
+      // commit('SET_USER', data)
+      this.$router.replace('/login')
+    } catch (error) {
+      console.log('store signup エラー')
+      if (error.response && error.response.status === 401) {
+        throw new Error('ユーザー情報が正しくありません')
+      }
+      throw error
+    }
+  },
   async login({ commit }, { username, password }) {
     /* eslint-disable no-console */
     console.log('ログインアクション')

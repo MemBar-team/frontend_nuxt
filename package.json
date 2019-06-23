@@ -26,9 +26,11 @@
     "lodash": "^4.17.11",
     "mariadb": "^2.0.5",
     "material-design-icons": "^3.0.1",
+    "moment": "^2.24.0",
     "nuxt": "^2.8.1",
     "popmotion": "^8.6.10",
     "sequelize": "^5.8.12",
+    "uuid": "^3.3.2",
     "vue-pose": "^0.5.1",
     "vuex": "^3.1.0",
     "whatwg-fetch": "^3.0.0"
