@@ -2,6 +2,7 @@ import express from 'express'
 import _ from 'lodash'
 import mariadb from 'mariadb'
 import uuid from 'uuid/v4'
+import bcrypt from 'bcrypt'
 import moment from 'moment'
 import RoutePostList from './routes/post_list'
 
@@ -36,41 +37,59 @@ router.use((req, res, next) => {
 
 // app.use('/', RoutePostList)
 
+// Add POST - /api/signup
 router.post('/signup', (req, res, next) => {
   console.log('signup ---==')
   console.log(req.body)
   const userId = uuid();
   const userName = req.body.userName;
   const email = req.body.email;
-  const password = req.body.password;
+
+  const plainPassword = req.body.password;
+  const saltRounds = 10;
+  const hash = bcrypt.hashSync(plainPassword, saltRounds);
+  const password = hash;
   const createdAt = moment().format('YYYY-MM-DD HH:mm:ss');
+
+  const emailExistsQuery = 'SELECT email FROM users WHERE email = "' + email + '" LIMIT 1'; // 追加
   const query = 'INSERT INTO users (user_id, user_name, email, password, created_at) VALUES ("' + userId + '", ' + '"' + userName + '", ' + '"' + email + '", ' + '"' + password + '", ' + '"' + createdAt + '")';
 
   connection
     .then(conn => {
-      conn.query(query)
+      conn.query(emailExistsQuery)
         .then(rows => {
-          // if (_.isEqual(email, rows[0].email) && _.isEqual(password, rows[0].password)) {
-          //   console.log('ログイン成功')
-          //   // req.session.authUser = { username: 'demo@gmail.com' }
-          //   return res.json({ username: email })
-          // }
-          // return res.json({ rows })
-          return res.json({ username: email })
-          conn.end();
+          // 認証
+          console.log(rows)
+          console.log(rows.length)
+          console.log(_.isEmpty(rows))
+
+          let emailExists = rows.length;
+          if (!_.isEmpty(rows)) {
+            console.log('すでにある')
+            // return res.json({ username: 'すでにあるよ' })
+
+          } else {
+            console.log('成功')
+            conn.query(query)
+              .then(rows => {
+                return res.json({ username: email })
+              })
+              .catch(err => {
+                //handle query error
+                console.log('エラー・・・')
+              })
+          }
+
         })
         .catch(err => {
           //handle query error
           console.log('エラー・・・')
         })
-        .finally(() => {
-          console.log('終了')
-          // conn.end();
-        });
     })
     .catch(err => {
       //handle connection error
-    });
+    })
+
 });
 
 // Add POST - /api/login

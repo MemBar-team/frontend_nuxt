@@ -79,7 +79,7 @@ export default {
     a {
       color: $color_main_text;
       text-decoration: none;
-      display: inline-block;
+      display: block;
       position: relative;
       padding-left: 32px;
       height: 100%;
