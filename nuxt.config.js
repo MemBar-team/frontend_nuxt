@@ -1,4 +1,4 @@
-// process.traceDeprecation = true;
+process.traceDeprecation = true;
 import pkg from './package'
 import bodyParser from 'body-parser'
 import session from 'express-session'
