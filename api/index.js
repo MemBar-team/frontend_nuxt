@@ -11,24 +11,6 @@ const config = {
 
 const connection = mariadb.createConnection(config);
 
-// connection
-//   .then(conn => {
-//     console.log('DBアクセス')
-//     const email = 'test@gmail.com';
-//     conn.query(`SELECT user_email, user_password from users WHERE user_email="${email}"`)
-//       .then(rows => {
-//         // console.log(rows.length);
-//         console.log(rows);
-//         conn.end();
-//       })
-//       .catch(err => { 
-//         //handle query error
-//       });
-//   })
-//   .catch(err => {
-//     //handle connection error
-//   });
-
 // Create express router
 const router = express.Router()
 
