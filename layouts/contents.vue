@@ -30,6 +30,12 @@ export default {
   overflow-y: auto;
 }
 
+.l-sidebar {
+  min-width: 300px;
+  // background-color: $black_origin_5;
+  @include boxShadow_spread(0.1);
+}
+
 .c-section {
   &_inner {
     max-width: $width_xl;

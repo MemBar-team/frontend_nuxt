@@ -36,6 +36,10 @@ export default {
   // overflow-x: hidden;
   display: flex;
   flex-direction: column;
+
+  &_contents {
+    display: flex;
+  }
 }
 
 .fade-enter-active,
