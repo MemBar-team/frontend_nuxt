@@ -7,6 +7,13 @@
             アカウントを作成
           </h2>
 
+          <div v-if="formError" class="c-form_error">
+            <span class="c-form_error-message">
+              <i class="material-icons">error</i>
+              {{ formError }}
+            </span>
+          </div>
+
           <div class="c-form-single">
             <el-form
               ref="validateForm"
@@ -59,7 +66,7 @@
               </el-form-item>
               <el-form-item
                 label="Password（確認用）"
-                prop="password"
+                prop="confirm"
                 :rules="[
                   {
                     required: true,
@@ -68,7 +75,7 @@
                   }
                 ]"
               >
-                <el-input v-model="validateForm.password"></el-input>
+                <el-input v-model="validateForm.confirm"></el-input>
               </el-form-item>
               <el-form-item class="c-form_btn">
                 <el-button
@@ -100,11 +107,12 @@ export default {
   layout: 'signupLogin',
   data() {
     return {
-      error: null,
+      formError: null,
       validateForm: {
         userName: '',
         email: '',
-        password: ''
+        password: '',
+        confirm: ''
       }
     }
   },
@@ -124,6 +132,7 @@ export default {
         this.validateForm.userName = ''
         this.validateForm.email = ''
         this.validateForm.password = ''
+        this.validateForm.confirm = ''
         this.formError = null
       } catch (e) {
         this.formError = e.message

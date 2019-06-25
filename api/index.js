@@ -66,7 +66,7 @@ router.post('/signup', (req, res, next) => {
           let emailExists = rows.length;
           if (!_.isEmpty(rows)) {
             console.log('すでにある')
-            // return res.json({ username: 'すでにあるよ' })
+            return res.status(409).send('このアカウントはすでに登録されています')
 
           } else {
             console.log('成功')

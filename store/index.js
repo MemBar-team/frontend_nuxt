@@ -76,18 +76,24 @@ export const actions = {
     console.log(password)
     try {
       console.log('トライ')
-      const { data } = await axios.post('/api/signup', {
-        userName,
-        email,
-        password
-      })
-      console.log(data)
+      await axios
+        .post('/api/signup', {
+          userName,
+          email,
+          password
+        })
+        .then(() => {
+          this.$router.replace('/login')
+        })
+      // console.log(data)
       // commit('SET_USER', data)
-      this.$router.replace('/login')
+      // this.$router.replace('/login')
     } catch (error) {
       console.log('store signup エラー')
       if (error.response && error.response.status === 401) {
         throw new Error('ユーザー情報が正しくありません')
+      } else if (error.response && error.response.status === 409) {
+        throw new Error(error.response.data)
       }
       throw error
     }
