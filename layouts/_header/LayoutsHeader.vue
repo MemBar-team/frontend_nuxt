@@ -64,7 +64,7 @@ export default {
     position: relative;
     display: flex;
     padding: 8px 24px;
-    max-width: $width_xl;
+    // max-width: $width_xl;
     margin: 0 auto;
     height: inherit;
   }

@@ -76,7 +76,7 @@ export default {
   @include boxShadow_down(0.1);
 
   &_inner {
-    max-width: $width_xl;
+    // max-width: $width_xl;
     margin: 0 auto;
   }
 

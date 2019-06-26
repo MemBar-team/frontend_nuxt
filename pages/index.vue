@@ -14,12 +14,22 @@
               <div class="c-posts_item-inner">
                 <div class="c-posts_item-header">
                   <div class="c-posts_item-icon">
-                    <img :src="renderPost.icon" :alt="renderPost.name" />
+                    <el-image :src="renderPost.icon" :alt="renderPost.name">
+                      <!-- <img :src="renderPost.icon" :alt="renderPost.name" /> -->
+                      <div slot="error" class="image-slot">
+                        <i class="el-icon-picture-outline"></i>
+                      </div>
+                    </el-image>
                   </div>
                   <p class="c-posts_item-name">{{ renderPost.name }}</p>
                 </div>
                 <div class="c-posts_item-thumb">
-                  <img :src="renderPost.thumb" :alt="renderPost.title" />
+                  <el-image :src="renderPost.thumb" :alt="renderPost.title">
+                    <!-- <img :src="renderPost.thumb" :alt="renderPost.title" /> -->
+                    <div slot="error" class="image-slot">
+                      <i class="el-icon-picture-outline"></i>
+                    </div>
+                  </el-image>
                 </div>
                 <div class="c-posts_item-contents">
                   <h2 class="c-posts_item-title">{{ renderPost.title }}</h2>
@@ -160,6 +170,7 @@ export default {
     &-thumb {
       background-color: $black_origin_20;
       height: 100px;
+      font-size: 3rem;
     }
     &-contents {
       padding: 12px;

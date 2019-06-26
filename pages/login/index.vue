@@ -234,8 +234,8 @@ export default {
       width: 100%;
 
       &:hover {
-        background-color: $colro_hover_primary;
-        border-color: $colro_hover_primary;
+        background-color: $color_hover_primary;
+        border-color: $color_hover_primary;
       }
     }
 

@@ -3,6 +3,7 @@
     <div class="l-wrapper">
       <LayoutsHeader />
       <NavMenu />
+      <Search />
       <nuxt />
       <LayoutsFooter />
     </div>
@@ -13,12 +14,14 @@
 import LayoutsHeader from '~/layouts/_header/LayoutsHeader'
 import LayoutsFooter from '~/layouts/_footer/LayoutsFooter'
 import NavMenu from '~/components/_navigation/NavMenu'
+import Search from '~/components/form/search'
 
 export default {
   components: {
     LayoutsHeader,
     LayoutsFooter,
-    NavMenu
+    NavMenu,
+    Search
   }
 }
 </script>
