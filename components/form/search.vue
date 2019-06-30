@@ -1,6 +1,6 @@
 <template>
-  <div class="c-search">
-    <div class="c-search_input">
+  <div class="l-options">
+    <div class="c-search">
       <el-input placeholder="Please input" v-model="input3" size="medium">
         <el-select v-model="select" slot="prepend" placeholder="Select">
           <el-option label="Restaurant" value="1"></el-option>
@@ -10,10 +10,10 @@
         <el-button slot="append" icon="el-icon-search"></el-button>
       </el-input>
     </div>
-    <button class="c-layouts--btn">
+    <div class="c-changeLayoutBtn">
       <!-- <i class="el-icon-menu"></i> -->
-      <i class="material-icons">view_quilt</i>
-    </button>
+      <i class="material-icons" @click="changeLayout">{{ btnText }}</i>
+    </div>
   </div>
 </template>
 
@@ -22,33 +22,46 @@ export default {
   data() {
     return {
       input3: '',
-      select: ''
+      select: '',
+      layoutMode: 'module',
+      btnText: 'view_module'
+    }
+  },
+  methods: {
+    changeLayout() {
+      console.log('クリック')
+      if (this.layoutMode === 'module') {
+        this.btnText = 'view_stream'
+        this.layoutMode = 'list'
+      } else {
+        this.btnText = 'view_module'
+        this.layoutMode = 'module'
+      }
     }
   }
 }
 </script>
 
 <style lang="scss">
-.c-search {
-  padding: 32px;
-
-  &_input {
-    max-width: 800px;
-    margin: auto;
-    flex: 1;
-  }
+.l-options {
+  padding: 32px 16px;
+  display: flex;
 }
 
-.c-layouts {
-  &--btn {
-    padding: 4px;
-    border: solid 1px $color_border;
-    font-size: 20px;
-    cursor: pointer;
+.c-search {
+  max-width: 800px;
+  margin: auto;
+  flex: 1;
+}
 
-    .material-icons {
-      font-size: 2.8rem;
-    }
+.c-changeLayoutBtn {
+  padding: 4px;
+  border: solid 1px $color_border;
+  font-size: 20px;
+  cursor: pointer;
+
+  .material-icons {
+    font-size: 2.8rem;
   }
 }
 </style>
