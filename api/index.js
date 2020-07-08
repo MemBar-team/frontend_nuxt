@@ -121,6 +121,7 @@ router.post('/login', (req, res) => {
     })
     .catch(err => {
       //handle connection error
+      console.log('Connection Failure');
     });
 })
 

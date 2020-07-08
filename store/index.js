@@ -63,7 +63,7 @@ export const mutations = {
 export const actions = {
   nuxtServerInit({ commit }, { req }) {
     if (req.session && req.session.authUser) {
-      console.log('nuxtServerInit')
+      console.log('nuxtServerInit', req.session.authUser)
       commit('SET_USER', req.session.authUser)
       // this.$router.push({ name: 'index' })
       // this.$router.replace('/')
@@ -106,6 +106,10 @@ export const actions = {
     try {
       console.log('トライ')
       const { data } = await axios.post('/api/login', { username, password })
+      // const data = await {
+      //   username: 'aaa',
+      //   password: 'bbb'
+      // }
       console.log(data)
       commit('SET_USER', data)
       this.$router.replace('/')

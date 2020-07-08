@@ -1,6 +1,7 @@
 <template>
   <div class="l-wrapper_contents">
-    <main class="l-main">
+    {{ isLoaded }}
+    <main v-if="isLoaded" class="l-main">
       <section class="c-section">
         <!-- {{ this.$store.state }} -->
         <!-- {{ checkAuth }} -->
@@ -51,6 +52,9 @@
       >
       </el-pagination>
     </main>
+    <main v-else class="l-main">
+      <p>....Loading</p>
+    </main>
     <ContensSidebar />
   </div>
 </template>
@@ -70,7 +74,8 @@ export default {
       internalPage: null,
       formError: null,
       formUsername: '',
-      formPassword: ''
+      formPassword: '',
+      isLoaded: false
     }
   },
   computed: {
@@ -103,13 +108,24 @@ export default {
     this.getPosts()
   },
   mounted() {
-    console.log('マウント')
+    console.log('マウント aaaaaa')
     console.log(this.$store.state)
     // this.getPosts()
     // this.$store.dispatch('getPosts')
     this.internalPage = this.$refs.pagination
+    this.loading()
   },
   methods: {
+    loading() {
+      // setTimeout(() => {
+      //   this.isLoaded = true
+      // }, 10000)
+      setTimeout(() => {
+        console.log('this.isLoaded before', this.isLoaded)
+        this.isLoaded = true
+        console.log('this.isLoaded after', this.isLoaded)
+      }, 5000)
+    },
     ...mapActions({
       // getAuth: 'getAuth',
       getPosts: 'getPosts'
